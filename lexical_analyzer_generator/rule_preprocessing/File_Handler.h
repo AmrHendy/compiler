@@ -17,7 +17,7 @@ class File_Handler
     ~File_Handler(void);  // This is the destructor: declaration
 
     /* interface functions */
-    char* File_Handler::read_file(char* file_name);
+    void read_file(char* file_name);
     
  
 };
