@@ -1,13 +1,12 @@
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include <stdio>
+#include <stdio.h>
+
 using namespace std;
 
 /* MAIN FUNCTION */
 /*********************************************/
 int main() {
-   
-   printf("hello world");
- 
+
    return 0;
 }

@@ -5,6 +5,9 @@
 /*********************************************/
 #include <stdio.h>
 #include <list>
+#include <utility>
+#include "State.h"
+
 using namespace std;
 
 /* CLASS DEFINITIONS */
@@ -13,7 +16,7 @@ class State
 {
 	private:
 	/* attributes */
-	std::list<void> transitions;
+	list<pair<State,char>> transitions;
 	bool acceptance;
     char* token_value;
 
@@ -24,11 +27,11 @@ class State
     ~State(void);  // This is the destructor: declaration
 
     /* interface functions */
-    void tmp(void);
+    void add_transition(pair<State,char>);
 
     /* setters and getters */
-    
- 
+
+
 };
 
 

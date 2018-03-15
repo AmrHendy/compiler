@@ -1,6 +1,8 @@
 /* IMPORT LIBRARIES */
 /*********************************************/
 #include <stdio.h>
+#include "State.h"
+
 using namespace std;
 
 
@@ -8,12 +10,12 @@ using namespace std;
 /*********************************************/
 State::State(void)
 {
-   
+
 }
 
 State::~State(void)
 {
-   
+
 }
 
 /* SETTERS AND GETTERS */
@@ -22,3 +24,8 @@ State::~State(void)
 
 /* INTERFACE METHODS */
 /*********************************************/
+void State::add_transition(pair<State, char> transition)
+{
+    this->transitions.push_back(transition) ;
+}
+
