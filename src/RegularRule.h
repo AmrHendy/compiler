@@ -8,6 +8,7 @@
 #define REGULARRULE_H_
 
 #include <string>
+#include <map>
 #include "Rule.h"
 
 using namespace std;
@@ -17,8 +18,17 @@ public:
 	RegularRule();
 	virtual ~RegularRule();
 
+
 	void parseRegularExpression(string rule);
 	void parseRegularDefinition(string rule);
+
+
+	map<string, string> regularDefinitions;
+
+
+private:
+	vector<string> split(string str);
+	string substituteDefinition(string defName);
 };
 
 #endif /* REGULARRULE_H_ */

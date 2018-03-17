@@ -19,7 +19,6 @@ public:
 	virtual ~RuleExtractor();
 	void extractRule(string rule);
 
-	map<string, string> regularDefinitions;
 
 private:
 	void parseKeWord(string rule);
