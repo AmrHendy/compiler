@@ -17,7 +17,6 @@ RuleExtractor::~RuleExtractor() {
 	// TODO Auto-generated destructor stub
 }
 
-vector<string> RuleExtractor::extractRule(string rule){
-	vector<string> postfixExpression;
-	return postfixExpression;
+void RuleExtractor::extractRule(string rule){
+
 }

@@ -9,6 +9,7 @@
 
 #include <vector>
 #include <string>
+#include <map>
 
 using namespace std;
 
@@ -16,7 +17,14 @@ class RuleExtractor {
 public:
 	RuleExtractor();
 	virtual ~RuleExtractor();
-	vector<string> extractRule(string rule);
+	void extractRule(string rule);
+
+	map<string, string> regularDefinitions;
+
+private:
+	void parseKeWord(string rule);
+	void parsePunctuation(string rule);
+	void parseRegularExpression(string rule);
 };
 
 #endif /* RULEEXTRACTOR_H_ */

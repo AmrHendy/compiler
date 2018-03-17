@@ -21,7 +21,7 @@ vector<vector<string> > PatternProcessor::getRules(){
 	RuleExtractor ruleExtractor;
 	vector<vector<string> > all_rules;
 	for(string str : file_lines){
-		all_rules.push_back(ruleExtractor.extractRule(str));
+		ruleExtractor.extractRule(str);
 	}
 	return all_rules;
 }
