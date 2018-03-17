@@ -10,6 +10,7 @@
 #include <vector>
 #include <string>
 #include <map>
+#include "Rule.h"
 
 using namespace std;
 
@@ -17,7 +18,7 @@ class RuleExtractor {
 public:
 	RuleExtractor();
 	virtual ~RuleExtractor();
-	void extractRule(string rule);
+	Rule extractRule(string rule);
 
 
 private:

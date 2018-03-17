@@ -9,6 +9,7 @@
 
 #include <string>
 #include <map>
+#include <vector>
 #include "Rule.h"
 
 using namespace std;
@@ -24,11 +25,14 @@ public:
 
 
 	map<string, string> regularDefinitions;
+	map<string, string> regularExpressions;
+	vector<string> regularExpressionsNames;
 
 
 private:
 	vector<string> split(string str);
 	string substituteDefinition(string defName);
+	string removeSpaces(string str);
 };
 
 #endif /* REGULARRULE_H_ */

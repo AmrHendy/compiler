@@ -6,22 +6,24 @@
 
 #include "PatternProcessor.h"
 #include "RuleExtractor.h"
+#include "FileHandler.h"
 
 using namespace std;
 
-PatternProcessor::PatternProcessor(vector<string> file_lines) {
-	PatternProcessor::file_lines = file_lines;
+PatternProcessor::PatternProcessor(string fileName) {
+	FileHandler fileHandler;
+	file_lines = fileHandler.readFile(fileName);
 }
 
 PatternProcessor::~PatternProcessor() {
 	// TODO Auto-generated destructor stub
 }
 
-vector<vector<string> > PatternProcessor::getRules(){
+vector<Rule> PatternProcessor::getRules(){
 	RuleExtractor ruleExtractor;
-	vector<vector<string> > all_rules;
+	vector<Rule> all_rules;
 	for(string str : file_lines){
-		ruleExtractor.extractRule(str);
+		all_rules.push_back(ruleExtractor.extractRule(str));
 	}
 	return all_rules;
 }

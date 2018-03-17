@@ -7,6 +7,7 @@
 #ifndef PATTERNPROCESSOR_H_
 #define PATTERNPROCESSOR_H_
 
+#include "Rule.h"
 #include <vector>
 #include <string>
 
@@ -14,9 +15,9 @@ using namespace std;
 
 class PatternProcessor {
 public:
-	PatternProcessor(vector<string> file_lines);
+	PatternProcessor(string fileName);
 	virtual ~PatternProcessor();
-	vector<vector<string> > getRules();
+	vector<Rule> getRules();
 
 private:
 	vector<string> file_lines;

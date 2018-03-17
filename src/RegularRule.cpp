@@ -5,6 +5,7 @@
  */
 
 #include "RegularRule.h"
+#include <set>
 
 RegularRule::RegularRule() {
 	// TODO Auto-generated constructor stub
@@ -41,7 +42,7 @@ void RegularRule::parseRegularDefinition(string rule){
 	vector<string> splittedRHS = split(resultRHS);
 	string finalResultRHS;
 	for(string str : splittedRHS){
-		if(regularDefinitions[str] != regularDefinitions.end()){
+		if(regularDefinitions.find(str) != regularDefinitions.end()){
 			finalResultRHS += '(' + substituteDefinition(str) + ')';
 		}
 		else{
@@ -83,6 +84,35 @@ vector<string> RegularRule::split(string str){
 
 //rule is a string on pattern LHS : RHS
 void RegularRule::parseRegularExpression(string rule){
+	int colonIndex = rule.find(":");
+	//remove spaces from the result string
+	string LHS = rule.substr(0, colonIndex);
+	string RHS = rule.substr(colonIndex + 1);
 
+
+	vector<string> splittedRHS = split(RHS);
+	string finalResultRHS;
+	for(string str : splittedRHS){
+		if(regularDefinitions.find(str) != regularDefinitions.end()){
+			finalResultRHS += '(' + substituteDefinition(str) + ')';
+		}
+		else{
+			finalResultRHS += str;
+		}
+	}
+	regularExpressionsNames.push_back(LHS);
+	regularExpressions[LHS] = finalResultRHS;
 }
+
+
+string RegularRule::removeSpaces(string str){
+	string trimmedStr = "";
+	for(int index = 0; index < str.length(); index++){
+		if(str[index] != ' '){
+			trimmedStr += str[index];
+		}
+	}
+	return trimmedStr;
+}
+
 

@@ -5,6 +5,7 @@
  */
 
 #include "PunctuationRule.h"
+#include <sstream>
 
 PunctuationRule::PunctuationRule() {
 	// TODO Auto-generated constructor stub

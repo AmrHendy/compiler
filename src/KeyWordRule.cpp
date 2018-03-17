@@ -5,6 +5,7 @@
  */
 
 #include "KeyWordRule.h"
+#include <sstream>
 
 KeyWordRule::KeyWordRule() {
 	// TODO Auto-generated constructor stub

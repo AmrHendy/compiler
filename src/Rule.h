@@ -8,6 +8,8 @@
 #define RULE_H_
 
 #include <string>
+#include "RuleElement.h"
+#include <vector>
 
 using namespace std;
 
@@ -15,7 +17,7 @@ class Rule {
 public:
 	Rule(string ruleName, string rulePattern);
 	virtual ~Rule();
-	string toPostfix();
+	vector<RuleElement> toPostfix();
 
 private:
 	string ruleName, rulePattern;

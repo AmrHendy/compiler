@@ -17,6 +17,7 @@ RuleExtractor::~RuleExtractor() {
 	// TODO Auto-generated destructor stub
 }
 
-void RuleExtractor::extractRule(string rule){
-
+Rule RuleExtractor::extractRule(string rule){
+	Rule ruleObj("adsdas", "sdadsa");
+	return ruleObj;
 }
