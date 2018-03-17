@@ -12,11 +12,11 @@ class NFA_Generator
 {
 	public:
 	/* constructor */
-    NFA_Generator(void);   // This is the constructor declaration
+    NFA_Generator(vector<Rule> processed_rules);   // This is the constructor declaration
     ~NFA_Generator(void);  // This is the destructor: declaration
 
     /* interface functions */
-    
+    Transition_Table generate_nfa_table();
  
 };
 

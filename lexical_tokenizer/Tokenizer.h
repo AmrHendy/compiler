@@ -12,11 +12,16 @@ using namespace std;
 class Tokenizer
 {
 	public:
+	/* attributes */
+	Transtion_Table minimized_dfa_table;
+	String user_prog;
+
 	/* constructor */
-    Tokenizer(void);   // This is the constructor declaration
-    ~Tokenizer(void);  // This is the destructor: declaration
+    Tokenizer(Transtion_Table minimized_dfa_table, string user_program_directory);
+    ~Tokenizer(void);
 
     /* interface functions */
+    Token next_token();
     
  
 };

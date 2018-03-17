@@ -12,10 +12,11 @@ class DFA_Generator
 {
 	public:
 	/* constructor */
-    DFA_Generator(void);   // This is the constructor declaration
+    DFA_Generator(Transition_Table dfa_table);   // This is the constructor declaration
     ~DFA_Generator(void);  // This is the destructor: declaration
 
     /* interface functions */
+    Transition_Table generate_minimized_dfa_table();
     
  
 };

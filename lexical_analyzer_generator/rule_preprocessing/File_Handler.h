@@ -3,8 +3,9 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include <stdio.h>
-#include <studio.h>
+#include <vector>
+#include <string>
+#include <fstream>
 using namespace std;
 
 /* CLASS DEFINITIONS */
@@ -17,7 +18,7 @@ class File_Handler
     ~File_Handler(void);  // This is the destructor: declaration
 
     /* interface functions */
-    void read_file(char* file_name);
+    vector<string> read_file(string file_directory);
     
  
 };
