@@ -17,17 +17,18 @@ class Transition_Table
 
 	public:
 	/* constructor */
-    Transition_Table(void);   // This is the constructor declaration
-    ~Transition_Table(void);  // This is the destructor: declaration
+    Transition_Table(void);
+    ~Transition_Table(void);
 
     /* interface functions */
-    void add_row(Compl_state id);
- 	void add_transition (Compl_state id , char trans , state to );
- 	void add_transition (Compl_state id , char trans , Compl_state to );
- 	bool row_found(Compl_state id);
+    void insert_new_row(Composite_State id_state);
+ 	void add_row_transition (Composite_State id_state, char input_char, Composite_State to_state);
+ 	bool row_found(Composite_State id_state);
+
+	//void add_transition (Composite_State id , char trans , state to );
 
 
 };
 
 
-#endif // COMMANDS_H_
+#endif

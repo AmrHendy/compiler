@@ -3,8 +3,8 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include <stdio.h>
-using namespace std;
+#include "Composite_State.h"
+#include <map>
 
 /* CLASS DEFINITIONS */
 /*********************************************/
@@ -12,18 +12,20 @@ class Row
 {
 	private:
 	/* attributes */
-	Compl_state id ;
-  	map<char,Compl_state> transtions ;
+	Composite_State id_state;
+  	map<char,Composite_State> transitions;
 
 	public:
 	/* constructor */
-    Row(void);   // This is the constructor declaration
-    ~Row(void);  // This is the destructor: declaration
+    Row(Composite_State id_state);
+    ~Row(void);
 
     /* interface functions */
-    
+    map<char,Composite_State> get_transitions(void);
+    Composite_State get_id_state(void);
+
  
 };
 
 
-#endif // COMMANDS_H_
+#endif

@@ -3,8 +3,7 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include <stdio.h>
-using namespace std;
+#include "Machine.h"
 
 /* CLASS DEFINITIONS */
 /*********************************************/
@@ -16,13 +15,13 @@ class NFA_Table_Builder
 
 	public:
 	/* constructor */
-    NFA_Table_Builder(void);   // This is the constructor declaration
-    ~NFA_Table_Builder(void);  // This is the destructor: declaration
+    NFA_Table_Builder(Machine nfa_machine);
+    ~NFA_Table_Builder(void);
 
     /* interface functions */
-    void generate_nfa_table(void);
+    Transition_Table generate_nfa_table(void);
  
 };
 
 
-#endif // COMMANDS_H_
+#endif

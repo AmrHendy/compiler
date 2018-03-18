@@ -19,43 +19,37 @@ Transition_Table::~Transition_Table(void)
 /* INTERFACE METHODS */
 /*********************************************/
 void
-add_row(Compl_state id){
-	if(!row_found(id))
-	  rows.add(Row(id)) ;
+insert_new_row (Composite_State id_state)
+{
+	if(!row_found(id_state))
+	{
+	  this->rows.push_back(Row(id_state));
+	}
 }
 
 void
-add_transition (Compl_state id , char trans , state to ){
+add_row_transition (Composite_State id_state, char input_char, Composite_State to_state)
+{
+	for (Row r : this->rows)
+	{
+	  if(r.id_state == id_state)
+	  {
+	      r.transitions.insert(pair(input_char, to_state));
+	      break;
 
-	alphabet.insert(trans);
-
-	if(!row_found(id))
-	  rows.add(Row(id)) ;
-
-	for (Row i : rows){
-	  if(i.id == id)
-	      i.transtions[trans].add_state(to) ;
-	}    
-}
-
-void
-add_transition (Compl_state id , char trans , Compl_state to ){
-
-	alphabet.insert(trans);
-
-	if(!row_found(id))
-	  rows.add(Row(id)) ;
-
-	for (Row i : rows){
-	  if(i.id == id)
-	      i.transtions[trans].add_state(to) ;
+	  }
 	}    
 }
 
 bool
-row_found(Compl_state id){
-	for(Row i : rows)
-	  if(i.id == id)
-	    return true ;
+row_found(Composite_State id_state)
+{
+	for(Row r : this->rows)
+	{
+		if(r.id_state == id_state)
+		{
+			return true ;
+		}
+	}
 	return false ;
 }
