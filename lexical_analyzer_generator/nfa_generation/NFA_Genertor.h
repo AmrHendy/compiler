@@ -10,6 +10,11 @@ using namespace std;
 /*********************************************/
 class NFA_Generator
 {
+	private:
+	/* attributes */
+	vector<Rule> processed_rules;
+
+
 	public:
 	/* constructor */
     NFA_Generator(vector<Rule> processed_rules);   // This is the constructor declaration
@@ -17,6 +22,10 @@ class NFA_Generator
 
     /* interface functions */
     Transition_Table generate_nfa_table();
+
+    /* private functions */
+	private:
+    Machine get_machine(Rule r);
  
 };
 

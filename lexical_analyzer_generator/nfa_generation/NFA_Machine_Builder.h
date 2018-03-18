@@ -1,5 +1,5 @@
-#ifndef TABLE_ENTRY_H_  /* Include guard */
-#define TABLE_ENTRY_H_
+#ifndef NFA_RULE_BUILDER_H_  /* Include guard */
+#define NFA_RULE_BUILDER_H_
 
 /* IMPORT LIBRARIES */
 /*********************************************/
@@ -8,14 +8,15 @@ using namespace std;
 
 /* CLASS DEFINITIONS */
 /*********************************************/
-class Table_Entry
+class NFA_Rule_Builder
 {
 	public:
 	/* constructor */
-    Table_Entry(void);   // This is the constructor declaration
-    ~Table_Entry(void);  // This is the destructor: declaration
+    NFA_Rule_Builder(void);   // This is the constructor declaration
+    ~NFA_Rule_Builder(void);  // This is the destructor: declaration
 
     /* interface functions */
+    Machine get_machine(Rule r) ;
     
  
 };

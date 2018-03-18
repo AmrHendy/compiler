@@ -1,8 +1,6 @@
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include <stdio.h>
 using namespace std;
-
 
 /* MEMBER FUNCTION IMPLEMENTATION */
 /*********************************************/
@@ -21,7 +19,8 @@ Lexical_Analyzer::~Lexical_Analyzer(void)
 
 /* INTERFACE FUNCTIONS */
 /*********************************************/
-Token next_token()
+Token
+next_token()
 {
 	tokenizer.next_token();
 }

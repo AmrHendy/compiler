@@ -16,7 +16,8 @@ class DFA_Table_Builder
     ~DFA_Table_Builder(void);  // This is the destructor: declaration
 
     /* interface functions */
-    
+	void generate_dfa_table(State start);    
+	Complex_State get_epsilon_transition(Complex_State start);
  
 };
 

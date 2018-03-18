@@ -1,5 +1,5 @@
-#ifndef NFA_RULE_BUILDER_H_  /* Include guard */
-#define NFA_RULE_BUILDER_H_
+#ifndef ROW_H_  /* Include guard */
+#define ROW_H_
 
 /* IMPORT LIBRARIES */
 /*********************************************/
@@ -8,12 +8,17 @@ using namespace std;
 
 /* CLASS DEFINITIONS */
 /*********************************************/
-class NFA_Rule_Builder
+class Row
 {
+	private:
+	/* attributes */
+	Compl_state id ;
+  	map<char,Compl_state> transtions ;
+
 	public:
 	/* constructor */
-    NFA_Rule_Builder(void);   // This is the constructor declaration
-    ~NFA_Rule_Builder(void);  // This is the destructor: declaration
+    Row(void);   // This is the constructor declaration
+    ~Row(void);  // This is the destructor: declaration
 
     /* interface functions */
     

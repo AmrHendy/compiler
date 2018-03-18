@@ -1,24 +1,18 @@
-#ifndef STATE_H_  /* Include guard */
-#define STATE_H_
+#ifndef COMPOSITE_STATE_H_  /* Include guard */
+#define COMPOSITE_STATE_H_
 
 /* IMPORT LIBRARIES */
 /*********************************************/
 #include <stdio.h>
-#include <list>
-#include <utility>
-#include "State.h"
-
 using namespace std;
 
 /* CLASS DEFINITIONS */
 /*********************************************/
-class State
+class Composite_State
 {
 	private:
 	/* attributes */
-	list<pair<State,char>> transitions;
-	bool acceptance;
-    char* token_value;
+	set<State> states;
 
 
 	public:
