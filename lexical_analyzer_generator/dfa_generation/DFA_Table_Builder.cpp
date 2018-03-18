@@ -55,29 +55,4 @@ DFA_Table_Builder::generate_dfa_table(void)
 
 }
 
-Composite_State
-DFA_Table_Builder::find_equivalent_states(Composite_State state)
-{
-  vector<State> result;
-  vector<State> tmp_stack = state.get_transition('\0') ;
-
-  while(!tmp_stack.empty)
-  {
-    State tmp_state = stack.pop();
-    result.insert(tmp_state);
-    vector<State> tmp_transitions = tmp_state.get_transition('\0');
-    for(State s:tmp_transitions)
-    {
-      if ( std::find(tmp_transitions.begin(), tmp_transitions.end(), s) != vector.end() )
-      {
-        continue;
-      }
-      else
-      {
-        tmp_stack.insert(s);
-      }
-    }
-  }
-}
-
 

@@ -19,18 +19,18 @@ State::~State(void)
 void
 State::add_transition(char input, State to_state)
 {
-	Composite_State to_states = transitions.find(input);
+	vector<State> to_states = transitions.find(input);
 	if(to_states==NULL)
 	{
 		// input was not found
-		Composite_State tmp=malloc(sizeof(Composite_State));
-		tmp.insert_new_state(to_state);
+		vector<State> tmp=malloc(sizeof(vector<State>));
+		tmp.push_back(to_state);
 		transitions.insert({input, tmp});
 	}
 	else
 	{
 		// input was found
-		to_states.insert_new_state(to_state);
+		to_states.push_back(to_state);
 	}
 }
 

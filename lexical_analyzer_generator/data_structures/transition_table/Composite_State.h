@@ -4,6 +4,7 @@
 /* IMPORT LIBRARIES */
 /*********************************************/
 #include "State.h"
+#include <vector>
 
 /* CLASS DEFINITIONS */
 /*********************************************/
@@ -11,7 +12,7 @@ class Composite_State
 {
 	private:
 	/* attributes */
-	set <State> states;
+	vector <State> states;
 
 	public:
 	/* constructor */
@@ -19,11 +20,19 @@ class Composite_State
     ~State(void);
 
     /* interface functions */
-    bool insert_new_state(State new_state);
+    void insert_new_state(State new_state);
     Composite_State get_transition(char input);
+    Composite_State find_equivalent_states(Composite_State start);
+    vector<State> get_states(void);
 
-    void add_transition(pair<State,char>);
-    vector<State> get_char_transtions(char trans);
+    /*void add_transition(pair<State,char>);
+    vector<State> get_char_transtions(char trans);*/
+
+    private:
+    /* utility functions */
+    Composite_State vector_to_composite(vector<State> states);
+
+
 
 
 };

@@ -4,7 +4,7 @@
 /* IMPORT LIBRARIES */
 /*********************************************/
 #include <unordered_map>
-#include "Composite_State.h"
+#include <vector>
 #include "Token.h"
 
 /* CLASS DEFINITIONS */
@@ -13,7 +13,7 @@ class State
 {
 	private:
 	/* attributes */
-	unordered_map < char, Composite_State > transitions;
+	unordered_map < char, vector<State> > transitions;
 	bool acceptance_state;
     Token matched_token;
 
@@ -24,7 +24,7 @@ class State
 
     /* interface functions */
     void add_transition(char input, State to_state);
-    Composite_State get_transition(char input);
+    vector<State> get_transition(char input);
     //void add_transition(pair<State,char>);
     //vector<State> get_char_transtions(char trans);
 
