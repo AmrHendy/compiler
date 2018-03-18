@@ -42,13 +42,11 @@ DFA_Table_Builder::generate_dfa_table(void)
       /* get transitions of this new entry */
       for (char i : alphabet){
         /* get states reachable by this state(s) when applying char i */
-        /*-----------------------------------------------------> pending implementation*/
         Composite_State to_state = tmp.get_transtion(i) ;
         if(to_state!=NULL)
         {
           to_state = find_equivalent_states(level_one) ;
           stack.push_back(to_state) ;
-          /*-----------------------------------------------------> pending implementation*/
           dfa_table.add_row_transition(tmp, i, to_state);
         }
         
