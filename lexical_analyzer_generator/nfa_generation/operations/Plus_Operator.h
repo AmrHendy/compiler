@@ -3,22 +3,22 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include <stdio.h>
-using namespace std;
+#include "State.h"
+#include "Machine.h"
 
 /* CLASS DEFINITIONS */
 /*********************************************/
-class Plus_Operator
+class PLUS_Operator
 {
 	public:
 	/* constructor */
-    Plus_Operator(void);   // This is the constructor declaration
-    ~Plus_Operator(void);  // This is the destructor: declaration
+    PLUS_Operator(void);
+    ~PLUS_Operator(void);
 
     /* interface functions */
-    
+    Machine apply(Machine m);
  
 };
 
 
-#endif // COMMANDS_H_
+#endif

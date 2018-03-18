@@ -17,7 +17,8 @@ Lexical_Analyzer_Generator::Lexical_Analyzer_Generator(void)
 
 /* SETTERS AND GETTERS */
 /*********************************************/
-Transition_Table Lexical_Analyzer_Generator::generate_minimal_dfa(void);
+Transition_Table
+Lexical_Analyzer_Generator::generate_minimal_dfa(void);
 {
 	/* 01 process rules */
 	Rule_Preprocessor rule_Preprocessor(language_rules_directory);
@@ -25,10 +26,11 @@ Transition_Table Lexical_Analyzer_Generator::generate_minimal_dfa(void);
 
 	/* 02 generate nfa table */
 	NFA_Generator nfa_generator(processed_rules);
-	Transition_Table nfa_table=nfa_generator.generate_nfa_table();
+	//Transition_Table nfa_table=nfa_generator.generate_nfa_table();
+	Machine nfa_machine=nfa_generator.generate_nfa_machine();
 
 	/* 03 generate dfa table */
-	DFA_Genertor dfa_generator(nfa_table);
+	DFA_Genertor dfa_generator(nfa_machine);
 	Transition_Table minimized_dfa_table=dfa_generator.generate_minimized_dfa_table();
 
 	return minimized_dfa_table;

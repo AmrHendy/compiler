@@ -3,8 +3,7 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include <stdio.h>
-using namespace std;
+#include "State.h"
 
 /* CLASS DEFINITIONS */
 /*********************************************/
@@ -12,22 +11,22 @@ class Composite_State
 {
 	private:
 	/* attributes */
-	set<State> states;
-
+	set <State> states;
 
 	public:
 	/* constructor */
-    State(void);   // This is the constructor declaration
-    ~State(void);  // This is the destructor: declaration
+    State(void);
+    ~State(void);
 
     /* interface functions */
+    bool insert_new_state(State new_state);
+    Composite_State get_transition(char input);
+
     void add_transition(pair<State,char>);
     vector<State> get_char_transtions(char trans);
-
-    /* setters and getters */
 
 
 };
 
 
-#endif // COMMANDS_H_
+#endif

@@ -3,23 +3,26 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include <stdio.h>
-using namespace std;
+#include "Machine"
+#include "Transition_Table.h"
 
 /* CLASS DEFINITIONS */
 /*********************************************/
 class DFA_Generator
 {
+	private:
+	/* attributes */
+	Machine nfa_machine;
+		
 	public:
 	/* constructor */
-    DFA_Generator(Transition_Table dfa_table);   // This is the constructor declaration
-    ~DFA_Generator(void);  // This is the destructor: declaration
+    DFA_Generator(Machine nfa_machine);
+    ~DFA_Generator(void);
 
     /* interface functions */
-    Transition_Table generate_minimized_dfa_table();
-    
- 
+    Transition_Table generate_minimized_dfa_table(void);
+
 };
 
 
-#endif // COMMANDS_H_
+#endif

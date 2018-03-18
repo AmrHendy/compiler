@@ -1,14 +1,13 @@
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include <algorithm>
 #include "DFA_Table_Builder.h"
-using namespace std;
 
 /* CONSTRUCTOR */
 /*********************************************/
-DFA_Table_Builder::DFA_Table_Builder(Compl_state id){
-      this-> id = id ;
-  } 
+DFA_Table_Builder::DFA_Table_Builder(Machine nfa_machine)
+{
+    this->nfa_machine = nfa_machine;
+}
 
 DFA_Table_Builder::~DFA_Table_Builder(void)
 {
@@ -18,30 +17,37 @@ DFA_Table_Builder::~DFA_Table_Builder(void)
 /* INTERFACE METHODS */
 /*********************************************/
 void
-DFA_Table_Builder::generate_dfa_table(State start)
+DFA_Table_Builder::generate_dfa_table(void)
 {
-  Complex_State start_state;
-  tmp.add_state(start);
-  
-  vector<Complex_State> stack;
+  vector<Composite_State> stack;
+
+  /* get table first entry */
+  Composite_State start_state;
+  start_state.insert_new_state(nfa_machine.get_start());
+  start_state=find_equivalent_states(start_state);
   stack.push_back(start_state);
 
   while(!stack.empty())
   {
-    Complex_State tmp=stack.back() ; stack.pop_back();
-    if(!Table.row_found(tmp))
+    Composite_State tmp=stack.back() ; stack.pop_back();
+    if(!dfa_table.row_found(tmp))
     {
-      /*find equivalent states*/
-      tmp=get_epsilon_transitions(tmp);
-      /*add new row*/
-      Table.add_row(tmp);
+      /* add new row */
+      dfa_table.add_row(tmp);
       /* get transitions of this new entry */
       for (char i : alphabet){
-        Compl_state level_one = get_transtions(tmp,i) ;
-        Compl_state level_two = get_epsilon_transtion(level_one,'\0') ;
-        stack.push_back() ;
+        /* get states reachable by this state(s) when applying char i */
+        /*-----------------------------------------------------> pending implementation*/
+        Composite_State to_state = tmp.get_transtion(i) ;
+        if(to_state!=NULL)
+        {
+          to_state = find_equivalent_states(level_one) ;
+          stack.push_back(to_state) ;
+          /*-----------------------------------------------------> pending implementation*/
+          dfa_table.add_row_transition(tmp, i, to_state);
+        }
+        
       }
-      get_transitions();
       
     }
     
@@ -49,11 +55,11 @@ DFA_Table_Builder::generate_dfa_table(State start)
 
 }
 
-Complex_State
-DFA_Table_Builder::get_epsilon_transition(Complex_State start)
+Composite_State
+DFA_Table_Builder::find_equivalent_states(Composite_State state)
 {
   vector<State> result;
-  vector<State> tmp_stack = start.get_transition('\0') ;
+  vector<State> tmp_stack = state.get_transition('\0') ;
 
   while(!tmp_stack.empty)
   {

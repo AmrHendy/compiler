@@ -3,8 +3,8 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include <stdio.h>
-using namespace std;
+#include "State.h"
+#include "Machine.h"
 
 /* CLASS DEFINITIONS */
 /*********************************************/
@@ -12,13 +12,13 @@ class OR_Operator
 {
 	public:
 	/* constructor */
-    OR_Operator(void);   // This is the constructor declaration
-    ~OR_Operator(void);  // This is the destructor: declaration
+    OR_Operator(void);
+    ~OR_Operator(void);
 
     /* interface functions */
-    
+    Machine apply(Machine m1, Machine m2);
  
 };
 
 
-#endif // COMMANDS_H_
+#endif

@@ -3,8 +3,12 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include <stdio.h>
-using namespace std;
+#include "Rule.h"
+#include "Transition_Table"
+#include "Machine.h"
+#include "NFA_Machine_Builder.h"
+#include <vector>
+#include "OR_Operator.h"
 
 /* CLASS DEFINITIONS */
 /*********************************************/
@@ -14,20 +18,16 @@ class NFA_Generator
 	/* attributes */
 	vector<Rule> processed_rules;
 
-
 	public:
 	/* constructor */
-    NFA_Generator(vector<Rule> processed_rules);   // This is the constructor declaration
-    ~NFA_Generator(void);  // This is the destructor: declaration
+    NFA_Generator(vector<Rule> processed_rules);
+    ~NFA_Generator(void);
 
     /* interface functions */
-    Transition_Table generate_nfa_table();
+    Machine generate_nfa_machine(void);
+    Transition_Table generate_nfa_table(void);
 
-    /* private functions */
-	private:
-    Machine get_machine(Rule r);
- 
 };
 
 
-#endif // COMMANDS_H_
+#endif
