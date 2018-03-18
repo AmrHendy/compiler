@@ -9,18 +9,23 @@ DFA_Table_Builder::DFA_Table_Builder(Machine nfa_machine)
     this->nfa_machine = nfa_machine;
 }
 
+DFA_Table_Builder::DFA_Table_Builder(Transition_Table nfa_table)
+{
+    this->nfa_table = nfa_table;
+}
+
 DFA_Table_Builder::~DFA_Table_Builder(void)
 {
-
+  /* nothing */
 }
 
 /* INTERFACE METHODS */
 /*********************************************/
-void
+Transition_Table
 DFA_Table_Builder::generate_dfa_table(void)
 {
   vector<Composite_State> stack;
-
+  Transition_Table dfa_table=malloc(sizeof(Transition_Table));
   /* get table first entry */
   Composite_State start_state;
   start_state.insert_new_state(nfa_machine.get_start());
@@ -52,6 +57,8 @@ DFA_Table_Builder::generate_dfa_table(void)
     }
     
   }
+
+  return dfa_table;
 
 }
 

@@ -15,19 +15,16 @@ class DFA_Table_Builder
 	private:
 	/* attributes */
 	Machine nfa_machine;
-	Transition_Table dfa_table;
+	Transition_Table nfa_table; // not used till now
 
 	public:
 	/* constructor */
-    DFA_Table_Builder(void);
+    DFA_Table_Builder(Machine nfa_machine);
+    DFA_Table_Builder(Transition_Table nfa_table);  //not used till now
     ~DFA_Table_Builder(void);
 
     /* interface functions */
-	void generate_dfa_table(void);
-
-	private:
-	/* utility functions */
-	Composite_State find_equivalent_states(Composite_State state);
+	Transition_Table generate_dfa_table(void);
  
 };
 
