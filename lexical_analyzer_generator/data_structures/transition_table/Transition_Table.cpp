@@ -19,7 +19,7 @@ Transition_Table::~Transition_Table(void)
 /* INTERFACE METHODS */
 /*********************************************/
 void
-insert_new_row (Composite_State id_state)
+Transition_Table::insert_new_row (Composite_State id_state)
 {
 	if(!row_found(id_state))
 	{
@@ -28,7 +28,7 @@ insert_new_row (Composite_State id_state)
 }
 
 void
-add_row_transition (Composite_State id_state, char input_char, Composite_State to_state)
+Transition_Table::add_row_transition (Composite_State id_state, char input_char, Composite_State to_state)
 {
 	for (Row r : this->rows)
 	{
@@ -41,8 +41,23 @@ add_row_transition (Composite_State id_state, char input_char, Composite_State t
 	}    
 }
 
+
+Composite_State
+Transition_Table::find_transition(Composite_State from_state, char input)
+{
+	for(Row r:this->rows)
+	{
+		if(r.id_state == from_state)
+		{
+			return r.get_transitions().at(input);
+		}
+	}
+	return NULL;
+}
+
+
 bool
-row_found(Composite_State id_state)
+Transition_Table::row_found(Composite_State id_state)
 {
 	for(Row r : this->rows)
 	{
@@ -53,3 +68,37 @@ row_found(Composite_State id_state)
 	}
 	return false ;
 }
+
+
+
+Composite_State
+Transition_Table::get_start_state(void)
+{
+	this->rows.front().get_id_state();
+}
+
+
+/*****************************************
+	this function is not working properly
+*****************************************/
+Composite_State
+Transition_Table::find_equivalent_states(Composite_State start)
+{
+	vector<Composite_State> result;
+	vector<Composite_State> stack;
+    stack.push_back(start);
+
+    while(!stack.empty())
+    {
+    	Composite_State current = stack.back() ; stack.pop_back();
+    	Composite_State next = find_transition(current, '\0');
+    	if ( std::find(result.begin(), result.end(), next) != vector.end() )
+        {continue;}
+    	result.push_back(current);
+    }
+
+
+}
+
+
+

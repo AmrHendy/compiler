@@ -41,6 +41,30 @@ DFA_Table_Builder::get_transition(char input)
 	return vector_to_composite(result);
 }
 
+bool
+DFA_Table_Builder::is_acceptance(void)
+{
+	for(State s:this->states)
+	{
+		/* s represents constituent_state */
+		if(s.is_acceptance()==true) {return true;}
+	}
+	return false;
+}
+
+
+vector<Token>
+DFA_Table_Builder::get_tokens(void)
+{
+	vector<Token> result;
+	for(State s:this->states)
+	{
+		result.push_back(s.get_token());
+	}
+	return result;
+}
+
+
 Composite_State
 DFA_Table_Builder::find_equivalent_states(Composite_State start)
 {
@@ -108,3 +132,6 @@ DFA_Table_Builder::vector_to_composite(vector<State> states)
 	}
 	return result;
 }
+
+
+

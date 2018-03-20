@@ -26,4 +26,4 @@ class Lexical_Analyzer
 };
 
 
-#endif // COMMANDS_H_
+#endif

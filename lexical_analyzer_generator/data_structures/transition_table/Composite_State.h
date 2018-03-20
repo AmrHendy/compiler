@@ -24,16 +24,12 @@ class Composite_State
     Composite_State get_transition(char input);
     Composite_State find_equivalent_states(Composite_State start);
     vector<State> get_states(void);
-
-    /*void add_transition(pair<State,char>);
-    vector<State> get_char_transtions(char trans);*/
+    bool is_acceptance(void);
+    vector<Token> get_tokens(void);
 
     private:
     /* utility functions */
     Composite_State vector_to_composite(vector<State> states);
-
-
-
 
 };
 

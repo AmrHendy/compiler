@@ -25,6 +25,7 @@ class DFA_Table_Builder
 
     /* interface functions */
 	Transition_Table generate_dfa_table(void);
+	Transition_Table nfa_table_to_dfa_table(void);
  
 };
 

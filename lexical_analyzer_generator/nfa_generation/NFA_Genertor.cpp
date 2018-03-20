@@ -37,11 +37,3 @@ NFA_Generator::generate_nfa_machine(void)
   
   return overall_machine;
 }
-
-
-Transition_Table
-generate_nfa_table(void)
-{
-  
-}
-

@@ -32,7 +32,7 @@ NFA_Table_Builder::generate_nfa_table(void)
     if(!nfa_table.row_found(tmp))
     {
       /* add new row */
-      nfa_table.add_row(tmp);
+      nfa_table.insert_new_row(tmp);
       /* get transitions of this new entry */
       for (char i : alphabet){
         /* get states reachable by this state(s) when applying char i */
