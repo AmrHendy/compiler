@@ -7,6 +7,7 @@ CPP_SRCS += \
 ../src/FileHandler.cpp \
 ../src/KeyWordRule.cpp \
 ../src/Main.cpp \
+../src/NumberGenerator.cpp \
 ../src/PatternProcessor.cpp \
 ../src/PostfixExpressionHandler.cpp \
 ../src/PunctuationRule.cpp \
@@ -19,6 +20,7 @@ OBJS += \
 ./src/FileHandler.o \
 ./src/KeyWordRule.o \
 ./src/Main.o \
+./src/NumberGenerator.o \
 ./src/PatternProcessor.o \
 ./src/PostfixExpressionHandler.o \
 ./src/PunctuationRule.o \
@@ -31,6 +33,7 @@ CPP_DEPS += \
 ./src/FileHandler.d \
 ./src/KeyWordRule.d \
 ./src/Main.d \
+./src/NumberGenerator.d \
 ./src/PatternProcessor.d \
 ./src/PostfixExpressionHandler.d \
 ./src/PunctuationRule.d \

@@ -70,30 +70,27 @@ vector<Rule> RuleExtractor::getAllRules(){
 
 	*/
 
-	for(string keyWord : keyWordRule.keyWords){
-		keyWord = removeSpaces(keyWord);
-		Rule rule("T_" + keyWord, keyWord);
+	for(pair<string, int> keyWord : keyWordRule.keyWords){
+		keyWord.first = removeSpaces(keyWord.first);
+		Rule rule("T_" + keyWord.first, keyWord.first, keyWord.second);
 		all.push_back(rule);
 		rule.toPostfix();
 	}
 
-
-	for(pair<string,string> p : regularRule.regularExpressions){
-		p.first = removeSpaces(p.first);
-		p.second = removeSpaces(p.second);
-		Rule rule(p.first, p.second);
+	for(pair<string, int> punc : punctuationRule.punctuations){
+		punc.first = removeSpaces(punc.first);
+		Rule rule("T_" + punc.first, punc.first, punc.second);
 		all.push_back(rule);
 		rule.toPostfix();
 	}
 
-
-	for(string punc : punctuationRule.punctuations){
-		punc = removeSpaces(punc);
-		Rule rule("T_" + punc, punc);
+	for(pair<pair<string,string>, int> p : regularRule.regularExpressions){
+		p.first.first = removeSpaces(p.first.first);
+		p.first.second = removeSpaces(p.first.second);
+		Rule rule(p.first.first, p.first.second, p.second);
 		all.push_back(rule);
 		rule.toPostfix();
 	}
-
 	return all;
 }
 

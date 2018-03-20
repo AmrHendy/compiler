@@ -8,6 +8,7 @@
 #define KEYWORDRULE_H_
 
 #include "Rule.h"
+#include "NumberGenerator.h"
 #include <string>
 #include <vector>
 
@@ -18,9 +19,8 @@ public:
 	KeyWordRule();
 	virtual ~KeyWordRule();
 	void appendkeyWords(string rule);
-	Rule getKeyWordRule();
 
-	vector<string> keyWords;
+	vector<pair<string, int> > keyWords;
 };
 
 #endif /* KEYWORDRULE_H_ */

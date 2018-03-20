@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include "Rule.h"
+#include "NumberGenerator.h"
 
 using namespace std;
 
@@ -17,9 +18,8 @@ public:
 	PunctuationRule();
 	virtual ~PunctuationRule();
 	void appendPunctuations(string rule);
-	Rule getPunctuationRule();
 
-	vector<string> punctuations;
+	vector<pair<string, int> > punctuations;
 
 };
 

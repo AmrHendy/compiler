@@ -7,6 +7,7 @@
 #include "PatternProcessor.h"
 #include "RuleExtractor.h"
 #include "FileHandler.h"
+#include "NumberGenerator.h"
 
 using namespace std;
 
@@ -20,6 +21,7 @@ PatternProcessor::~PatternProcessor() {
 }
 
 vector<Rule> PatternProcessor::getRules(){
+	NumberGenerator::setCurrentInt(1);
 	RuleExtractor ruleExtractor;
 	vector<Rule> all_rules;
 	for(string str : file_lines){

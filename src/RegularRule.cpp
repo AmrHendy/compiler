@@ -112,7 +112,7 @@ void RegularRule::parseRegularExpression(string rule){
 			finalResultRHS += str;
 		}
 	}
-	regularExpressions.push_back({LHS, finalResultRHS});
+	regularExpressions.push_back({{LHS, finalResultRHS}, NumberGenerator::getNextUniqueInt()});
 }
 
 
@@ -125,5 +125,4 @@ string RegularRule::removeSpaces(string str){
 	}
 	return trimmedStr;
 }
-
 

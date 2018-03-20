@@ -11,6 +11,7 @@
 #include <map>
 #include <vector>
 #include "Rule.h"
+#include "NumberGenerator.h"
 
 using namespace std;
 
@@ -25,7 +26,7 @@ public:
 
 
 	map<string, string> regularDefinitions;
-	vector<pair<string, string> > regularExpressions;
+	vector<pair<pair<string, string>, int> > regularExpressions;
 
 
 private:

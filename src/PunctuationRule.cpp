@@ -21,16 +21,6 @@ void PunctuationRule::appendPunctuations(string rule){
 	stringstream ss(rule_str);
 	string punc;
 	while(ss >> punc){
-		punctuations.push_back(punc);
+		punctuations.push_back({punc, NumberGenerator::getNextUniqueInt()});
 	}
-}
-
-Rule PunctuationRule::getPunctuationRule(){
-	string rule_str;
-	for(string s : punctuations){
-		if(!rule_str.empty()) rule_str += "|";
-		rule_str += s;
-	}
-	Rule rule("punctuation", rule_str);
-	return rule;
 }

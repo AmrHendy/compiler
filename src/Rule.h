@@ -9,6 +9,7 @@
 
 #include <string>
 #include <vector>
+#include <iostream>
 #include "RuleElement.h"
 #include "PostfixExpressionHandler.h"
 
@@ -16,12 +17,13 @@ using namespace std;
 
 class Rule {
 public:
-	Rule(string ruleName, string rulePattern);
+	Rule(string ruleName, string rulePattern, int priority);
 	virtual ~Rule();
 	vector<RuleElement> toPostfix();
 
 private:
 	string ruleName, rulePattern;
+	int priority;
 };
 
 #endif /* RULE_H_ */
