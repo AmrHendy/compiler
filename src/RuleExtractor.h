@@ -11,6 +11,9 @@
 #include <string>
 #include <map>
 #include "Rule.h"
+#include "KeyWordRule.h"
+#include "PunctuationRule.h"
+#include "RegularRule.h"
 
 using namespace std;
 
@@ -18,13 +21,16 @@ class RuleExtractor {
 public:
 	RuleExtractor();
 	virtual ~RuleExtractor();
-	Rule extractRule(string rule);
+	void extractRule(string rule);
+	vector<Rule> getAllRules();
 
 
 private:
-	void parseKeWord(string rule);
-	void parsePunctuation(string rule);
-	void parseRegularExpression(string rule);
+	KeyWordRule keyWordRule;
+	PunctuationRule punctuationRule;
+	RegularRule regularRule;
+
+	string removeSpaces(string str);
 };
 
 #endif /* RULEEXTRACTOR_H_ */

@@ -25,8 +25,7 @@ public:
 
 
 	map<string, string> regularDefinitions;
-	map<string, string> regularExpressions;
-	vector<string> regularExpressionsNames;
+	vector<pair<string, string> > regularExpressions;
 
 
 private:

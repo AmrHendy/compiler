@@ -8,6 +8,7 @@ CPP_SRCS += \
 ../src/KeyWordRule.cpp \
 ../src/Main.cpp \
 ../src/PatternProcessor.cpp \
+../src/PostfixExpressionHandler.cpp \
 ../src/PunctuationRule.cpp \
 ../src/RegularRule.cpp \
 ../src/Rule.cpp \
@@ -19,6 +20,7 @@ OBJS += \
 ./src/KeyWordRule.o \
 ./src/Main.o \
 ./src/PatternProcessor.o \
+./src/PostfixExpressionHandler.o \
 ./src/PunctuationRule.o \
 ./src/RegularRule.o \
 ./src/Rule.o \
@@ -30,6 +32,7 @@ CPP_DEPS += \
 ./src/KeyWordRule.d \
 ./src/Main.d \
 ./src/PatternProcessor.d \
+./src/PostfixExpressionHandler.d \
 ./src/PunctuationRule.d \
 ./src/RegularRule.d \
 ./src/Rule.d \

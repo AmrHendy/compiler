@@ -8,8 +8,9 @@
 #define RULE_H_
 
 #include <string>
-#include "RuleElement.h"
 #include <vector>
+#include "RuleElement.h"
+#include "PostfixExpressionHandler.h"
 
 using namespace std;
 

@@ -12,6 +12,7 @@ enum Type {alpha, operation};
 
 class RuleElement {
 public:
+	/* special element is epsilon = lambda , we will use char = # with it. */
 	RuleElement(char ch, Type type);
 	virtual ~RuleElement();
 	char content;

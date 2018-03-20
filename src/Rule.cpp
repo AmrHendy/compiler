@@ -17,8 +17,8 @@ Rule::~Rule() {
 }
 
 vector<RuleElement> Rule::toPostfix(){
-	RuleElement ruleElem('a', Type::alpha);
-	vector<RuleElement> vec;
-	vec.push_back(ruleElem);
-	return vec;
+	/* dot we represent it by $ as input can have . decimal point. */
+	vector<pair<char, int> > operationWeights = {{'*', 3}, {'+', 3}, {'$', 2}, {'|', 1}};
+	PostfixExpressionHandler postfixHandler(operationWeights);
+	return postfixHandler.toPostfix(rulePattern);
 }

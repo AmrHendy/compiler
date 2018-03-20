@@ -11,10 +11,13 @@
 using namespace std;
 
 int main() {
-	cout << "hello" << endl;
-	/*
 	PatternProcessor patternProcessor("input.txt");
-	vector<Rule> postfixRules = patternProcessor.getRules();
+	vector<Rule> rules = patternProcessor.getRules();
+
+	/*
+	for(Rule rule : rules){
+		rule.toPostfix();
+	}
 	*/
 	return 0;
 }
