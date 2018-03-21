@@ -6,6 +6,7 @@
 CPP_SRCS += \
 ../src/FileHandler.cpp \
 ../src/KeyWordRule.cpp \
+../src/Machine.cpp \
 ../src/Main.cpp \
 ../src/NumberGenerator.cpp \
 ../src/PatternProcessor.cpp \
@@ -14,11 +15,13 @@ CPP_SRCS += \
 ../src/RegularRule.cpp \
 ../src/Rule.cpp \
 ../src/RuleElement.cpp \
-../src/RuleExtractor.cpp 
+../src/RuleExtractor.cpp \
+../src/State.cpp 
 
 OBJS += \
 ./src/FileHandler.o \
 ./src/KeyWordRule.o \
+./src/Machine.o \
 ./src/Main.o \
 ./src/NumberGenerator.o \
 ./src/PatternProcessor.o \
@@ -27,11 +30,13 @@ OBJS += \
 ./src/RegularRule.o \
 ./src/Rule.o \
 ./src/RuleElement.o \
-./src/RuleExtractor.o 
+./src/RuleExtractor.o \
+./src/State.o 
 
 CPP_DEPS += \
 ./src/FileHandler.d \
 ./src/KeyWordRule.d \
+./src/Machine.d \
 ./src/Main.d \
 ./src/NumberGenerator.d \
 ./src/PatternProcessor.d \
@@ -40,7 +45,8 @@ CPP_DEPS += \
 ./src/RegularRule.d \
 ./src/Rule.d \
 ./src/RuleElement.d \
-./src/RuleExtractor.d 
+./src/RuleExtractor.d \
+./src/State.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
