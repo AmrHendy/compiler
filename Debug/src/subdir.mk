@@ -5,11 +5,15 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/AndOperator.cpp \
+../src/CompositeState.cpp \
+../src/DFABuilder.cpp \
 ../src/FileHandler.cpp \
 ../src/KeyWordRule.cpp \
 ../src/KleeneClosureOperator.cpp \
 ../src/Machine.cpp \
 ../src/Main.cpp \
+../src/NFA.cpp \
+../src/NFABuilder.cpp \
 ../src/NumberGenerator.cpp \
 ../src/OrOperator.cpp \
 ../src/PatternProcessor.cpp \
@@ -24,11 +28,15 @@ CPP_SRCS += \
 
 OBJS += \
 ./src/AndOperator.o \
+./src/CompositeState.o \
+./src/DFABuilder.o \
 ./src/FileHandler.o \
 ./src/KeyWordRule.o \
 ./src/KleeneClosureOperator.o \
 ./src/Machine.o \
 ./src/Main.o \
+./src/NFA.o \
+./src/NFABuilder.o \
 ./src/NumberGenerator.o \
 ./src/OrOperator.o \
 ./src/PatternProcessor.o \
@@ -43,11 +51,15 @@ OBJS += \
 
 CPP_DEPS += \
 ./src/AndOperator.d \
+./src/CompositeState.d \
+./src/DFABuilder.d \
 ./src/FileHandler.d \
 ./src/KeyWordRule.d \
 ./src/KleeneClosureOperator.d \
 ./src/Machine.d \
 ./src/Main.d \
+./src/NFA.d \
+./src/NFABuilder.d \
 ./src/NumberGenerator.d \
 ./src/OrOperator.d \
 ./src/PatternProcessor.d \

@@ -15,6 +15,12 @@ public:
 	/* special element is epsilon = lambda , we will use char = # with it. */
 	RuleElement(char ch, Type type);
 	virtual ~RuleElement();
+
+	char getContent();
+	bool isOperation();
+	bool isAlpha();
+
+private:
 	char content;
 	Type type;
 };

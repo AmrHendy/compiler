@@ -16,3 +16,14 @@ RuleElement::~RuleElement() {
 	// TODO Auto-generated destructor stub
 }
 
+char RuleElement::getContent(){
+	return content;
+}
+
+bool RuleElement::isOperation(){
+	return type == Type::operation;
+}
+
+bool RuleElement::isAlpha(){
+	return type == Type::alpha;
+}
