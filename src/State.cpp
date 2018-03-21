@@ -1,19 +1,18 @@
 #include "State.h"
 
-State::State(void)
+State::State()
 {
 	start_state = false;
 	acceptance_state = false;
 }
 
-State::~State(void)
+State::~State()
 {
 
 }
 
-void
-State::add_transition(char input, State to_state)
-{
+/* Epsilon transition will be on form {'\0', nextState}. */
+void State::add_transition(char input, State to_state){
 	vector<State> to_states = transitions[input];
 
 	//??
@@ -34,8 +33,7 @@ State::add_transition(char input, State to_state)
 	//}
 }
 
-vector<State> State::get_transition(char input)
-{
+vector<State> State::get_transition(char input){
 	return transitions[input];
 }
 
@@ -44,7 +42,7 @@ void State::set_acceptance(bool value){
 	acceptance_state = value;
 }
 
-bool State::is_acceptance(void){
+bool State::is_acceptance(){
 	return acceptance_state;
 }
 
@@ -53,7 +51,7 @@ void State::set_start(bool value){
 	start_state = value;
 }
 
-bool State::is_start(void){
+bool State::is_start(){
 	return start_state;
 }
 

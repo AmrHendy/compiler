@@ -11,8 +11,8 @@ class State
 {
 
 public:
-    State(void);
-    virtual ~State(void);
+    State();
+    virtual ~State();
 
     void add_transition(char input, State to_state);
     vector<State> get_transition(char input);
@@ -20,11 +20,11 @@ public:
 
     /* setters and getters */
     void set_acceptance(bool value);
-    bool is_acceptance(void);
+    bool is_acceptance();
     //void set_token(Token matched_token);
     //Token get_token(void);
     void set_start(bool value);
-    bool is_start(void);
+    bool is_start();
 
 
 private:

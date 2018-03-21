@@ -7,13 +7,14 @@ class Machine
 {
 public:
     Machine(char character);
-    virtual ~Machine(void);
+    Machine();
+    virtual ~Machine();
 
     /* setters and getters */
     void set_start(State start);
-    State get_start(void);
+    State get_start();
     void set_end(State start);
-    State get_end(void);
+    State get_end();
 
 private:
 	State start;

@@ -2,23 +2,24 @@
 
 Machine::Machine(char basic_char){
 	start = State();
-	start.set_start(true);
 	end = State();
-	end.set_acceptance(true);
 	start.add_transition(basic_char, end);
 }
 
+Machine::Machine(){
+
+}
 
 Machine::~Machine() {
 	// TODO Auto-generated destructor stub
 }
 
 
-State Machine::get_start(void){
+State Machine::get_start(){
 	return start;
 }
 
-State Machine::get_end(void){
+State Machine::get_end(){
 	return end ;
 }
 
