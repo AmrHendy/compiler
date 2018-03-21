@@ -19,6 +19,7 @@ Row::~Row(void)
 
 /* INTERFACE METHODS */
 /*********************************************/
-Composite_State Row::get_id(){
+Composite_State Row::get_id()
+{
     return this -> id ;
 }

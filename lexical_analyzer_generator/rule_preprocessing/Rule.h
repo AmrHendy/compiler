@@ -2,17 +2,17 @@
 #define RULE_H_
 
 #include "lexical_analyzer_generator/rule_preprocessing/RuleElement.h"
+#include <vector>
+
+using namespace std ;
+
 
 class Rule
 {
     public:
-        Rule();
+    Rule();
         virtual ~Rule();
-
         vector<RuleElement> toPostfix() ;
-
-
-    private:
 };
 
 #endif // RULE_H

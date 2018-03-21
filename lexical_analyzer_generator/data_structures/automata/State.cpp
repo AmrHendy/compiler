@@ -31,7 +31,8 @@ State::get_transition(char input)
 }
 
 map<char,vector<State>>
-State::get_all_transitions(){
+                     State::get_all_transitions()
+{
     return this->transitions ;
 }
 
@@ -67,20 +68,23 @@ State::get_token(void)
 /*******************************************/
 
 bool
-State::operator == (const State& s){
+State::operator == (const State& s)
+{
     map<char,vector<State>> transitions_1 =  s.transitions ;
     map<char,vector<State>> transitions_2 = this->transitions ;
 
-    for(pair<char,vector<State>> i : transitions_1){
+    for(pair<char,vector<State>> i : transitions_1)
+    {
         vector<State> v1 = transitions_2[i.first] ;
         vector<State> v2 = i.second ;
 
         if(v1.size() != v2.size())
             return false ;
-        else{
+        else
+        {
             for(State s : v1)
-                    if( find(v2.begin() , v2.end() , s) == v2.end() )
-                        return false ;
+                if( find(v2.begin(), v2.end(), s) == v2.end() )
+                    return false ;
         }
     }
     return true ;

@@ -10,6 +10,12 @@ Machine::Machine(char basic_char)
     this->start.add_transition(basic_char, this->end);
 }
 
+Machine::Machine(void)
+{
+
+}
+
+
 Machine::~Machine(void)
 {
 

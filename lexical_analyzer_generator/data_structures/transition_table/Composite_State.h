@@ -28,6 +28,7 @@ public:
     void insert_comp_state(Composite_State new_state);
     Composite_State get_transition(char input);
     Composite_State find_equivalent_states();
+    bool is_accept_state() ;
     vector<State> get_states(void);
 
     /* operators */

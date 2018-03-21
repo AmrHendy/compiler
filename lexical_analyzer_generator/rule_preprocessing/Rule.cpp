@@ -10,6 +10,11 @@ Rule::~Rule()
 
 }
 
+vector<RuleElement> Rule::toPostfix()
+{
+
+}
+
 
 
 

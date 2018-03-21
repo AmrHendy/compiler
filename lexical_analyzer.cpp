@@ -16,7 +16,7 @@ Lexical_Analyzer::Lexical_Analyzer(string language_rules_directory, string user_
     this->tokenizer = Tokenizer(minimized_dfa_table, user_prog_directory);
 }
 
-Lexical_Analyzer::~Lexical_Analyzer(void)
+Lexical_Analyzer::~Lexical_Analyzer()
 {
 
 }

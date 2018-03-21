@@ -21,7 +21,7 @@ public:
 
     /* constructor */
     Tokenizer() ;
-    Tokenizer(Transition_Table minimized_dfa_table , string user_program_directory);
+    Tokenizer(Transition_Table minimized_dfa_table, string user_program_directory);
     ~Tokenizer(void);
 
     /* interface functions */

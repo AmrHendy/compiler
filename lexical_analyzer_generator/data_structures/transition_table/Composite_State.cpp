@@ -25,7 +25,7 @@ Composite_State::~Composite_State(void)
 Composite_State::Composite_State(vector<State>states)
 {
     for (State s : states)
-            this-> insert_new_state(s) ;
+        this-> insert_new_state(s) ;
 }
 
 
@@ -37,10 +37,25 @@ Composite_State::Composite_State(State state)
 
 /* INTERFACE METHODS */
 /*********************************************/
+
+bool Composite_State::is_accept_state()
+{
+    vector<State> id_states = this -> get_states() ;
+    for (State s : id_states)
+        if(s.is_acceptance())
+        {
+            return true ;
+        }
+    return false ;
+}
+
+
+
+
 void
 Composite_State::insert_new_state(State new_state)
 {
-    if( find(states.begin() , states.end() , new_state) == states.end() )
+    if( find(states.begin(), states.end(), new_state) == states.end() )
         this->states.push_back(new_state);
 }
 
@@ -49,7 +64,7 @@ Composite_State::insert_comp_state(Composite_State new_state)
 {
     vector<State> to_add = new_state.get_states() ;
     for(State s : to_add)
-        if( find(states.begin() , states.end() , s) == states.end() )
+        if( find(states.begin(), states.end(), s) == states.end() )
             this->states.push_back(s);
 }
 
@@ -62,7 +77,7 @@ Composite_State::get_transition(char input)
         vector<State> transitions = s.get_transition(input);
         for(State next : transitions)
         {
-            if ( find( result.begin() , result.end(), next ) != result.end() )
+            if ( find( result.begin(), result.end(), next ) != result.end() )
             {
                 continue;
             }
@@ -115,14 +130,13 @@ Composite_State::get_states(void)
     return this->states;
 }
 
-
 bool
 Composite_State::operator == (Composite_State& c)
 {
     vector<State> c_states = c.get_states() ;
     for(State i : c_states)
     {
-        if( find(states.begin() , states.end() , i) != states.end() )
+        if( find(states.begin(), states.end(), i) != states.end() )
             return false ;
     }
     return true ;

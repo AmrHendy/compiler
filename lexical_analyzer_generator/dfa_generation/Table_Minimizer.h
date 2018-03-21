@@ -15,6 +15,11 @@ public:
     Table_Minimizer(void);   // This is the constructor declaration
     ~Table_Minimizer(void);  // This is the destructor: declaration
 
+
+public:
+    static Table_Minimizer instance ;
+
+
     /* interface functions */
 
 

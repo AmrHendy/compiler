@@ -16,6 +16,11 @@ DFA_Generator::DFA_Generator()
     /* nothing */
 }
 
+DFA_Generator::~DFA_Generator()
+{
+    /* nothing */
+}
+
 /* SETTERS AND GETTERS */
 /*********************************************/
 Transition_Table

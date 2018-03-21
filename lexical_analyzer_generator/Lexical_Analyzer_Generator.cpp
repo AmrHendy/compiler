@@ -16,6 +16,11 @@ Lexical_Analyzer_Generator::Lexical_Analyzer_Generator(string language_rules_dir
     this -> language_rules_directory = language_rules_directory ;
 }
 
+Lexical_Analyzer_Generator::~Lexical_Analyzer_Generator(void)
+{
+
+}
+
 /* SETTERS AND GETTERS */
 /*********************************************/
 Transition_Table

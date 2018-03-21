@@ -3,6 +3,7 @@
 #include <algorithm>
 #include "NFA_Table_Builder.h"
 #include "lexical_analyzer_generator/data_structures/transition_table/Transition_Table.h"
+#include "lexical_analyzer_generator/data_structures/automata/Machine.h"
 
 using namespace std ;
 
