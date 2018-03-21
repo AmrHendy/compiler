@@ -3,32 +3,40 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include "State.h"
+#include "lexical_analyzer_generator/data_structures/automata/State.h"
 #include <vector>
+
+using namespace std ;
 
 /* CLASS DEFINITIONS */
 /*********************************************/
 class Composite_State
 {
-	private:
-	/* attributes */
-	vector <State> states;
+private:
+    /* attributes */
+    vector <State> states;
 
-	public:
-	/* constructor */
-    State(void);
-    ~State(void);
+public:
+    /* constructor */
+    Composite_State(void);
+    Composite_State(vector<State> states) ;
+    Composite_State(State state) ;
+    ~Composite_State(void);
 
     /* interface functions */
     void insert_new_state(State new_state);
+    void insert_comp_state(Composite_State new_state);
     Composite_State get_transition(char input);
-    Composite_State find_equivalent_states(Composite_State start);
+    Composite_State find_equivalent_states();
     vector<State> get_states(void);
+
+    /* operators */
+    bool operator == (Composite_State& c) ;
 
     /*void add_transition(pair<State,char>);
     vector<State> get_char_transtions(char trans);*/
 
-    private:
+private:
     /* utility functions */
     Composite_State vector_to_composite(vector<State> states);
 

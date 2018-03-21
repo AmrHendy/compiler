@@ -3,21 +3,20 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include "Machine"
-#include "Transition_Table.h"
+#include "lexical_analyzer_generator/data_structures/automata/Machine.h"
+#include "lexical_analyzer_generator/data_structures/transition_table/Transition_Table.h"
 
 /* CLASS DEFINITIONS */
 /*********************************************/
 class DFA_Generator
 {
-	private:
-	/* attributes */
-	Machine nfa_machine;
-	Transition_Table nfa_table; // not used till now
-		
-	public:
-	/* constructor */
-    DFA_Generator(Machine nfa_machine);
+private:
+    /* attributes */
+    Transition_Table nfa_table; // not used till now
+
+public:
+    /* constructor */
+    DFA_Generator(void);
     DFA_Generator(Transition_Table nfa_table); // not used until now
     ~DFA_Generator(void);
 

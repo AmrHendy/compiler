@@ -2,6 +2,7 @@
 /*********************************************/
 #include <stdio.h>
 #include "Transition_Table.h"
+
 using namespace std;
 
 /* CONSTRUCTOR */
@@ -16,44 +17,52 @@ Transition_Table::~Transition_Table(void)
 	/* nothing */
 }
 
+/* getters and setters */
+set<char> Transition_Table::get_alphabet()
+{
+   return alphabet ;
+}
+
+
+
 /* INTERFACE METHODS */
 /*********************************************/
 void
-add_row(Compl_state id){
+Transition_Table::add_row(Composite_State id){
 	if(!row_found(id))
-	  rows.add(Row(id)) ;
+	  rows.push_back(Row(id)) ;
 }
 
 void
-add_transition (Compl_state id , char trans , state to ){
+Transition_Table::add_transition (Composite_State id , char trans , State to ){
 
 	alphabet.insert(trans);
 
 	if(!row_found(id))
-	  rows.add(Row(id)) ;
+	  rows.push_back(Row(id)) ;
 
 	for (Row i : rows){
 	  if(i.id == id)
-	      i.transtions[trans].add_state(to) ;
-	}    
+	      i.transtions[trans].insert_new_state(to) ;
+	}
 }
 
 void
-add_transition (Compl_state id , char trans , Compl_state to ){
+Transition_Table::add_transition (Composite_State id , char trans , Composite_State to ){
 
 	alphabet.insert(trans);
 
 	if(!row_found(id))
-	  rows.add(Row(id)) ;
+	  rows.push_back(Row(id)) ;
 
 	for (Row i : rows){
 	  if(i.id == id)
-	      i.transtions[trans].add_state(to) ;
-	}    
+	      i.transtions[trans].insert_comp_state(to) ;
+	}
 }
 
 bool
-row_found(Compl_state id){
+Transition_Table::row_found(Composite_State id){
 	for(Row i : rows)
 	  if(i.id == id)
 	    return true ;

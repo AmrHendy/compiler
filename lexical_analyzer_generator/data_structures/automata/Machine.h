@@ -10,13 +10,13 @@
 /*********************************************/
 class Machine
 {
-	private:
-	/* attributes */
-	State start;
+private:
+    /* attributes */
+    State start;
     State end;
 
-	public:
-	/* constructor */
+public:
+    /* constructor */
     Machine(char character);
     Machine(void);
     ~Machine(void);

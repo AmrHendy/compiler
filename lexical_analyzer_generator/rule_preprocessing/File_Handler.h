@@ -12,15 +12,15 @@ using namespace std;
 /*********************************************/
 class File_Handler
 {
-	public:
-	/* constructor */
+public:
+    /* constructor */
     File_Handler(void);   // This is the constructor declaration
     ~File_Handler(void);  // This is the destructor: declaration
 
     /* interface functions */
     vector<string> read_file(string file_directory);
-    
- 
+
+
 };
 
 

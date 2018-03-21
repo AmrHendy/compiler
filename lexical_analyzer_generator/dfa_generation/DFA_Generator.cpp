@@ -1,38 +1,31 @@
 /* INCLUDE HEADER */
 /*********************************************/
-#include "DFA_Genertor.h"
+#include "lexical_analyzer_generator/dfa_generation/DFA_Generator.h"
+#include "lexical_analyzer_generator/data_structures/transition_table/Transition_Table.h"
+#include "lexical_analyzer_generator/dfa_generation/DFA_Table_Builder.h"
 
 /* CONSTRUCTOR */
 /*********************************************/
-DFA_Genertor::DFA_Genertor(Machine nfa_machine)
+DFA_Generator::DFA_Generator(Transition_Table nfa_table)
 {
-   this->nfa_machine = nfa_machine;
+    this->nfa_table = nfa_table;
 }
 
-DFA_Genertor::DFA_Genertor(Transition_Table nfa_table)
+DFA_Generator::DFA_Generator()
 {
-   this->nfa_table = nfa_table;
-}
-
-DFA_Genertor::DFA_Genertor(void)
-{
-	/* nothing */
+    /* nothing */
 }
 
 /* SETTERS AND GETTERS */
 /*********************************************/
 Transition_Table
-DFA_Genertor::generate_minimized_dfa_table(void);
+DFA_Generator::generate_minimized_dfa_table(void)
 {
-	/* 01 obtain DFA table */
-	DFA_Table_Builder dfa_table_builder(nfa_machine);
-	Transition_Table dfa_table = dfa_table_builder.generate_dfa_table();
+    /* 01 obtain DFA table */
+    DFA_Table_Builder dfa_table_builder(nfa_table);
+    Transition_Table dfa_table = dfa_table_builder.generate_dfa_table();
 
-	/* 02 minimize DFA table */
-	//Table_Minimizer table_minimizer(dfa_table);
-	//dfa_table = table_minimizer.minimize_table();
-
-	return dfa_table;
+    return dfa_table_builder.minimize_dfa_table(dfa_table) ;
 
 }
 

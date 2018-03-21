@@ -3,23 +3,22 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include "Rule.h"
-#include "Transition_Table"
-#include "Machine.h"
-#include "NFA_Machine_Builder.h"
+#include "lexical_analyzer_generator/rule_preprocessing/Rule.h"
+#include "lexical_analyzer_generator/data_structures/transition_table/Transition_Table.h"
+#include "lexical_analyzer_generator/data_structures/automata/Machine.h"
+#include "lexical_analyzer_generator/nfa_generation/NFA_Machine_Builder.h"
 #include <vector>
-#include "OR_Operator.h"
 
 /* CLASS DEFINITIONS */
 /*********************************************/
 class NFA_Generator
 {
-	private:
-	/* attributes */
-	vector<Rule> processed_rules;
+private:
+    /* attributes */
+    vector<Rule> processed_rules;
 
-	public:
-	/* constructor */
+public:
+    /* constructor */
     NFA_Generator(vector<Rule> processed_rules);
     ~NFA_Generator(void);
 

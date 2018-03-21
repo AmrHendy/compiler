@@ -6,12 +6,12 @@
 /*********************************************/
 AND_Operator::AND_Operator(void)
 {
-	/* nothing */
+    /* nothing */
 }
 
 AND_Operator::~AND_Operator(void)
 {
-	/* nothing */
+    /* nothing */
 }
 
 /* INTERFACE METHODS */
@@ -19,10 +19,12 @@ AND_Operator::~AND_Operator(void)
 Machine
 AND_Operator::apply(Machine m1, Machine m2)
 {
-	Machine result=malloc(sizeof(Machine));
-	result.set_start(m1.get_start());
-	result.set_end(m2.get_end());
-	m1.get_end.add_transition('\0', m2.get_start());
+    /*
+    Machine result=malloc(sizeof(Machine));
+    result.set_start(m1.get_start());
+    result.set_end(m2.get_end());
+    m1.get_end.add_transition('\0', m2.get_start());
 
-	return result;
+    return result;
+    */
 }

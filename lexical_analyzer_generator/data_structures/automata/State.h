@@ -3,30 +3,39 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include <unordered_map>
+#include <map>
 #include <vector>
-#include "Token.h"
+#include "lexical_tokenizer/Token.h"
+#include "State.h"
+
+using namespace std ;
+
 
 /* CLASS DEFINITIONS */
 /*********************************************/
 class State
 {
-	private:
-	/* attributes */
-	unordered_map < char, vector<State> > transitions;
-	bool acceptance_state;
+private:
+    /* attributes */
+    map < char, vector<State> > transitions;
+    bool acceptance_state;
     Token matched_token;
 
-	public:
-	/* constructor */
+public:
+    /* constructor */
     State(void);
     ~State(void);
 
     /* interface functions */
     void add_transition(char input, State to_state);
     vector<State> get_transition(char input);
+    map<char,vector<State>> get_all_transitions();
+
     //void add_transition(pair<State,char>);
-    //vector<State> get_char_transtions(char trans);
+
+    /* operators */
+    bool operator == (const State& s) ;
+
 
     /* setters and getters */
     void set_acceptance(bool value);

@@ -10,14 +10,14 @@ using namespace std;
 /*********************************************/
 class Rule_Extractor
 {
-	public:
-	/* constructor */
+public:
+    /* constructor */
     Rule_Extractor(void);   // This is the constructor declaration
     ~Rule_Extractor(void);  // This is the destructor: declaration
 
     /* interface functions */
-    
- 
+
+
 };
 
 

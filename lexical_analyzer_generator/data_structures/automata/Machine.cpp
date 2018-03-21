@@ -6,13 +6,8 @@
 /*********************************************/
 Machine::Machine(char basic_char)
 {
-	/* constructor for the single character machine */
-	this->start.add_transition(basic_char, this->end);
-}
-
-Machine::Machine(char character)
-{
-	/* nothing */
+    /* constructor for the single character machine */
+    this->start.add_transition(basic_char, this->end);
 }
 
 Machine::~Machine(void)
@@ -25,13 +20,13 @@ Machine::~Machine(void)
 State
 Machine::get_start(void)
 {
-	return this-> start ;
+    return this-> start ;
 }
 
 State
 Machine::get_end(void)
 {
-	return this-> end ;
+    return this-> end ;
 }
 
 void

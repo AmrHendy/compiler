@@ -4,26 +4,30 @@
 /* IMPORT LIBRARIES */
 /*********************************************/
 #include <stdio.h>
-#include <studio.h>
+#include <stdlib.h>
+#include "Tokenizer.h"
+#include "lexical_analyzer_generator/data_structures/transition_table/Transition_Table.h"
+
 using namespace std;
 
 /* CLASS DEFINITIONS */
 /*********************************************/
 class Tokenizer
 {
-	public:
-	/* attributes */
-	Transtion_Table minimized_dfa_table;
-	String user_prog;
+public:
+    /* attributes */
+    Transition_Table minimized_dfa_table;
+    string user_prog;
 
-	/* constructor */
-    Tokenizer(Transtion_Table minimized_dfa_table, string user_program_directory);
+    /* constructor */
+    Tokenizer() ;
+    Tokenizer(Transition_Table minimized_dfa_table , string user_program_directory);
     ~Tokenizer(void);
 
     /* interface functions */
     Token next_token();
-    
- 
+
+
 };
 
 

@@ -1,17 +1,17 @@
 /* INCLUDE HEADER */
 /*********************************************/
-#include "STAR_Operator.h"
+#include "lexical_analyzer_generator/nfa_generation/operations/Star_Operator.h"
 
 /* CONSTRUCTOR */
 /*********************************************/
 STAR_Operator::STAR_Operator(void)
 {
-	/* nothing */
+    /* nothing */
 }
 
 STAR_Operator::~STAR_Operator(void)
 {
-	/* nothing */
+    /* nothing */
 }
 
 /* INTERFACE METHODS */
@@ -19,19 +19,23 @@ STAR_Operator::~STAR_Operator(void)
 Machine
 STAR_Operator::apply(Machine m)
 {
-	Machine result=malloc(sizeof(Machine));
 
-	State start=malloc(sizeof(State));
-	State end=malloc(sizeof(State));
+    /*
 
-	start.add_transition('\0', m.get_start());
-	start.add_transition('\0', end);
+    Machine result=malloc(sizeof(Machine));
 
-	m.get_end().add_transition('\0', m.get_start());
-	m.get_end().add_transition('\0', end);
+    State start=malloc(sizeof(State));
+    State end=malloc(sizeof(State));
 
-	result.set_start(start);
-	result.set_end(end);
+    start.add_transition('\0', m.get_start());
+    start.add_transition('\0', end);
 
-	return result;
+    m.get_end().add_transition('\0', m.get_start());
+    m.get_end().add_transition('\0', end);
+
+    result.set_start(start);
+    result.set_end(end);
+
+    return result;
+    */
 }

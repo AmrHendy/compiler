@@ -3,21 +3,21 @@
 
 /* IMPORT LIBRARIES */
 /*********************************************/
-#include "State.h"
-#include "Machine.h"
+#include "lexical_analyzer_generator/data_structures/automata/State.h"
+#include "lexical_analyzer_generator/data_structures/automata/Machine.h"
 
 /* CLASS DEFINITIONS */
 /*********************************************/
 class PLUS_Operator
 {
-	public:
-	/* constructor */
+public:
+    /* constructor */
     PLUS_Operator(void);
     ~PLUS_Operator(void);
 
     /* interface functions */
     Machine apply(Machine m);
- 
+
 };
 
 

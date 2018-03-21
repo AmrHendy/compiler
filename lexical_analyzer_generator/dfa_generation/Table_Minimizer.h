@@ -10,14 +10,14 @@ using namespace std;
 /*********************************************/
 class Table_Minimizer
 {
-	public:
-	/* constructor */
+public:
+    /* constructor */
     Table_Minimizer(void);   // This is the constructor declaration
     ~Table_Minimizer(void);  // This is the destructor: declaration
 
     /* interface functions */
-    
- 
+
+
 };
 
 
