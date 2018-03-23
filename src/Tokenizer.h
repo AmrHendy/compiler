@@ -18,6 +18,7 @@ using namespace std;
 class Tokenizer {
 public:
     Tokenizer(TransitionTable minimized_dfa_table, string user_program_directory);
+    Tokenizer();
     virtual ~Tokenizer();
 
     /* interface functions */

@@ -12,6 +12,8 @@ CPP_SRCS += \
 ../src/FileHandler.cpp \
 ../src/KeyWordRule.cpp \
 ../src/KleeneClosureOperator.cpp \
+../src/LexcialAnalyzerGenerator.cpp \
+../src/LexicalAnalyzer.cpp \
 ../src/Machine.cpp \
 ../src/Main.cpp \
 ../src/NFA.cpp \
@@ -42,6 +44,8 @@ OBJS += \
 ./src/FileHandler.o \
 ./src/KeyWordRule.o \
 ./src/KleeneClosureOperator.o \
+./src/LexcialAnalyzerGenerator.o \
+./src/LexicalAnalyzer.o \
 ./src/Machine.o \
 ./src/Main.o \
 ./src/NFA.o \
@@ -72,6 +76,8 @@ CPP_DEPS += \
 ./src/FileHandler.d \
 ./src/KeyWordRule.d \
 ./src/KleeneClosureOperator.d \
+./src/LexcialAnalyzerGenerator.d \
+./src/LexicalAnalyzer.d \
 ./src/Machine.d \
 ./src/Main.d \
 ./src/NFA.d \

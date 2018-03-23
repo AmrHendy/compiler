@@ -17,6 +17,11 @@ Tokenizer::Tokenizer(TransitionTable minimized_dfa_table, string user_program_di
 	current_index = 0;
 }
 
+
+Tokenizer::Tokenizer(){
+
+}
+
 Tokenizer::~Tokenizer() {
 	// TODO Auto-generated destructor stub
 }
