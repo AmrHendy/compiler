@@ -12,8 +12,7 @@
 using namespace std;
 
 PatternProcessor::PatternProcessor(string fileName) {
-	FileHandler fileHandler;
-	file_lines = fileHandler.readFile(fileName);
+	file_lines = FileHandler::readLanguageRules(fileName);
 }
 
 PatternProcessor::~PatternProcessor() {

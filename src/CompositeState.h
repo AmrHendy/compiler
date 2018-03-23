@@ -6,6 +6,7 @@
 #include <queue>
 #include <algorithm>
 #include "State.h"
+#include "Rule.h"
 
 using namespace std;
 
@@ -23,7 +24,7 @@ public:
 	bool operator ==(CompositeState c);
 
 
-	//vector<Token> get_tokens(void);
+	vector<Rule> get_matched_rules(void);
 
 private:
 	vector<State> states;

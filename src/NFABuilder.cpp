@@ -60,10 +60,7 @@ Machine NFABuilder::build_machine(Rule rule) {
 
 	}
 
-	if(stack.size() > 1 || stack.empty() )
-	{
-		return NULL ;
-	}
-
-	return stack[0] ;
+	stack[0].get_end().set_acceptance(true);
+	stack[0].get_end().set_matched_rule(rule);
+	return stack[0];
 }

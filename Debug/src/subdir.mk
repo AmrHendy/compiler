@@ -28,6 +28,8 @@ CPP_SRCS += \
 ../src/RuleElement.cpp \
 ../src/RuleExtractor.cpp \
 ../src/State.cpp \
+../src/Token.cpp \
+../src/Tokenizer.cpp \
 ../src/TransitionTable.cpp 
 
 OBJS += \
@@ -55,6 +57,8 @@ OBJS += \
 ./src/RuleElement.o \
 ./src/RuleExtractor.o \
 ./src/State.o \
+./src/Token.o \
+./src/Tokenizer.o \
 ./src/TransitionTable.o 
 
 CPP_DEPS += \
@@ -82,6 +86,8 @@ CPP_DEPS += \
 ./src/RuleElement.d \
 ./src/RuleExtractor.d \
 ./src/State.d \
+./src/Token.d \
+./src/Tokenizer.d \
 ./src/TransitionTable.d 
 
 

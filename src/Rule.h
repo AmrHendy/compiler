@@ -20,6 +20,9 @@ public:
 	Rule(string ruleName, string rulePattern, int priority);
 	virtual ~Rule();
 	vector<RuleElement> toPostfix();
+	string getRuleName();
+	string getRulePattern();
+	int getPriority();
 
 private:
 	string ruleName, rulePattern;

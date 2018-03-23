@@ -17,7 +17,8 @@ class FileHandler {
 public:
 	FileHandler();
 	virtual ~FileHandler();
-	vector<string> readFile(string file_name);
+	static vector<string> readLanguageRules(string file_name);
+	static string readUserProgram(string file_name);
 };
 
 #endif /* FILEHANDLER_H_ */

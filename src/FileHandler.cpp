@@ -17,7 +17,7 @@ FileHandler::~FileHandler() {
 	// TODO Auto-generated destructor stub
 }
 
-vector<string> FileHandler::readFile(string file_name){
+vector<string> FileHandler::readLanguageRules(string file_name){
 	ifstream input_file (file_name.c_str(), ifstream::in);
 	vector<string> all_lines;
 	string input_line;
@@ -27,4 +27,11 @@ vector<string> FileHandler::readFile(string file_name){
 		}
 	}
 	return all_lines;
+}
+
+string FileHandler::readUserProgram(string file_name){
+	vector<string> vectorLines = FileHandler::readLanguageRules(file_name);
+	string result;
+	for(string s : vectorLines)result += s;
+	return result;
 }

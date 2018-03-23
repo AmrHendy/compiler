@@ -10,7 +10,6 @@ Rule::Rule(string ruleName, string rulePattern, int priority) {
 	Rule::ruleName = ruleName;
 	Rule::rulePattern = rulePattern;
 	Rule::priority = priority;
-
 }
 
 Rule::~Rule() {
@@ -24,3 +23,16 @@ vector<RuleElement> Rule::toPostfix(){
 	cout << "Priority = " << priority << " ==> ";
 	return postfixHandler.toPostfix(rulePattern);
 }
+
+string Rule::getRuleName(){
+	return ruleName;
+}
+
+string Rule::getRulePattern(){
+	return rulePattern;
+}
+
+int Rule::getPriority(){
+	return priority;
+}
+

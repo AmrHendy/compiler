@@ -2,7 +2,6 @@
 
 State::State()
 {
-	start_state = false;
 	acceptance_state = false;
 }
 
@@ -45,27 +44,15 @@ bool State::is_acceptance(){
 }
 
 
-void State::set_start(bool value){
-	start_state = value;
-}
-
-bool State::is_start(){
-	return start_state;
-}
-
-
 bool State::operator==(const State& s)
 {
   return this == &s;
 }
 
-
-/*
-void State::set_token(Token matched_token){
-	this.matched_token = matched_token;
+void State::set_matched_rule(Rule matched_rule){
+	State::matched_rule = matched_rule;
 }
 
-Token State::get_token(void){
-	return this.matched_token;
+Rule State::get_matched_rule(void){
+	return matched_rule;
 }
-*/

@@ -3,7 +3,7 @@
 
 #include <map>
 #include <vector>
-//#include "Token.h"
+#include "Rule.h"
 
 using namespace std;
 
@@ -21,17 +21,14 @@ public:
     /* setters and getters */
     void set_acceptance(bool value);
     bool is_acceptance();
-    //void set_token(Token matched_token);
-    //Token get_token(void);
-    void set_start(bool value);
-    bool is_start();
+    void set_matched_rule(Rule matched_rule);
+    Rule get_matched_rule(void);
     bool operator==(const State& s);
 
 private:
 	map<char, vector<State> > transitions;
 	bool acceptance_state;
-	bool start_state;
-	//Token matched_token;
+	Rule matched_rule = Rule("", "", 0);
 };
 
 

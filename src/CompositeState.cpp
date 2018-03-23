@@ -49,17 +49,6 @@ bool CompositeState::is_acceptance(void)
 	return false;
 }
 
-/*
-vector<Token> CompositeState::get_tokens(void)
-{
-	vector<Token> result;
-	for(State s:this->states)
-	{
-		result.push_back(s.get_token());
-	}
-	return result;
-}
-*/
 
 /* this function return all equivalent states to start composite state. */
 CompositeState CompositeState::find_equivalent_states(CompositeState start) {
@@ -98,4 +87,17 @@ bool CompositeState::operator ==(CompositeState c){
 
 bool CompositeState::isNull(){
 	return states.size() == 0;
+}
+
+
+vector<Rule> CompositeState::get_matched_rules(void)
+{
+	vector<Rule> result;
+	for(State s : states)
+	{
+		if(s.is_acceptance()){
+			result.push_back(s.get_matched_rule());
+		}
+	}
+	return result;
 }
