@@ -1,8 +1,8 @@
 #include "Machine.h"
 
 Machine::Machine(char basic_char){
-	start = State();
-	end = State();
+	start = State(NumberGenerator::getNextUniqueInt());
+	end = State(NumberGenerator::getNextUniqueInt());
 	start.add_transition(basic_char, end);
 }
 

@@ -18,6 +18,7 @@ CPP_SRCS += \
 ../src/NFABuilder.cpp \
 ../src/NumberGenerator.cpp \
 ../src/OrOperator.cpp \
+../src/Partition.cpp \
 ../src/PatternProcessor.cpp \
 ../src/PositiveClosureOperator.cpp \
 ../src/PostfixExpressionHandler.cpp \
@@ -47,6 +48,7 @@ OBJS += \
 ./src/NFABuilder.o \
 ./src/NumberGenerator.o \
 ./src/OrOperator.o \
+./src/Partition.o \
 ./src/PatternProcessor.o \
 ./src/PositiveClosureOperator.o \
 ./src/PostfixExpressionHandler.o \
@@ -76,6 +78,7 @@ CPP_DEPS += \
 ./src/NFABuilder.d \
 ./src/NumberGenerator.d \
 ./src/OrOperator.d \
+./src/Partition.d \
 ./src/PatternProcessor.d \
 ./src/PositiveClosureOperator.d \
 ./src/PostfixExpressionHandler.d \

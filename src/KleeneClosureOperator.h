@@ -3,7 +3,7 @@
 
 #include "State.h"
 #include "Machine.h"
-
+#include "NumberGenerator.h"
 
 class KleeneClosureOperator{
 public:

@@ -11,6 +11,8 @@ NFA::~NFA() {
 Machine NFA::generate_nfa_machine() {
 	vector<Machine> machines;
 
+	NumberGenerator::setCurrentInt(1);
+
 	/* build each rule into nfa machine individually */
 	for(Rule r : processed_rules)
 	{

@@ -2,6 +2,8 @@
 #define MACHINE_H_
 
 #include "State.h"
+#include "NumberGenerator.h"
+
 
 class Machine
 {

@@ -11,6 +11,7 @@ class State
 {
 
 public:
+    State(int id);
     State();
     virtual ~State();
 
@@ -23,12 +24,13 @@ public:
     bool is_acceptance();
     void set_matched_rule(Rule matched_rule);
     Rule get_matched_rule(void);
-    bool operator==(const State& s);
+    bool operator==(const State s);
 
 private:
 	map<char, vector<State> > transitions;
 	bool acceptance_state;
 	Rule matched_rule = Rule("", "", 0);
+	int id;
 };
 
 

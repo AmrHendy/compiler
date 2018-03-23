@@ -1,9 +1,17 @@
 #include "State.h"
 
+State::State(int id)
+{
+	acceptance_state = false;
+	State::id = id;
+}
+
+
 State::State()
 {
 	acceptance_state = false;
 }
+
 
 State::~State()
 {
@@ -44,9 +52,11 @@ bool State::is_acceptance(){
 }
 
 
-bool State::operator==(const State& s)
+bool State::operator==(const State s)
 {
-  return this == &s;
+
+	return s.id == State::id;
+  //return this == &s;
 }
 
 void State::set_matched_rule(Rule matched_rule){

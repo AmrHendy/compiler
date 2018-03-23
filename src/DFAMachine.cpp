@@ -31,14 +31,9 @@ TransitionTable DFAMachine::generate_minimized_dfa_table(){
 	DFATableBuilder dfa_table_builder(nfa_machine);
 	TransitionTable dfa_table = dfa_table_builder.generate_dfa_table();
 
-	return dfa_table;
 	/* 02 minimize DFA table */
-	/*
-	Table_Minimizer table_minimizer(dfa_table);
-	dfa_table = table_minimizer.minimize_table();
+	dfa_table = dfa_table_builder.minimize_dfa_table(dfa_table);
 	return dfa_table;
-
-	*/
 }
 
 

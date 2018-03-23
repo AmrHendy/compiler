@@ -13,8 +13,8 @@ KleeneClosureOperator::~KleeneClosureOperator() {
 Machine KleeneClosureOperator::apply(Machine m){
 	Machine result = Machine();
 
-	State start = State();
-	State end = State();
+	State start = State(NumberGenerator::getNextUniqueInt());
+	State end = State(NumberGenerator::getNextUniqueInt());
 
 	start.add_transition('\0', m.get_start());
 	start.add_transition('\0', end);

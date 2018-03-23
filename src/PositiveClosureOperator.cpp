@@ -13,7 +13,7 @@ PositiveClosureOperator::~PositiveClosureOperator() {
 Machine PositiveClosureOperator::apply(Machine m){
 	Machine result = Machine();
 
-	State end = State();
+	State end = State(NumberGenerator::getNextUniqueInt());
 	m.get_end().add_transition('\0', m.get_start());
 	m.get_end().add_transition('\0', end);
 

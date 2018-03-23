@@ -11,7 +11,9 @@ CompositeState::~CompositeState() {
 
 
 void CompositeState::insert_new_state(State new_state) {
-	states.push_back(new_state);
+	if(find(states.begin() , states.end(), new_state) == states.end()){
+		states.push_back(new_state);
+	}
 }
 
 CompositeState CompositeState::get_transition(char input) {
