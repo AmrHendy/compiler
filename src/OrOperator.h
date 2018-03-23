@@ -11,7 +11,7 @@ public:
     OrOperator(void);
     virtual ~OrOperator(void);
 
-    static Machine apply(Machine m1, Machine m2);
+    static Machine* apply(Machine* m1, Machine* m2);
 
 };
 

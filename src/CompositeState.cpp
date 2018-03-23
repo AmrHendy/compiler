@@ -10,17 +10,18 @@ CompositeState::~CompositeState() {
 }
 
 
-void CompositeState::insert_new_state(State new_state) {
+void CompositeState::insert_new_state(State* new_state) {
 	if(find(states.begin() , states.end(), new_state) == states.end()){
 		states.push_back(new_state);
 	}
 }
 
-CompositeState CompositeState::get_transition(char input) {
-	vector<State> result;
-	for(State s : states){
-		vector<State> transitions = s.get_transition(input);
-		for(State next : transitions){
+CompositeState* CompositeState::get_transition(char input) {
+	vector<State*> result;
+	for(int index = 0; index < states.size(); index++){
+		State* s = states[index];
+		vector<State*> transitions = s->get_transition(input);
+		for(State* next : transitions){
 			if (find(result.begin(), result.end(), next) == result.end()){
 				result.push_back(next);
 			}
@@ -30,10 +31,10 @@ CompositeState CompositeState::get_transition(char input) {
 }
 
 
-CompositeState CompositeState::vector_to_composite(vector<State> states) {
-	CompositeState result = CompositeState();
-	for(State s : states){
-		result.insert_new_state(s);
+CompositeState* CompositeState::vector_to_composite(vector<State*> states) {
+	CompositeState* result = new CompositeState();
+	for(State* s : states){
+		result->insert_new_state(s);
 	}
 	return result;
 }
@@ -42,9 +43,9 @@ CompositeState CompositeState::vector_to_composite(vector<State> states) {
 
 bool CompositeState::is_acceptance(void)
 {
-	for(State s : states){
+	for(State* s : states){
 		// s represents constituent_state
-		if(s.is_acceptance()){
+		if(s->is_acceptance()){
 			return true;
 		}
 	}
@@ -53,18 +54,18 @@ bool CompositeState::is_acceptance(void)
 
 
 /* this function return all equivalent states to start composite state. */
-CompositeState CompositeState::find_equivalent_states(CompositeState start) {
-	vector<State> result;
-	queue<State> q;
-	for(State s : start.get_states()){
+CompositeState* CompositeState::find_equivalent_states(CompositeState* start) {
+	vector<State*> result;
+	queue<State*> q;
+	for(State* s : start->get_states()){
 		q.push(s);
 	}
 	while(!q.empty()){
-		State curr = q.front();
+		State* curr = q.front();
 		q.pop();
 		if(find(result.begin(), result.end(), curr) == result.end())result.push_back(curr);
-		vector<State> epsilon_transitions = curr.get_transition('\0');
-		for(State child : epsilon_transitions){
+		vector<State*> epsilon_transitions = curr->get_transition('\0');
+		for(State* child : epsilon_transitions){
 			if(find(result.begin(), result.end(), child) == result.end()){
 				q.push(child);
 			}
@@ -74,13 +75,13 @@ CompositeState CompositeState::find_equivalent_states(CompositeState start) {
 }
 
 
-vector<State> CompositeState::get_states() {
+vector<State*> CompositeState::get_states() {
 	return states;
 }
 
-bool CompositeState::operator ==(CompositeState c){
-	vector<State> c_states = c.get_states();
-	for(State s : c_states){
+bool CompositeState::operator ==(CompositeState* c){
+	vector<State*> c_states = c->get_states();
+	for(State* s : c_states){
 	  if(find(states.begin(), states.end(), s) == states.end())
 	    return false ;
 	}
@@ -95,10 +96,10 @@ bool CompositeState::isNull(){
 vector<Rule> CompositeState::get_matched_rules(void)
 {
 	vector<Rule> result;
-	for(State s : states)
+	for(State* s : states)
 	{
-		if(s.is_acceptance()){
-			result.push_back(s.get_matched_rule());
+		if(s->is_acceptance()){
+			result.push_back(s->get_matched_rule());
 		}
 	}
 	return result;

@@ -8,8 +8,8 @@ NFA::~NFA() {
 	// TODO Auto-generated destructor stub
 }
 
-Machine NFA::generate_nfa_machine() {
-	vector<Machine> machines;
+Machine* NFA::generate_nfa_machine() {
+	vector<Machine*> machines;
 
 	NumberGenerator::setCurrentInt(1);
 
@@ -21,7 +21,7 @@ Machine NFA::generate_nfa_machine() {
 
 	/* combine all rules into single machine */
 	OrOperator or_operator;
-	Machine overall_machine = machines[0];
+	Machine* overall_machine = machines[0];
 	for( int i = 1 ; i < machines.size() ; i++ )
 	{
 		overall_machine = or_operator.apply(overall_machine, machines[i]);

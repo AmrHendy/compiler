@@ -4,7 +4,7 @@
 
 /* CONSTRUCTOR */
 /*********************************************/
-DFATableBuilder::DFATableBuilder(Machine nfa_machine)
+DFATableBuilder::DFATableBuilder(Machine* nfa_machine)
 {
     DFATableBuilder::nfa_machine = nfa_machine;
 }
@@ -23,17 +23,17 @@ DFATableBuilder::~DFATableBuilder(void)
 TransitionTable
 DFATableBuilder::generate_dfa_table(void)
 {
-  queue<CompositeState> q;
+  queue<CompositeState*> q;
   TransitionTable dfa_table = TransitionTable();
   /* get table first entry */
-  CompositeState start_state;
-  start_state.insert_new_state(nfa_machine.get_start());
-  start_state = start_state.find_equivalent_states(start_state);
+  CompositeState* start_state;
+  start_state->insert_new_state(nfa_machine->get_start());
+  start_state = start_state->find_equivalent_states(start_state);
   q.push(start_state);
 
   while(!q.empty())
   {
-    CompositeState curr = q.front();
+    CompositeState* curr = q.front();
     q.pop();
     if(!dfa_table.row_found(curr))
     {
@@ -42,10 +42,10 @@ DFATableBuilder::generate_dfa_table(void)
       /* get transitions of this new entry */
       for (char i : Alpha::getAlphabet()){
         /* get states reachable by this state(s) when applying char i */
-        CompositeState to_state = curr.get_transition(i) ;
-        if(!to_state.isNull())
+        CompositeState* to_state = curr->get_transition(i) ;
+        if(!to_state->isNull())
         {
-          to_state = to_state.find_equivalent_states(to_state);
+          to_state = to_state->find_equivalent_states(to_state);
           q.push(to_state) ;
           dfa_table.add_row_transition(curr, i, to_state);
         }
@@ -109,11 +109,11 @@ bool DFATableBuilder::re_partition(vector<Partition>* partitions , TransitionTab
 
 void DFATableBuilder::generate_partition_ids(vector<Partition> all_partitions , Partition* partition , TransitionTable dfa_table ){
     /* GET STATES OF THE PARTITION */
-    vector<CompositeState> states = partition -> get_states() ;
+    vector<CompositeState*> states = partition -> get_states() ;
     /* NEW IDENTIFIERS FOR PARTITION STATES */
     vector<string> ids ;
 
-    for(CompositeState c : states){
+    for(CompositeState* c : states){
         /* NEW IDENTIFIER FOR STATE i IN PARTITION */
         string id = "" ;
         /* ALPHABET */
@@ -121,9 +121,9 @@ void DFATableBuilder::generate_partition_ids(vector<Partition> all_partitions , 
         /* APPEND TO STATE ID PARTITION ID */
         for (char i : alpha ){
             /* GET STATE WILL GO TO IF STATE C TOOK I */
-            CompositeState to = dfa_table.get_transition(c , i) ;
+            CompositeState* to = dfa_table.get_transition(c , i) ;
             /* STATE TO IS NOT FOUND */
-            if(to.get_states().empty()){
+            if(to->get_states().empty()){
             	id.push_back('#');
             	continue;
             }
@@ -141,7 +141,7 @@ void DFATableBuilder::generate_partition_ids(vector<Partition> all_partitions , 
 
 
 Partition
-DFATableBuilder::get_partition_belong(vector<Partition> partitions, CompositeState c){
+DFATableBuilder::get_partition_belong(vector<Partition> partitions, CompositeState* c){
     /* LOOK FOR PARTITION STATE C BELONG TO */
     for (Partition p : partitions){
         if(p.belong(c))

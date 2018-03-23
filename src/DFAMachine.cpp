@@ -6,7 +6,7 @@
 
 #include "DFAMachine.h"
 
-DFAMachine::DFAMachine(Machine nfa_machine) {
+DFAMachine::DFAMachine(Machine* nfa_machine) {
 	// TODO Auto-generated constructor stub
 	DFAMachine::nfa_machine = nfa_machine;
 	table_calculated_flag = false;

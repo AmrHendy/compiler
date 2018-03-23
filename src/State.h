@@ -15,8 +15,8 @@ public:
     State();
     virtual ~State();
 
-    void add_transition(char input, State to_state);
-    vector<State> get_transition(char input);
+    void add_transition(char input, State* to_state);
+    vector<State*> get_transition(char input);
 
 
     /* setters and getters */
@@ -24,10 +24,11 @@ public:
     bool is_acceptance();
     void set_matched_rule(Rule matched_rule);
     Rule get_matched_rule(void);
-    bool operator==(const State s);
+    bool operator==(const State* s);
+    map<char, vector<State*> > getAllTransitions();
 
 private:
-	map<char, vector<State> > transitions;
+	map<char, vector<State*> > transitions;
 	bool acceptance_state;
 	Rule matched_rule = Rule("", "", 0);
 	int id;

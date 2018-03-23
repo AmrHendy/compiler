@@ -1,9 +1,9 @@
 #include "Machine.h"
 
 Machine::Machine(char basic_char){
-	start = State(NumberGenerator::getNextUniqueInt());
-	end = State(NumberGenerator::getNextUniqueInt());
-	start.add_transition(basic_char, end);
+	start = new State(NumberGenerator::getNextUniqueInt());
+	end = new State(NumberGenerator::getNextUniqueInt());
+	start->add_transition(basic_char, end);
 }
 
 Machine::Machine(){
@@ -15,18 +15,18 @@ Machine::~Machine() {
 }
 
 
-State Machine::get_start(){
+State* Machine::get_start(){
 	return start;
 }
 
-State Machine::get_end(){
+State* Machine::get_end(){
 	return end ;
 }
 
-void Machine::set_start(State start){
+void Machine::set_start(State* start){
     Machine::start = start ;
 }
 
-void Machine::set_end(State start){
-    Machine::end = end ;
+void Machine::set_end(State* end){
+    Machine::end = end;
 }

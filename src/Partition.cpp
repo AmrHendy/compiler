@@ -7,7 +7,7 @@ Partition::Partition(char identifier)
     this -> identifier = identifier ;
 }
 
-Partition::Partition(char identifier, vector<CompositeState>states)
+Partition::Partition(char identifier, vector<CompositeState*>states)
 {
     this -> identifier = identifier ;
     this -> states = states ;
@@ -15,14 +15,14 @@ Partition::Partition(char identifier, vector<CompositeState>states)
 
 Partition::~Partition(void){}
 
-void Partition::add_state(CompositeState s)
+void Partition::add_state(CompositeState* s)
 {
     this -> states.push_back(s) ;
 }
 
-bool Partition::belong(CompositeState s)
+bool Partition::belong(CompositeState* s)
 {
-    for(CompositeState i : states)
+    for(CompositeState* i : states)
         if(s == i)
             return true ;
     return false ;
@@ -71,7 +71,7 @@ char Partition::get_identifier()
     return this -> identifier ;
 }
 
-vector<CompositeState> Partition::get_states()
+vector<CompositeState*> Partition::get_states()
 {
     return this -> states ;
 }

@@ -4,7 +4,7 @@
 
 /* CONSTRUCTOR */
 /*********************************************/
-Row::Row(CompositeState id_state)
+Row::Row(CompositeState* id_state)
 {
 	Row::id_state = id_state ;
 }
@@ -16,14 +16,14 @@ Row::~Row(void)
 
 /* INTERFACE METHODS */
 /*********************************************/
-map<char,CompositeState>
+map<char,CompositeState*>
 Row::get_transitions(void)
 {
 	return transitions;
 }
 
 
-CompositeState
+CompositeState*
 Row::get_id_state(void)
 {
 	return id_state;

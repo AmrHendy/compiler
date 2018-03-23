@@ -10,11 +10,10 @@
 using namespace std;
 
 int main() {
-	cout << "hello";
 	LexicalAnalyzer lexicalAnalyzer = LexicalAnalyzer("rules.txt", "prog.txt");
-	while(true){
+	for(int i=0;i<10;i++){
 		Token token = lexicalAnalyzer.next_token();
-		cout << "Lexeme ==> " << token.getLexeme() << " |||| " << "Type ==> " << token.getType();
+		//cout << "Lexeme ==> " << token.getLexeme() << " |||| " << "Type ==> " << token.getType();
 	}
 	return 0;
 }

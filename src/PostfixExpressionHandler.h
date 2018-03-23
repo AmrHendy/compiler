@@ -15,6 +15,7 @@
 #include <algorithm>
 #include <iostream>
 #include "RuleElement.h"
+#include "Alpha.h"
 
 using namespace std;
 

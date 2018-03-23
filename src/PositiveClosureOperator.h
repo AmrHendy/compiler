@@ -11,7 +11,7 @@ public:
 	PositiveClosureOperator();
 	virtual ~PositiveClosureOperator();
 
-    static Machine apply(Machine m);
+    static Machine* apply(Machine* m);
 
 };
 

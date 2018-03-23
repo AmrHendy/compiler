@@ -19,7 +19,7 @@ State::~State()
 }
 
 /* Epsilon transition will be on form {'\0', nextState}. */
-void State::add_transition(char input, State to_state){
+void State::add_transition(char input, State* to_state){
 	//??
 	//we don't need this as map don't return null pointer ever.
 	//in case of that input not found it will return empty vector (size = 0) but not null
@@ -34,11 +34,12 @@ void State::add_transition(char input, State to_state){
 	//else
 	//{
 		// input was found
-		transitions[input].push_back(to_state);
+
+	transitions[input].push_back(to_state);
 	//}
 }
 
-vector<State> State::get_transition(char input){
+vector<State*> State::get_transition(char input){
 	return transitions[input];
 }
 
@@ -52,10 +53,10 @@ bool State::is_acceptance(){
 }
 
 
-bool State::operator==(const State s)
+bool State::operator==(const State* s)
 {
 
-	return s.id == State::id;
+	return s->id == State::id;
   //return this == &s;
 }
 
@@ -66,3 +67,9 @@ void State::set_matched_rule(Rule matched_rule){
 Rule State::get_matched_rule(void){
 	return matched_rule;
 }
+
+
+map<char, vector<State*> > State::getAllTransitions(){
+	return transitions;
+}
+

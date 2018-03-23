@@ -17,7 +17,7 @@ class DFATableBuilder
 {
 	public:
 	/* constructor */
-    DFATableBuilder(Machine nfa_machine);
+    DFATableBuilder(Machine* nfa_machine);
     virtual ~DFATableBuilder(void);
 
     /* interface functions */
@@ -27,13 +27,11 @@ class DFATableBuilder
 
 private:
 	/* attributes */
-	Machine nfa_machine;
+	Machine* nfa_machine;
 
 	bool re_partition(vector<Partition>* partitions , TransitionTable dfa_table);
 	void generate_partition_ids(vector<Partition> all_partitions , Partition* partition , TransitionTable dfa_table );
-	Partition get_partition_belong(vector<Partition> partitions , CompositeState c);
-
-
+	Partition get_partition_belong(vector<Partition> partitions , CompositeState* c);
 };
 
 

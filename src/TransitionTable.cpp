@@ -18,23 +18,23 @@ TransitionTable::~TransitionTable(void)
 /* INTERFACE METHODS */
 /*********************************************/
 void
-TransitionTable::insert_new_row (CompositeState id_state)
+TransitionTable::insert_new_row (CompositeState* id_state)
 {
 	if(!row_found(id_state))
 	{
-	  rows.push_back(Row(id_state));
+	  rows.push_back(new Row(id_state));
 	}
 }
 
 
 void
-TransitionTable::add_row_transition (CompositeState id_state, char input_char, CompositeState to_state)
+TransitionTable::add_row_transition (CompositeState* id_state, char input_char, CompositeState* to_state)
 {
-	for (Row r : this->rows)
+	for (Row* r : this->rows)
 	{
-	  if(r.get_id_state() == id_state)
+	  if(r->get_id_state() == id_state)
 	  {
-	      r.get_transitions()[input_char] = to_state;
+	      r->get_transitions()[input_char] = to_state;
 	      break;
 
 	  }
@@ -42,26 +42,26 @@ TransitionTable::add_row_transition (CompositeState id_state, char input_char, C
 }
 
 
-CompositeState
-TransitionTable::find_transition(CompositeState from_state, char input)
+CompositeState*
+TransitionTable::find_transition(CompositeState* from_state, char input)
 {
-	for(Row r:this->rows)
+	for(Row* r : rows)
 	{
-		if(r.get_id_state() == from_state)
+		if(r->get_id_state() == from_state)
 		{
-			return r.get_transitions().at(input);
+			return r->get_transitions().at(input);
 		}
 	}
-	return CompositeState();
+	return NULL;
 }
 
 
 bool
-TransitionTable::row_found(CompositeState id_state)
+TransitionTable::row_found(CompositeState* id_state)
 {
-	for(Row r : this->rows)
+	for(Row* r : this->rows)
 	{
-		if(r.get_id_state() == id_state)
+		if(r->get_id_state() == id_state)
 		{
 			return true ;
 		}
@@ -71,42 +71,42 @@ TransitionTable::row_found(CompositeState id_state)
 
 
 
-CompositeState
+CompositeState*
 TransitionTable::get_start_state(void)
 {
-	return rows.front().get_id_state();
+	return rows.front()->get_id_state();
 }
 
 void
-TransitionTable::insert_new_row(Row r)
+TransitionTable::insert_new_row(Row* r)
 {
    rows.push_back(r);
 }
 
 
-Row
-TransitionTable::get_row(CompositeState id)
+Row*
+TransitionTable::get_row(CompositeState* id)
 {
-    for(Row i : rows){
-        if(i.get_id_state() == id){
+    for(Row* i : rows){
+        if(i->get_id_state() == id){
         	return i ;
         }
     }
 }
 
-CompositeState
-TransitionTable::get_transition(CompositeState id, char trans){
-    return get_row(id).get_transitions()[trans];
+CompositeState*
+TransitionTable::get_transition(CompositeState* id, char trans){
+    return get_row(id)->get_transitions()[trans];
 }
 
 
-vector<CompositeState>
+vector<CompositeState*>
 TransitionTable::get_acceptance_states(){
-    vector<CompositeState> res ;
-    for (Row r : rows)
+    vector<CompositeState*> res ;
+    for (Row* r : rows)
     {
-        CompositeState id = r.get_id_state() ;
-        if(id.is_acceptance())
+        CompositeState* id = r->get_id_state() ;
+        if(id->is_acceptance())
         {
             res.push_back(id) ;
         }
@@ -114,13 +114,13 @@ TransitionTable::get_acceptance_states(){
     return res ;
 }
 
-vector<CompositeState>
+vector<CompositeState*>
 TransitionTable::get_non_acceptance_states(){
-    vector<CompositeState> res ;
-    for (Row r : rows)
+    vector<CompositeState*> res ;
+    for (Row* r : rows)
     {
-        CompositeState id = r.get_id_state() ;
-        if(!id.is_acceptance())
+        CompositeState* id = r->get_id_state() ;
+        if(!id->is_acceptance())
         {
             res.push_back(id) ;
         }
@@ -134,19 +134,19 @@ TransitionTable::get_equavilent_table(vector<Partition> partitions){
     /* EQUAVILENT TABLE */
     TransitionTable equ ;
 
-    for(Row r : rows){
-        CompositeState essential_state = get_partition_belong(partitions , r.get_id_state()).get_states()[0] ;
+    for(Row* r : rows){
+        CompositeState* essential_state = get_partition_belong(partitions , r->get_id_state()).get_states()[0] ;
         /* STATE IS REDUNDANT */
-        if(!(r.get_id_state() == essential_state))
+        if(!(r->get_id_state() == essential_state))
             continue ;
         /* REPLACE ALL STATES IN ROW WITH THIER ESSENTIAL STATES */
         for(char c : Alpha::getAlphabet()){
-            CompositeState to = r.get_transitions()[c] ;
+            CompositeState* to = r->get_transitions()[c] ;
             /* STATE TO NOT FOUND */
-            if(to.get_states().empty())
+            if(to->get_states().empty())
                 continue ;
             /* REPLACE STATE WITH IT'S ESSENTIAL */
-            r.get_transitions()[c] = get_partition_belong(partitions , to).get_states()[0] ;
+            r->get_transitions()[c] = get_partition_belong(partitions , to).get_states()[0] ;
         }
         /* ADD ROW TO EQU. TABLE */
         equ.insert_new_row(r) ;
@@ -156,11 +156,11 @@ TransitionTable::get_equavilent_table(vector<Partition> partitions){
 
 
 Partition
-TransitionTable::get_partition_belong(vector<Partition> partitions , CompositeState c){
+TransitionTable::get_partition_belong(vector<Partition> partitions , CompositeState* c){
     /* LOOK FOR PARTITION STATE C BELONG TO */
     for (Partition p : partitions){
         if(p.belong(c))
-            return p ;
+            return p;
     }
     return NULL;
 }

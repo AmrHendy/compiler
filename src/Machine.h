@@ -13,14 +13,14 @@ public:
     virtual ~Machine();
 
     /* setters and getters */
-    void set_start(State start);
-    State get_start();
-    void set_end(State start);
-    State get_end();
+    void set_start(State* start);
+    State* get_start();
+    void set_end(State* start);
+    State* get_end();
 
-private:
-	State start;
-	State end;
+//private:
+	State *start;
+	State *end;
 };
 
 

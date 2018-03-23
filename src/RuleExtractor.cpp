@@ -50,26 +50,6 @@ void RuleExtractor::extractRule(string rule){
 
 vector<Rule> RuleExtractor::getAllRules(){
 	vector<Rule> all;
-
-	/*
-	vector<string> v1 = keyWordRule.keyWords;
-	vector<string> v2 = punctuationRule.punctuations;
-	vector<pair<string, string> > v3 = regularRule.regularExpressions;
-	cout << "KEYWORDS\n";
-	for(string s : v1)cout << removeSpaces(s) << endl;
-	cout << "==============================================\n";
-
-	cout << "PUNCUTATIONS\n";
-	for(string s : v2)cout << removeSpaces(s) << endl;
-	cout << "==============================================\n";
-
-
-	cout << "REGULAR EXPRESSIONS\n";
-	for(pair<string,string> p : v3)cout << removeSpaces(p.first) << "  =  " << removeSpaces(p.second) << endl;
-	cout << "==============================================\n";
-
-	*/
-
 	for(pair<string, int> keyWord : keyWordRule.keyWords){
 		keyWord.first = removeSpaces(keyWord.first);
 		Rule rule("T_" + keyWord.first, keyWord.first, keyWord.second);

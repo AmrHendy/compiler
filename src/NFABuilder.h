@@ -13,7 +13,7 @@ public:
     NFABuilder();
     virtual ~NFABuilder();
 
-    static Machine build_machine(Rule rule) ;
+    static Machine* build_machine(Rule rule) ;
 };
 
 

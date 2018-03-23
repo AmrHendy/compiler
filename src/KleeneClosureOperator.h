@@ -10,7 +10,7 @@ public:
 	KleeneClosureOperator();
 	virtual ~KleeneClosureOperator();
 
-    static Machine apply(Machine m);
+    static Machine* apply(Machine* m);
 };
 
 #endif /* POSITIVECLOSUREOPERATOR_H_ */

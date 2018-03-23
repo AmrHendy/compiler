@@ -33,8 +33,8 @@ Token
 Tokenizer::next_token()
 {
 	/* initialize helpers */
-	CompositeState current_state = minimized_dfa_table.get_start_state();
-	CompositeState last_acceptance_state;
+	CompositeState* current_state = minimized_dfa_table.get_start_state();
+	CompositeState* last_acceptance_state;
 	int last_acceptance_index = -1;
 	int start_index = current_index;
 
@@ -46,7 +46,7 @@ Tokenizer::next_token()
 		/* transition in table according to input char */
 		current_state = minimized_dfa_table.find_transition(current_state, current_char);
 		/* check current state */
-		if(current_state.isNull())
+		if(current_state->isNull())
 		{
 			/* i.e. no such transition */
 			/* roll back to last acceptance */
@@ -56,7 +56,7 @@ Tokenizer::next_token()
 				string lexeme;
 				lexeme = user_program.substr(start_index, last_acceptance_index - start_index);
 				current_index = last_acceptance_index + 1;
-				vector<Rule> conflicting_rules = last_acceptance_state.get_matched_rules();
+				vector<Rule> conflicting_rules = last_acceptance_state->get_matched_rules();
 				return get_correct_token(conflicting_rules, lexeme);
 			}
 			else{
@@ -66,7 +66,7 @@ Tokenizer::next_token()
 			}
 		}
 
-		if(current_state.is_acceptance() == true)
+		if(current_state->is_acceptance() == true)
 		{
 			last_acceptance_state = current_state;
 			last_acceptance_index = current_index;

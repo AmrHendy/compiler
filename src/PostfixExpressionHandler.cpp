@@ -115,6 +115,12 @@ vector<RuleElement> PostfixExpressionHandler::convertToRule(string postfixStr, v
 			ruleElements.push_back(ruleElement);
 		}
 	}
+	/* Set the Alpha. */
+	for(RuleElement elem : ruleElements){
+		if(elem.isAlpha()){
+			Alpha::insertAlphabet(elem.getContent());
+		}
+	}
 	return ruleElements;
 }
 

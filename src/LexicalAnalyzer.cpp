@@ -8,8 +8,7 @@
 
 LexicalAnalyzer::LexicalAnalyzer(string language_rules_directory, string user_prog_directory){
 	TransitionTable minimized_dfa_table = LexcialAnalyzerGenerator::generate_minimal_dfa(language_rules_directory);
-	Tokenizer tokenizer(minimized_dfa_table, user_prog_directory);
-	LexicalAnalyzer::tokenizer = tokenizer;
+	LexicalAnalyzer::tokenizer = Tokenizer(minimized_dfa_table, user_prog_directory);
 }
 
 LexicalAnalyzer::~LexicalAnalyzer() {
@@ -17,6 +16,7 @@ LexicalAnalyzer::~LexicalAnalyzer() {
 }
 
 Token LexicalAnalyzer::next_token(){
+	//return Token("aa", "bb" , "cc");
 	return tokenizer.next_token();
 }
 
