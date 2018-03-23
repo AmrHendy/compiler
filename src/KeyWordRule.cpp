@@ -22,6 +22,6 @@ void KeyWordRule::appendkeyWords(string rule){
 	stringstream ss(rule_str);
 	string keyWord;
 	while(ss >> keyWord){
-		keyWords.push_back({keyWord, NumberGenerator::getNextUniqueInt()});
+		keyWords.push_back({keyWord,1});
 	}
 }

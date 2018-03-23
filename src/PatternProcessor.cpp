@@ -21,7 +21,7 @@ PatternProcessor::~PatternProcessor() {
 }
 
 vector<Rule> PatternProcessor::getRules(){
-	NumberGenerator::setCurrentInt(1);
+	NumberGenerator::setCurrentInt(3);
 	RuleExtractor ruleExtractor;
 	vector<Rule> all_rules;
 	for(string str : file_lines){

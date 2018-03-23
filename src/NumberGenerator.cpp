@@ -6,7 +6,7 @@
 
 #include "NumberGenerator.h"
 
-int NumberGenerator::number = 1;
+int NumberGenerator::number = 3;
 
 NumberGenerator::NumberGenerator() {
 	// TODO Auto-generated constructor stub
@@ -21,6 +21,7 @@ int NumberGenerator::getNextUniqueInt(){
 	return NumberGenerator::number++;
 }
 
+//this is called first by pattern processor to set the first priority value.
 void NumberGenerator::setCurrentInt(int number){
 	NumberGenerator::number = number;
 }

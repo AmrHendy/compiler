@@ -19,6 +19,7 @@ public:
 	CompositeState find_equivalent_states(CompositeState start);
 	vector<State> get_states();
 	bool is_acceptance();
+	bool isNull();
 	bool operator ==(CompositeState c);
 
 

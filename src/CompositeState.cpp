@@ -61,7 +61,7 @@ vector<Token> CompositeState::get_tokens(void)
 }
 */
 
-/* this function return all equivalent states to start not including start itself. */
+/* this function return all equivalent states to start composite state. */
 CompositeState CompositeState::find_equivalent_states(CompositeState start) {
 	vector<State> result;
 	queue<State> q;
@@ -94,4 +94,8 @@ bool CompositeState::operator ==(CompositeState c){
 	    return false ;
 	}
 	return true ;
+}
+
+bool CompositeState::isNull(){
+	return states.size() == 0;
 }

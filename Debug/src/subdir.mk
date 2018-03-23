@@ -4,9 +4,11 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
+../src/Alpha.cpp \
 ../src/AndOperator.cpp \
 ../src/CompositeState.cpp \
-../src/DFABuilder.cpp \
+../src/DFAMachine.cpp \
+../src/DFATableBuilder.cpp \
 ../src/FileHandler.cpp \
 ../src/KeyWordRule.cpp \
 ../src/KleeneClosureOperator.cpp \
@@ -21,15 +23,19 @@ CPP_SRCS += \
 ../src/PostfixExpressionHandler.cpp \
 ../src/PunctuationRule.cpp \
 ../src/RegularRule.cpp \
+../src/Row.cpp \
 ../src/Rule.cpp \
 ../src/RuleElement.cpp \
 ../src/RuleExtractor.cpp \
-../src/State.cpp 
+../src/State.cpp \
+../src/TransitionTable.cpp 
 
 OBJS += \
+./src/Alpha.o \
 ./src/AndOperator.o \
 ./src/CompositeState.o \
-./src/DFABuilder.o \
+./src/DFAMachine.o \
+./src/DFATableBuilder.o \
 ./src/FileHandler.o \
 ./src/KeyWordRule.o \
 ./src/KleeneClosureOperator.o \
@@ -44,15 +50,19 @@ OBJS += \
 ./src/PostfixExpressionHandler.o \
 ./src/PunctuationRule.o \
 ./src/RegularRule.o \
+./src/Row.o \
 ./src/Rule.o \
 ./src/RuleElement.o \
 ./src/RuleExtractor.o \
-./src/State.o 
+./src/State.o \
+./src/TransitionTable.o 
 
 CPP_DEPS += \
+./src/Alpha.d \
 ./src/AndOperator.d \
 ./src/CompositeState.d \
-./src/DFABuilder.d \
+./src/DFAMachine.d \
+./src/DFATableBuilder.d \
 ./src/FileHandler.d \
 ./src/KeyWordRule.d \
 ./src/KleeneClosureOperator.d \
@@ -67,10 +77,12 @@ CPP_DEPS += \
 ./src/PostfixExpressionHandler.d \
 ./src/PunctuationRule.d \
 ./src/RegularRule.d \
+./src/Row.d \
 ./src/Rule.d \
 ./src/RuleElement.d \
 ./src/RuleExtractor.d \
-./src/State.d 
+./src/State.d \
+./src/TransitionTable.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
