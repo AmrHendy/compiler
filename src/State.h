@@ -25,7 +25,7 @@ public:
     //Token get_token(void);
     void set_start(bool value);
     bool is_start();
-
+    bool operator==(const State& s);
 
 private:
 	map<char, vector<State> > transitions;

@@ -13,8 +13,6 @@ State::~State()
 
 /* Epsilon transition will be on form {'\0', nextState}. */
 void State::add_transition(char input, State to_state){
-	vector<State> to_states = transitions[input];
-
 	//??
 	//we don't need this as map don't return null pointer ever.
 	//in case of that input not found it will return empty vector (size = 0) but not null
@@ -29,7 +27,7 @@ void State::add_transition(char input, State to_state){
 	//else
 	//{
 		// input was found
-		to_states.push_back(to_state);
+		transitions[input].push_back(to_state);
 	//}
 }
 
@@ -54,6 +52,13 @@ void State::set_start(bool value){
 bool State::is_start(){
 	return start_state;
 }
+
+
+bool State::operator==(const State& s)
+{
+  return this == &s;
+}
+
 
 /*
 void State::set_token(Token matched_token){

@@ -21,6 +21,7 @@ public:
 	bool is_acceptance();
 	bool operator ==(CompositeState c);
 
+
 	//vector<Token> get_tokens(void);
 
 private:

@@ -41,14 +41,13 @@ CompositeState CompositeState::vector_to_composite(vector<State> states) {
 bool CompositeState::is_acceptance(void)
 {
 	for(State s : states){
-		/* s represents constituent_state */
+		// s represents constituent_state
 		if(s.is_acceptance()){
 			return true;
 		}
 	}
 	return false;
 }
-
 
 /*
 vector<Token> CompositeState::get_tokens(void)
@@ -62,13 +61,9 @@ vector<Token> CompositeState::get_tokens(void)
 }
 */
 
-
 /* this function return all equivalent states to start not including start itself. */
 CompositeState CompositeState::find_equivalent_states(CompositeState start) {
-  /*
-  * this function finds all states reachable by "epsilon" from given state
-  */
-	set<State> result;
+	vector<State> result;
 	queue<State> q;
 	for(State s : start.get_states()){
 		q.push(s);
@@ -76,19 +71,15 @@ CompositeState CompositeState::find_equivalent_states(CompositeState start) {
 	while(!q.empty()){
 		State curr = q.front();
 		q.pop();
-		result.insert(curr);
+		if(find(result.begin(), result.end(), curr) == result.end())result.push_back(curr);
 		vector<State> epsilon_transitions = curr.get_transition('\0');
 		for(State child : epsilon_transitions){
-			if(result.count(child) == 0){
+			if(find(result.begin(), result.end(), child) == result.end()){
 				q.push(child);
 			}
 		}
 	}
-	vector<State> result_vector;
-	for(State s : result){
-		result_vector.push_back(s);
-	}
-	return vector_to_composite(result_vector);
+	return vector_to_composite(result);
 }
 
 
@@ -96,8 +87,7 @@ vector<State> CompositeState::get_states() {
 	return states;
 }
 
-
-bool CompositeState::operator ==(CompositeState c) {
+bool CompositeState::operator ==(CompositeState c){
 	vector<State> c_states = c.get_states();
 	for(State s : c_states){
 	  if(find(states.begin(), states.end(), s) == states.end())
@@ -105,5 +95,3 @@ bool CompositeState::operator ==(CompositeState c) {
 	}
 	return true ;
 }
-
-
