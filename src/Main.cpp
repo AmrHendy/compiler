@@ -5,19 +5,16 @@
  */
 
 #include <bits/stdc++.h>
-#include "FileHandler.h"
-#include "PatternProcessor.h"
+#include "LexicalAnalyzer.h"
 
 using namespace std;
 
 int main() {
-	PatternProcessor patternProcessor("input.txt");
-	vector<Rule> rules = patternProcessor.getRules();
-
-	/*
-	for(Rule rule : rules){
-		rule.toPostfix();
+	cout << "hello";
+	LexicalAnalyzer lexicalAnalyzer = LexicalAnalyzer("rules.txt", "prog.txt");
+	while(true){
+		Token token = lexicalAnalyzer.next_token();
+		cout << "Lexeme ==> " << token.getLexeme() << " |||| " << "Type ==> " << token.getType();
 	}
-	*/
 	return 0;
 }

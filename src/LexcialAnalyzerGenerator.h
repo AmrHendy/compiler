@@ -7,11 +7,13 @@
 #ifndef LEXCIALANALYZERGENERATOR_H_
 #define LEXCIALANALYZERGENERATOR_H_
 
+#include <iostream>
 #include <string>
 #include "TransitionTable.h"
 #include "PatternProcessor.h"
 #include "NFA.h"
 #include "DFAMachine.h"
+
 
 using namespace std;
 

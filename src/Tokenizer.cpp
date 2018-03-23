@@ -61,6 +61,7 @@ Tokenizer::next_token()
 			}
 			else{
 				current_index = start_index + 1;
+				//report erros
 				continue;
 			}
 		}
@@ -70,8 +71,6 @@ Tokenizer::next_token()
 			last_acceptance_state = current_state;
 			last_acceptance_index = current_index;
 		}
-
-
 		current_index++;
 	}
 }
