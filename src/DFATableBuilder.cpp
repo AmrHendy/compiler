@@ -2,6 +2,8 @@
 /*********************************************/
 #include "DFATableBuilder.h"
 
+#include <iostream>
+
 /* CONSTRUCTOR */
 /*********************************************/
 DFATableBuilder::DFATableBuilder(Machine* nfa_machine)
@@ -26,11 +28,10 @@ DFATableBuilder::generate_dfa_table(void)
   queue<CompositeState*> q;
   TransitionTable dfa_table = TransitionTable();
   /* get table first entry */
-  CompositeState* start_state;
+  CompositeState* start_state = new CompositeState();
   start_state->insert_new_state(nfa_machine->get_start());
   start_state = start_state->find_equivalent_states(start_state);
   q.push(start_state);
-
   while(!q.empty())
   {
     CompositeState* curr = q.front();
@@ -46,8 +47,15 @@ DFATableBuilder::generate_dfa_table(void)
         if(!to_state->isNull())
         {
           to_state = to_state->find_equivalent_states(to_state);
+          /*
+          cout << "id = ";
+          for(State* s : to_state->get_states()){
+        	  cout << s->get_id() << " , ";
+          }
+          cout << endl;
+          */
           q.push(to_state) ;
-          dfa_table.add_row_transition(curr, i, to_state);
+          dfa_table.add_row_transition(curr, i, *to_state);
         }
       }
     }

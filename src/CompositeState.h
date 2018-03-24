@@ -21,7 +21,7 @@ public:
 	vector<State*> get_states();
 	bool is_acceptance();
 	bool isNull();
-	bool operator ==(CompositeState* c);
+	bool operator ==(CompositeState c);
 
 
 	vector<Rule> get_matched_rules(void);
@@ -29,6 +29,8 @@ public:
 private:
 	vector<State*> states;
 	CompositeState* vector_to_composite(vector<State*> states);
+
+	bool is_contain_state(vector<State*> vec, State* s);
 };
 
 #endif /* COMPOSITESTATE_H_ */

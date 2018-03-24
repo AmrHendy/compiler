@@ -13,7 +13,7 @@ class Row
 	private:
 	/* attributes */
 	CompositeState* id_state;
-  	map<char,CompositeState*> transitions;
+  	map<char,CompositeState> transitions;
 
 	public:
 	/* constructor */
@@ -21,8 +21,13 @@ class Row
     virtual ~Row(void);
 
     /* interface functions */
-    map<char,CompositeState*> get_transitions(void);
+    map<char,CompositeState> get_transitions(void);
     CompositeState* get_id_state(void);
+
+    void insert_transition(char input_char, CompositeState s);
+
+    CompositeState* get_destination_state(char ch);
+
 };
 
 

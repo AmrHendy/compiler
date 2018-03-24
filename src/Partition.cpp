@@ -23,7 +23,7 @@ void Partition::add_state(CompositeState* s)
 bool Partition::belong(CompositeState* s)
 {
     for(CompositeState* i : states)
-        if(s == i)
+        if(*s == *i)
             return true ;
     return false ;
 }

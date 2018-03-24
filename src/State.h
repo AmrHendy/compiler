@@ -24,8 +24,9 @@ public:
     bool is_acceptance();
     void set_matched_rule(Rule matched_rule);
     Rule get_matched_rule(void);
-    bool operator==(const State* s);
+    bool operator==(State s);
     map<char, vector<State*> > getAllTransitions();
+    int get_id();
 
 private:
 	map<char, vector<State*> > transitions;

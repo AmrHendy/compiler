@@ -5,6 +5,7 @@
  */
 
 #include "LexcialAnalyzerGenerator.h"
+#include <iostream>
 
 LexcialAnalyzerGenerator::LexcialAnalyzerGenerator() {
 	// TODO Auto-generated constructor stub
@@ -23,6 +24,5 @@ TransitionTable LexcialAnalyzerGenerator::generate_minimal_dfa(string language_r
 
 	DFAMachine dfa_machine = DFAMachine(nfa_machine);
 	TransitionTable minimized_dfa_table = dfa_machine.get_minimized_dfa_table();
-
 	return minimized_dfa_table;
 }

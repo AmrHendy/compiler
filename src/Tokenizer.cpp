@@ -38,7 +38,7 @@ Tokenizer::next_token()
 	int last_acceptance_index = -1;
 	int start_index = current_index;
 
-	while(true)
+	while(current_index < user_program.size())
 	{
 		/* read new char into buffer */
 		char current_char = user_program.at(current_index);
@@ -48,30 +48,50 @@ Tokenizer::next_token()
 		/* check current state */
 		if(current_state->isNull())
 		{
+			cout << "isNULL" << endl;
 			/* i.e. no such transition */
 			/* roll back to last acceptance */
 			//special case if last acccpetance index = -1;
 
 			if(last_acceptance_index != -1){
 				string lexeme;
-				lexeme = user_program.substr(start_index, last_acceptance_index - start_index);
+				lexeme = user_program.substr(start_index, last_acceptance_index - start_index + 1);
 				current_index = last_acceptance_index + 1;
 				vector<Rule> conflicting_rules = last_acceptance_state->get_matched_rules();
 				return get_correct_token(conflicting_rules, lexeme);
 			}
 			else{
 				current_index = start_index + 1;
+				start_index++;
 				//report erros
 				continue;
 			}
 		}
 
-		if(current_state->is_acceptance() == true)
+		if(current_state->is_acceptance())
 		{
 			last_acceptance_state = current_state;
 			last_acceptance_index = current_index;
 		}
 		current_index++;
+	}
+
+
+	if(last_acceptance_index != -1){
+		string lexeme;
+		lexeme = user_program.substr(start_index, last_acceptance_index - start_index + 1);
+		current_index = last_acceptance_index + 1;
+		vector<Rule> conflicting_rules = last_acceptance_state->get_matched_rules();
+		last_acceptance_index = -1;
+		return get_correct_token(conflicting_rules, lexeme);
+	}
+	else if(start_index == user_program.size() - 1){
+		return Token("INVALID","INVALID","INVALID");
+	}
+	else{
+		current_index = start_index + 1;
+		//report erros
+		return next_token();
 	}
 }
 

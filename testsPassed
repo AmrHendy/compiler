@@ -1,0 +1,43 @@
+letter = a-d | A-D
+digit = 0-2
+id: letter (letter|digit)*
+
+
+
+aBCD012bYaa01CD
+
+
+Priority = 3 ==> ab|c|d|AB|C|D||ab|c|d|AB|C|D||01|2||*$
+Priority = 3 ==> ab|c|d|AB|C|D||ab|c|d|AB|C|D||01|2||*$
+isNULL
+Lexeme ==> aBCD012b |||| Type ==> id
+isNULL
+Lexeme ==> aa01CD |||| Type ==> id
+===================================================================================================
+letter = a-d | A-D
+digit = 0-2
+id: letter (letter|digit)*
+{while for}
+[; ,]
+
+
+while,aBCD012bYaa01CD;
+
+
+Priority = 1 ==> wh$i$l$e$
+Priority = 1 ==> fo$r$
+Priority = 2 ==> ;
+Priority = 2 ==> ,
+Priority = 3 ==> ab|c|d|AB|C|D||ab|c|d|AB|C|D||01|2||*$
+isNULL
+Lexeme ==> while |||| Type ==> T_while
+isNULL
+Lexeme ==> , |||| Type ==> T_,
+isNULL
+Lexeme ==> aBCD012b |||| Type ==> id
+isNULL
+isNULL
+Lexeme ==> aa01CD |||| Type ==> id
+Lexeme ==> ; |||| Type ==> T_;
+===================================================================================================
+

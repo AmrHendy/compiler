@@ -24,7 +24,7 @@ public:
     /* interface functions */
     void insert_new_row(CompositeState* id_state);
     void insert_new_row(Row* row);
-    void add_row_transition (CompositeState* id_state, char input_char, CompositeState* to_state);
+    void add_row_transition (CompositeState* id_state, char input_char, CompositeState to_state);
  	CompositeState* find_transition(CompositeState* from_state, char input);
     CompositeState* get_transition(CompositeState* id, char trans);
  	CompositeState* get_start_state(void);

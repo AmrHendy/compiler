@@ -1,2 +1,11 @@
-{while}
-id : a*|bc
+letter = a-z | A-Z
+digit = 0 - 9
+digits = digit+
+{boolean int float}
+relop: \=\= | !\= | > | >\= | < | <\=
+assign: =
+{ if else while }
+[; , \( \) { }]
+addop: \+ | -
+mulop: \* | /
+

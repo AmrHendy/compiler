@@ -1,4 +1,5 @@
 #include "CompositeState.h"
+#include <iostream>
 
 CompositeState::CompositeState() {
 	// TODO Auto-generated constructor stub
@@ -11,7 +12,7 @@ CompositeState::~CompositeState() {
 
 
 void CompositeState::insert_new_state(State* new_state) {
-	if(find(states.begin() , states.end(), new_state) == states.end()){
+	if(!is_contain_state(states, new_state)){
 		states.push_back(new_state);
 	}
 }
@@ -22,7 +23,7 @@ CompositeState* CompositeState::get_transition(char input) {
 		State* s = states[index];
 		vector<State*> transitions = s->get_transition(input);
 		for(State* next : transitions){
-			if (find(result.begin(), result.end(), next) == result.end()){
+			if (!is_contain_state(result, next)){
 				result.push_back(next);
 			}
 		}
@@ -41,10 +42,10 @@ CompositeState* CompositeState::vector_to_composite(vector<State*> states) {
 
 
 
-bool CompositeState::is_acceptance(void)
+bool CompositeState::is_acceptance()
 {
 	for(State* s : states){
-		// s represents constituent_state
+		// represents constituent_state
 		if(s->is_acceptance()){
 			return true;
 		}
@@ -63,10 +64,10 @@ CompositeState* CompositeState::find_equivalent_states(CompositeState* start) {
 	while(!q.empty()){
 		State* curr = q.front();
 		q.pop();
-		if(find(result.begin(), result.end(), curr) == result.end())result.push_back(curr);
+		if(!is_contain_state(result, curr))result.push_back(curr);
 		vector<State*> epsilon_transitions = curr->get_transition('\0');
 		for(State* child : epsilon_transitions){
-			if(find(result.begin(), result.end(), child) == result.end()){
+			if(!is_contain_state(result, child)){
 				q.push(child);
 			}
 		}
@@ -79,11 +80,12 @@ vector<State*> CompositeState::get_states() {
 	return states;
 }
 
-bool CompositeState::operator ==(CompositeState* c){
-	vector<State*> c_states = c->get_states();
+bool CompositeState::operator ==(CompositeState c){
+	vector<State*> c_states = c.get_states();
+
 	for(State* s : c_states){
-	  if(find(states.begin(), states.end(), s) == states.end())
-	    return false ;
+		if(!is_contain_state(states, s))
+			return false ;
 	}
 	return true ;
 }
@@ -104,3 +106,11 @@ vector<Rule> CompositeState::get_matched_rules(void)
 	}
 	return result;
 }
+
+
+bool CompositeState::is_contain_state(vector<State*> vec, State* s){
+	vector<State> vecc;
+	for(State* s : vec) vecc.push_back(*s);
+	return find(vecc.begin(), vecc.end(), *s) != vecc.end();
+}
+

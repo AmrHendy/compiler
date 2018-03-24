@@ -48,15 +48,11 @@ void State::set_acceptance(bool value){
 	acceptance_state = value;
 }
 
-bool State::is_acceptance(){
-	return acceptance_state;
-}
 
-
-bool State::operator==(const State* s)
+bool State::operator==(const State s)
 {
 
-	return s->id == State::id;
+	return s.id == State::id;
   //return this == &s;
 }
 
@@ -73,3 +69,11 @@ map<char, vector<State*> > State::getAllTransitions(){
 	return transitions;
 }
 
+int State::get_id(){
+	return id;
+}
+
+
+bool State::is_acceptance(){
+	return acceptance_state;
+}
