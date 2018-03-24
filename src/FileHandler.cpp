@@ -35,3 +35,13 @@ string FileHandler::readUserProgram(string file_name){
 	for(string s : vectorLines)result += s;
 	return result;
 }
+
+
+void FileHandler::openNewTokenFile(){
+
+}
+
+
+void FileHandler::append(string lexeme, string type){
+	//freopen("tokens.txt", "")
+}

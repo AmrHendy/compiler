@@ -19,6 +19,8 @@ public:
 	virtual ~FileHandler();
 	static vector<string> readLanguageRules(string file_name);
 	static string readUserProgram(string file_name);
+	static void openNewTokenFile();
+	static void append(string lexeme, string type);
 };
 
 #endif /* FILEHANDLER_H_ */

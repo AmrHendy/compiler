@@ -1,5 +1,5 @@
-letter = a-z | A-Z
-digit = 0 - 9
+letter = a-c | A-c
+digit = 0 - 1
 id: letter (letter|digit)*
 digits = digit+
 {boolean int float}
