@@ -38,10 +38,11 @@ string FileHandler::readUserProgram(string file_name){
 
 
 void FileHandler::openNewTokenFile(){
-
+	remove("tokens.txt");
 }
 
 
 void FileHandler::append(string lexeme, string type){
-	//freopen("tokens.txt", "")
+	freopen("tokens.txt", "a", stdout);
+	cout << lexeme << "\t" << type << endl;
 }

@@ -31,6 +31,8 @@ private:
 	RegularRule regularRule;
 
 	string removeSpaces(string str);
+
+	string removEscape(string str);
 };
 
 #endif /* RULEEXTRACTOR_H_ */

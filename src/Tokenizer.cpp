@@ -48,11 +48,6 @@ Tokenizer::next_token()
 		/* check current state */
 		if(current_state->isNull())
 		{
-			cout << "isNULL" << endl;
-			/* i.e. no such transition */
-			/* roll back to last acceptance */
-			//special case if last acccpetance index = -1;
-
 			if(last_acceptance_index != -1){
 				string lexeme;
 				lexeme = user_program.substr(start_index, last_acceptance_index - start_index + 1);
@@ -63,7 +58,7 @@ Tokenizer::next_token()
 			else{
 				current_index = start_index + 1;
 				start_index++;
-				//report erros
+				cout << "'" << user_program[start_index - 1] << "'" << "\tError don not match any rules"<<  endl;
 				continue;
 			}
 		}
@@ -90,7 +85,7 @@ Tokenizer::next_token()
 	}
 	else{
 		current_index = start_index + 1;
-		//report erros
+		//cout << "'" << user_program[start_index - 1] << "'" << "\tError don not match any rules" <<  endl;
 		return next_token();
 	}
 }

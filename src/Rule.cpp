@@ -20,7 +20,6 @@ vector<RuleElement> Rule::toPostfix(){
 	/* dot we represent it by $ as input can have . decimal point. */
 	vector<pair<char, int> > operationWeights = {{'*', 3}, {'+', 3}, {'$', 2}, {'|', 1}};
 	PostfixExpressionHandler postfixHandler(operationWeights);
-	cout << "Priority = " << priority << " ==> ";
 	return postfixHandler.toPostfix(rulePattern);
 }
 

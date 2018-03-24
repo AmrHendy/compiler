@@ -10,6 +10,8 @@
 #include <vector>
 #include <string>
 #include <fstream>
+#include <stdio.h>
+#include <iostream>
 
 using namespace std;
 
@@ -21,6 +23,7 @@ public:
 	static string readUserProgram(string file_name);
 	static void openNewTokenFile();
 	static void append(string lexeme, string type);
+
 };
 
 #endif /* FILEHANDLER_H_ */

@@ -1,4 +1,4 @@
-letter = a-c | A-c
+letter = a-b | A-b
 digit = 0 - 1
 id: letter (letter|digit)*
 digits = digit+

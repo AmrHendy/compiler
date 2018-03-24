@@ -10,7 +10,7 @@
 
 LexicalAnalyzer::LexicalAnalyzer(string language_rules_directory, string user_prog_directory){
 	TransitionTable minimized_dfa_table = LexcialAnalyzerGenerator::generate_minimal_dfa(language_rules_directory);
-	cout << "Finsihing Lexical Generator\n";
+	//cout << "Finsihing Lexical Generator\n";
 	LexicalAnalyzer::tokenizer = Tokenizer(minimized_dfa_table, user_prog_directory);
 }
 
