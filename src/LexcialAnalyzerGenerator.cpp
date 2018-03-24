@@ -22,6 +22,8 @@ TransitionTable LexcialAnalyzerGenerator::generate_minimal_dfa(string language_r
 	NFA nfa_generator = NFA(processed_rules);
 	Machine* nfa_machine = nfa_generator.generate_nfa_machine();
 
+	cout << "Finsihing NFA Machiner << endl";
+
 	DFAMachine dfa_machine = DFAMachine(nfa_machine);
 	TransitionTable minimized_dfa_table = dfa_machine.get_minimized_dfa_table();
 	return minimized_dfa_table;
