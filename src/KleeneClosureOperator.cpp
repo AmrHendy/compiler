@@ -11,8 +11,6 @@ KleeneClosureOperator::~KleeneClosureOperator() {
 
 
 Machine* KleeneClosureOperator::apply(Machine* m){
-	Machine* result = new Machine();
-
 	State* start = new State(NumberGenerator::getNextUniqueInt());
 	State* end = new State(NumberGenerator::getNextUniqueInt());
 
@@ -22,8 +20,17 @@ Machine* KleeneClosureOperator::apply(Machine* m){
 	m->get_end()->add_transition('\0', m->get_start());
 	m->get_end()->add_transition('\0', end);
 
-	result->set_start(start);
-	result->set_end(end);
+	m->set_start(start);
+	m->set_end(end);
+	return m;
 
+
+	/*
+	Machine* result = new Machine();
+	m->get_start()->add_transition('\0', m->get_end());
+	m->get_end()->add_transition('\0', m->get_start());
+	result->set_start(m->get_start());
 	return result;
+
+	*/
 }

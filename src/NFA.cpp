@@ -1,5 +1,7 @@
 #include "NFA.h"
 
+#include <iostream>
+
 NFA::NFA(vector<Rule> processed_rules) {
 	NFA::processed_rules = processed_rules;
 }
@@ -19,13 +21,29 @@ Machine* NFA::generate_nfa_machine() {
 		machines.push_back(NFABuilder::build_machine(r));
 	}
 
-	/* combine all rules into single machine */
+	cout << "Finishing all single NFAS" << endl;
+
+
+	/*
 	OrOperator or_operator;
-	Machine* overall_machine = machines[0];
+	nfa_result = machines[0];
 	for( int i = 1 ; i < machines.size() ; i++ )
 	{
-		overall_machine = or_operator.apply(overall_machine, machines[i]);
+		nfa_result = or_operator.apply(nfa_result, machines[i]);
 	}
-	return overall_machine;
-}
+	cout << "Finishing overall NFA" << endl;
+	*/
 
+	/* combine all rules into single machine */
+	Machine* nfa_result = machines[0];
+	State* start = new State(NumberGenerator::getNextUniqueInt());
+	start->add_transition('\0', nfa_result->get_start());
+	nfa_result->set_start(start);
+
+	for( int i = 1 ; i < machines.size() ; i++ )
+	{
+		nfa_result->get_start()->add_transition('\0', machines[i]->get_start());
+	}
+	cout << "Finishing overall NFA" << endl;
+	return nfa_result;
+}

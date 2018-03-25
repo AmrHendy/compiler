@@ -1,8 +1,0 @@
-int aa1,cbb,ab,abbb;
-while(aa!=10){
-aa=aa+1&
-}
-if(cbbbb==0)
-bc=10;
-else
-ac=20;

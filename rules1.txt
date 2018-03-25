@@ -1,4 +1,0 @@
-letter = a-d | A-D
-digit = 0-2
-id: letter (letter|digit)*
-
