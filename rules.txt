@@ -1,13 +1,12 @@
-letter = a-b | A-b
-digit = 0 - 1
+letter = a-c | A-C
+digit = 0 - 3
 id: letter (letter|digit)*
 digits = digit+
 {boolean int float}
-num: digit+ | digit+ . digits ( \L | E digits)
+num: digit+ | digit+ . digit+ ( \L | E digit+)
 relop: \=\= | !\= | > | >\= | < | <\=
-assign: =
-{ if else while }
-[; , \( \) { }]
-addop: \+ | -
+assign: \=
+{if else while}
+[; , \( \) \{ \}]
+addop: \+ | \-
 mulop: \* | /
-

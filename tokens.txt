@@ -1,58 +1,39 @@
 int	T_int
 ' '	Error don not match any rules
-'s'	Error don not match any rules
-'u'	Error don not match any rules
-'m'	Error don not match any rules
-' '	Error don not match any rules
+aa1	id
 ,	T_,
-' '	Error don not match any rules
-'c'	Error don not match any rules
-'o'	Error don not match any rules
-'u'	Error don not match any rules
-'n'	Error don not match any rules
-'t'	Error don not match any rules
-' '	Error don not match any rules
+cbb	id
 ,	T_,
-' '	Error don not match any rules
-'p'	Error don not match any rules
-a	id
-'s'	Error don not match any rules
-'s'	Error don not match any rules
-' '	Error don not match any rules
+ab	id
 ,	T_,
-'m'	Error don not match any rules
-'n'	Error don not match any rules
-'t'	Error don not match any rules
+abbb	id
 ;	T_;
-' '	Error don not match any rules
 while	T_while
-' '	Error don not match any rules
 (	T_(
-'p'	Error don not match any rules
-a	id
-'s'	Error don not match any rules
-'s'	Error don not match any rules
-' '	Error don not match any rules
+aa	id
 !=	relop
-' '	Error don not match any rules
 10	num
 )	T_)
 {	T_{
-'p'	Error don not match any rules
-a	id
-'s'	Error don not match any rules
-'s'	Error don not match any rules
-' '	Error don not match any rules
+aa	id
 =	assign
-' '	Error don not match any rules
-'p'	Error don not match any rules
-a	id
-'s'	Error don not match any rules
-'s'	Error don not match any rules
-' '	Error don not match any rules
+aa	id
 +	addop
-' '	Error don not match any rules
 1	num
-' '	Error don not match any rules
-;	T_;
+'&'	Error don not match any rules
 }	T_}
+if	T_if
+(	T_(
+cbbbb	id
+==	relop
+0	num
+)	T_)
+bc	id
+=	assign
+10	num
+;	T_;
+else	T_else
+ac	id
+=	assign
+20	num
+;	T_;
