@@ -4,7 +4,8 @@ STRUCTURES/CompositeState.o: ../STRUCTURES/CompositeState.cpp \
  ../STRUCTURES/../Rule_Extractor/RuleElement.h \
  ../STRUCTURES/../Rule_Extractor/PostfixExpressionHandler.h \
  ../STRUCTURES/../Rule_Extractor/../GENERATORS/Alpha.h \
- ../STRUCTURES/../LOGGER/Logger.h
+ ../STRUCTURES/../LOGGER/Logger.h \
+ ../STRUCTURES/../GENERATORS/NumberGenerator.h
 
 ../STRUCTURES/CompositeState.h:
 
@@ -19,3 +20,5 @@ STRUCTURES/CompositeState.o: ../STRUCTURES/CompositeState.cpp \
 ../STRUCTURES/../Rule_Extractor/../GENERATORS/Alpha.h:
 
 ../STRUCTURES/../LOGGER/Logger.h:
+
+../STRUCTURES/../GENERATORS/NumberGenerator.h:

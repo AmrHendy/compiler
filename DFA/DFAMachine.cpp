@@ -32,7 +32,7 @@ TransitionTable DFAMachine::generate_minimized_dfa_table(){
 	TransitionTable dfa_table = dfa_table_builder.generate_dfa_table();
 
 	/* 02 minimize DFA table */
-//     dfa_table = dfa_table_builder.minimize_dfa_table(dfa_table);
+    dfa_table = dfa_table_builder.minimize_dfa_table(dfa_table);
 	return dfa_table;
 }
 

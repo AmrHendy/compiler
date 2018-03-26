@@ -53,12 +53,13 @@ Tokenizer::next_token()
 				string lexeme;
 				lexeme = user_program.substr(start_index, last_acceptance_index - start_index + 1);
 				current_index = last_acceptance_index + 1;
-				vector<Rule> conflicting_rules = last_acceptance_state->get_matched_rules();
+				vector<Rule> conflicting_rules = last_acceptance_state->get_rules();
 				return get_correct_token(conflicting_rules, lexeme);
 			}
 			else{
 				current_index = start_index + 1;
-				cout << "'" << user_program[start_index] << "'" << "\tError don not match any rules"<<  endl;
+				if(current_char != ' ')
+					cout << "'" << user_program[start_index] << "'" << "\tError don not match any rules"<<  endl;
 				return next_token();
 			}
 		}

@@ -36,6 +36,23 @@ State::get_transition(char input , int index){
 	return transitions[input][index] ;
 }
 
+vector<State*>
+State::get_transitions(char c){
+	return transitions[c] ;
+}
+
+void
+State::add_transitions (State* s){
+	for(char c : Alpha::alpha){
+		vector<State*> v = s->get_transitions(c) ;
+		for(State* s : v){
+			if(find(transitions[c].begin() , transitions[c].end() , s) == transitions[c].end() ){
+				transitions[c].push_back(s) ;
+			}
+		}
+	}
+}
+
 int
 State::size_transition(char input){
 	return transitions[input].size() ;
@@ -88,6 +105,7 @@ bool State::operator > (const State s) const
 }
 
 void State::print(){
+/*
 	string str = "\t\tstate { id = " ;
 	str += patch::to_string(id) ;
 	str += " accept = " ;
@@ -104,6 +122,23 @@ void State::print(){
 	str += " rule_priority = " ;
 	str += patch::to_string(rule_priority) ;
 	Logger::logger.print_string(str);
+*/
+
+//	string str = "" ;
+//	for(char c : Alpha::getAlphabet()){
+//		vector<State*> tos = transitions[c];
+//		for(State* s : tos){
+//			int to_id = s->get_id() ;
+//		  str+= "\t" +patch::to_string(id)
+//			 + " -> "
+//			 + patch::to_string(to_id)
+//			 + "[ label= "
+//			 + patch::to_string(c)
+//			 + " ];\n";
+//		  	 s->print();
+//		}
+//	}
+//	Logger::print_string(str);
 }
 
 

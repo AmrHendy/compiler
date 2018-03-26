@@ -32,9 +32,10 @@ public:
     CompositeState* get_transition(CompositeState id , char trans);
     CompositeState* get_start_state(void) ;
 
-    vector<CompositeState> get_acceptance_states() ;
-    vector<CompositeState> get_non_acceptance_states() ;
+    vector<CompositeState*> get_acceptance_states() ;
+    vector<CompositeState*> get_non_acceptance_states() ;
 
+    void print(string s) ;
 
 private:
 	/* attributes */

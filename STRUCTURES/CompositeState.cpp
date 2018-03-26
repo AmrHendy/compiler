@@ -1,9 +1,10 @@
 #include "CompositeState.h"
 #include <iostream>
-
+#include "../GENERATORS/NumberGenerator.h"
 
 
 CompositeState::CompositeState() {
+	this -> id = -1 ;
 }
 
 CompositeState::CompositeState(vector<State> states) {
@@ -61,14 +62,17 @@ CompositeState::get_transition(char input) {
 
 CompositeState*
 CompositeState::find_equivalent_states(CompositeState start) {
-
 	CompositeState* result = start.get_transition('\0') ;
-	result->add_states(start) ;
 
-	if(result->get_size() == start.get_size())
+	if(result->get_size() == 0 ){
+		result->add_states(start) ;
 		return result ;
-	else
-		return find_equivalent_states(*result) ;
+	}
+
+	CompositeState* epis_reach = find_equivalent_states(*result) ;
+	epis_reach->add_states(start) ;
+
+	return  epis_reach;
 }
 
 
@@ -111,9 +115,34 @@ CompositeState::is_start(){
 	return false;
 }
 
+void
+CompositeState::add_rule(Rule r){
+	this->rules.push_back(r) ;
+}
+
+vector<Rule>
+CompositeState::get_rules(){
+	if(rules.empty()){
+		for(State s : states)
+			if(s.is_acceptance() )
+				rules.push_back(s.get_matched_rule());
+	}
+	return this -> rules ;
+}
+
 bool
 CompositeState::is_empty(){
 	return this->get_size() == 0 ;
+}
+
+void
+CompositeState::set_id(int id){
+	this -> id = id ;
+}
+
+int
+CompositeState::get_id(){
+	return this -> id ;
 }
 
 bool
@@ -136,10 +165,10 @@ CompositeState::operator !=(CompositeState c){
 
 
 void CompositeState::print(){
-	Logger::logger.print_string("\t\tcomp_state{ \n") ;
+	Logger::logger.print_string("\t\tcomp_state{ \n" , Files::log_file) ;
 	for(State s : states ){
 		s.print() ;
 	}
-	Logger::logger.print_string("\n\t\t}");
+	Logger::logger.print_string("\n\t\t}" , Files::log_file);
 }
 

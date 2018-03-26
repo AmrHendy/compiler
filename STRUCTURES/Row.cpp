@@ -40,3 +40,20 @@ Row::insert_transition(char input_char, CompositeState* s)
 {
 	transitions[input_char] = s;
 }
+
+
+void
+Row::print(){
+	int id_st = id_state->get_id() ;
+	Logger::print_string(patch::to_string(id_st) + "\t" , Files::tables_file ) ;
+	for(char c : Alpha::alpha){
+		CompositeState* s = get_transition(c) ;
+		id_st = s->get_id() ;
+		if(id_st == -1)
+			Logger::print_string("-\t" , Files::tables_file ) ;
+		else
+			Logger::print_string(patch::to_string(id_st) + "\t" , Files::tables_file ) ;
+	}
+	Logger::print_string("\n",Files::tables_file);
+}
+

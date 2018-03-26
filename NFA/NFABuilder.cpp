@@ -47,15 +47,15 @@ Machine* NFABuilder::build_machine(Rule rule) {
 		}
 		else if(element.getContent() == '*')
 		{
-			Machine* m1 = stack.back();
+			Machine* m = stack.back();
 			stack.pop_back() ;
-			stack.push_back(KleeneClosureOperator::apply(m1)) ;
+			stack.push_back(KleeneClosureOperator::apply(m)) ;
 		}
 		else if(element.getContent() == '+')
 		{
-			Machine* m1 = stack.back();
+			Machine* m = stack.back();
 			stack.pop_back();
-			stack.push_back(PositiveClosureOperator::apply(m1)) ;
+			stack.push_back(PositiveClosureOperator::apply(m)) ;
 		}
 
 	}

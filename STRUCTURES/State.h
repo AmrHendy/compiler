@@ -21,6 +21,9 @@ public:
     void   add_transition   (char input , State* to_state) ;
     bool   transition_found (char input , State* to_state) ;
     State* get_transition   (char input , int index) ;
+    vector<State*> get_transitions(char);
+    void add_transitions (State*) ;
+
     int    size_transition  (char input) ;
 
     void set_start() ;

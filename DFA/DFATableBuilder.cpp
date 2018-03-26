@@ -27,17 +27,21 @@ DFATableBuilder::generate_dfa_table(void)
 {
   queue<CompositeState*> q;
   TransitionTable dfa_table = TransitionTable();
-  /* get table first entry */
   CompositeState* start_state = new CompositeState();
+  /* get table first entry */
   start_state->add_state(*nfa_machine.get_start());
   start_state = start_state->find_equivalent_states(*start_state);
   q.push(start_state);
+
+  NumberGenerator::setCurrentInt(0);
+
   while(!q.empty())
   {
     CompositeState* curr = q.front();
     q.pop();
     if(!dfa_table.row_found(*curr))
     {
+      curr->set_id(NumberGenerator::getNextUniqueInt());
       /* add new row */
       dfa_table.insert_new_row(curr);
       /* get transitions of this new entry */
@@ -48,12 +52,14 @@ DFATableBuilder::generate_dfa_table(void)
         {
           to_state = to_state->find_equivalent_states(*to_state);
           q.push(to_state) ;
-          CompositeState* add = new CompositeState(*to_state);
-          dfa_table.add_transition(*curr, i, add);
+          dfa_table.add_transition(*curr, i, to_state);
         }
       }
     }
   }
+
+  dfa_table.print("dfa table : ");
+
   return dfa_table;
 
 }
@@ -77,5 +83,9 @@ DFATableBuilder::minimize_dfa_table(TransitionTable dfa_table)
 
     /* REMOVE EQUAVILENT STATES AND MODIFY TABLE  */
     Dfa_table_min table_min(dfa_table,p_rapper) ;
-    return table_min.get_min_table();
+    TransitionTable dfa_min = table_min.get_min_table() ;
+
+    dfa_min.print("dfa_min : ");
+
+    return dfa_min;
 }

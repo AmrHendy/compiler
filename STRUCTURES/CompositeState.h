@@ -27,6 +27,9 @@ public:
 	void  add_states  (CompositeState new_state) ;
 	set<State>  get_states  () ;
 
+	void set_id(int id) ;
+	int get_id() ;
+
 	CompositeState* get_transition(char input) ;
 	CompositeState* find_equivalent_states(CompositeState start) ;
 
@@ -38,6 +41,9 @@ public:
 	bool is_start() ;
 	bool is_empty() ;
 
+	void add_rule(Rule r);
+	vector<Rule> get_rules();
+
 	bool operator == (CompositeState c) ;
 	bool operator != (CompositeState c) ;
 
@@ -45,6 +51,8 @@ public:
 
 private:
 	set<State> states ;
+	vector<Rule> rules ;
+	int id ;
 };
 
 #endif /* COMPOSITESTATE_H_ */

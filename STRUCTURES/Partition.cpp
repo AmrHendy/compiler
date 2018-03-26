@@ -5,7 +5,7 @@ Partition::Partition(int identifier)
 	this->identifier = identifier ;
 }
 
-Partition::Partition(int identifier , vector<CompositeState>states)
+Partition::Partition(int identifier , vector<CompositeState*>states)
 {
 	this->identifier = identifier ;
     this -> states = states ;
@@ -16,26 +16,30 @@ Partition::~Partition(void){
 	this -> states_id.clear() ;
 }
 
-CompositeState
+CompositeState*
 Partition::get_state(int index){
 	return this -> states[index] ;
 }
 
-CompositeState
+CompositeState*
 Partition::get_essential(){
-	bool accept,start ;
-	for(CompositeState s : states){
-		if(s.is_acceptance())
-			accept = true ;
-		if(s.is_start())
+	bool start ;
+	for(int i=0 ; i< (int) states.size() ; i++){
+		vector<Rule> rules ;
+		if(states[i]->is_start())
 			start = true ;
+		if(states[i]->is_acceptance())
+			rules = states[i]->get_matched_rules();
+		for(Rule r : rules )
+			states[0]->add_rule(r) ;
 	}
-	states[0].set_start() ;
+	if(start)
+		states[0]->set_start() ;
 	return states[0] ;
 }
 
 void
-Partition::add_state(CompositeState s)
+Partition::add_state(CompositeState* s)
 {
     this -> states.push_back(s) ;
 }
@@ -43,8 +47,8 @@ Partition::add_state(CompositeState s)
 bool
 Partition::belong(CompositeState s)
 {
-    for(CompositeState i : states)
-        if(s == i)
+    for(CompositeState* i : states)
+        if(s == *i)
             return true ;
     return false ;
 }
@@ -113,11 +117,11 @@ Partition::add_state_id(vector<int> id){
 }
 
 void Partition::print(){
-	Logger::logger.print_string("\tPartition { \n") ;
-	for(CompositeState c : states){
-		c.print();
+	Logger::logger.print_string("\tPartition { \n" , Files::log_file) ;
+	for(CompositeState* c : states){
+		c->print();
 	}
-	Logger::logger.print_string("\n\t}");
+	Logger::logger.print_string("\n\t}" , Files::log_file);
 }
 
 

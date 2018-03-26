@@ -35,10 +35,7 @@ TransitionTable::insert_new_row (Row* r)
 void
 TransitionTable::insert_new_row (CompositeState* id_state)
 {
-	if(!row_found(*id_state))
-	{
-	  rows.push_back(new Row(id_state));
-	}
+	rows.push_back(new Row(id_state));
 }
 
 bool
@@ -94,30 +91,42 @@ TransitionTable::get_start_state(void)
 	return new CompositeState() ;
 }
 
-vector<CompositeState>
+vector<CompositeState*>
 TransitionTable::get_acceptance_states(){
-    vector<CompositeState> res ;
+    vector<CompositeState*> res ;
     for (Row* r : rows)
     {
         CompositeState* id = r->get_id_state() ;
         if(id->is_acceptance())
         {
-            res.push_back(*id) ;
+            res.push_back(id) ;
         }
     }
     return res ;
 }
 
-vector<CompositeState>
+vector<CompositeState*>
 TransitionTable::get_non_acceptance_states(){
-    vector<CompositeState> res ;
+    vector<CompositeState*> res ;
     for (Row* r : rows)
     {
         CompositeState* id = r->get_id_state() ;
         if(!id->is_acceptance())
         {
-            res.push_back(*id) ;
+            res.push_back(id) ;
         }
     }
     return res ;
 }
+
+
+void
+TransitionTable::print(string s) {
+	Logger::print_string(s + "\n" , Files::tables_file) ;
+	for(Row* r : rows){
+		r->print() ;
+	}
+	Logger::print_string("\n -------------------------- \n" , Files::tables_file) ;
+}
+
+

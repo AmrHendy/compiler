@@ -21,13 +21,13 @@ Partition_Rapper::~Partition_Rapper() {
 	this -> partitions.clear() ;
 }
 
-vector<CompositeState>
-Partition_Rapper::get_essentials(){
-	vector<CompositeState> ess ;
+CompositeState*
+Partition_Rapper::get_essential(CompositeState* c){
 	for(Partition p : partitions){
-		ess.push_back(p.get_essential()) ;
+		if(p.belong(*c))
+			return p.get_essential() ;
 	}
-	return ess ;
+	return new CompositeState()  ;
 }
 
 
@@ -89,7 +89,7 @@ Partition_Rapper::generate_partion_ids(int index){
 //			+ patch::to_string(n2)
 //			+ "\n" ) ;
 
-	Logger::print_string(" genrating ids for partition " + patch::to_string(index) +  ": \n");
+	Logger::print_string(" genrating ids for partition " + patch::to_string(index) +  ": \n" , Files::log_file);
 	for(int i=0 ; i < partitions[index].size() ; i++ ){
 		/* NEW IDENTIFIER FOR STATE i IN PARTITION */
 		vector<int> id ;
@@ -97,18 +97,18 @@ Partition_Rapper::generate_partion_ids(int index){
 		set<char> alpha = Alpha::getAlphabet();
 		/* APPEND TO STATE ID PARTITION ID */
 		for (char c : alpha ){
-			CompositeState* to = partitions[index].get_state(i).get_transition(c) ;
+			CompositeState* to = partitions[index].get_state(i)->get_transition(c) ;
 			if(to == nullptr)
 				id.push_back(get_state_partition_id(*to)) ;
 			else
 				id.push_back(0);
 		}
 
-		Logger::print_string(" id for state " + patch::to_string(i) +" : ");
+		Logger::print_string(" id for state " + patch::to_string(i) +" : " , Files::log_file);
 		for(int i : id){
-			Logger::print_string(patch::to_string(i)+" ");
+			Logger::print_string(patch::to_string(i)+" " , Files::log_file);
 		}
-		Logger::print_string("\n");
+		Logger::print_string("\n" , Files::log_file);
 
 		partitions[index].add_state_id(id) ;
 	}
@@ -130,11 +130,11 @@ Partition_Rapper::set_partition_id(int index , int id){
 
 void
 Partition_Rapper::print(){
-	Logger::logger.print_string("Partition_rapper { \n") ;
+	Logger::logger.print_string("Partition_rapper { \n" , Files::log_file) ;
 	for(Partition p : partitions){
 		int id = p.get_identifier() ;
-		Logger::print_string(patch::to_string(id));
+		Logger::print_string(patch::to_string(id) , Files::log_file);
 	}
-	Logger::logger.print_string("\n}");
+	Logger::logger.print_string("\n}" , Files::log_file);
 }
 

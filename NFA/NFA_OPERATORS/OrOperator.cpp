@@ -11,13 +11,29 @@ OrOperator::~OrOperator()
 }
 
 Machine* OrOperator::apply(Machine* m1, Machine* m2){
-	m1->get_start()->add_transition('\0', m2->get_start());
-	m1->get_end()->add_transition('\0', m2->get_end());
-	Machine* result = new Machine() ;
+	Machine* result = new Machine();
+
+//	Logger::print_string("oring \n");
+
+//	m1->print();
+
+//	Logger::print_string("with \n");
+
+//	m2->print();
+
+	m1->get_start()->add_transitions(m2->get_start());
+	m1->get_end()->add_transition('\0' , m2->get_end());
+	free(m2->get_start()) ;
+
+
 	result->set_start(m1->get_start());
-	result->set_end(m1->get_end());
-	return result ;
-//
+	result->set_end(m2->get_end());
+
+//	Logger::print_string("result is \n");
+
+//	result->print();
+
+	return result;
 //	Machine* result = new Machine();
 //
 //	State* start = new State(NumberGenerator::getNextUniqueInt());
@@ -30,5 +46,5 @@ Machine* OrOperator::apply(Machine* m1, Machine* m2){
 //	m2->get_end()->add_transition('\0', end);
 //	result->set_end(end);
 //	return result;
-//
+
 }

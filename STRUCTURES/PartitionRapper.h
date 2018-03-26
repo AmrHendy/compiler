@@ -18,7 +18,7 @@ class Partition_Rapper {
 	Partition_Rapper(TransitionTable dfa_table);
 	virtual ~Partition_Rapper();
 
-	vector<CompositeState> get_essentials() ;
+	CompositeState* get_essential(CompositeState* c);
 
 	void add_partition(Partition) ;
 

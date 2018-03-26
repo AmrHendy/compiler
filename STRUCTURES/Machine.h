@@ -23,8 +23,8 @@ public:
     void print();
 
 private:
-	State* start;
-	State* end;
+	State* start = new State(-1);
+	State* end = new State(-1);
 };
 
 

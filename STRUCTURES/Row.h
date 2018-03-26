@@ -24,6 +24,8 @@ class Row
 
 		void insert_transition(char input_char, CompositeState* s);
 
+		void print() ;
+
 	private:
 		/* attributes */
 		CompositeState* id_state;

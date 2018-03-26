@@ -11,10 +11,19 @@ PositiveClosureOperator::~PositiveClosureOperator() {
 
 
 Machine* PositiveClosureOperator::apply(Machine* m){
-	m->get_end()->add_transition('\0', m->get_start());
-	Machine* result = new Machine () ;
-	result->set_start(m->get_start()) ;
-	return result ;
+
+//	Logger::print_string("postive on \n");
+
+//	m->print();
+
+	m->get_end()->add_transitions(m->get_start());
+
+//	Logger::print_string("result is \n");
+
+//	m->print();
+
+	return m;
+
 //	Machine* result = new Machine();
 //
 //	State* end = new State(NumberGenerator::getNextUniqueInt());

@@ -16,13 +16,13 @@ class Partition
 
         /* constructor and destructor */
         Partition(int);
-        Partition(int,vector<CompositeState> states);
+        Partition(int,vector<CompositeState*> states);
         virtual ~Partition(void);
 
         /* interface functions */
-        CompositeState get_state(int index) ;
-        CompositeState get_essential() ;
-        void add_state (CompositeState) ;
+        CompositeState* get_state(int index) ;
+        CompositeState* get_essential() ;
+        void add_state (CompositeState*) ;
         bool belong (CompositeState) ;
         int size() ;
 
@@ -37,7 +37,7 @@ class Partition
 
     /* attributes */
     private:
-        vector<CompositeState> states ;
+        vector<CompositeState*> states ;
         /* IDENTIFIERS TO SPLIT STATES AFTER RE_PARTITION*/
         vector<vector<int>> states_id ;
 

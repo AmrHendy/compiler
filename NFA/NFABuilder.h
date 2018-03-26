@@ -1,6 +1,7 @@
 #ifndef NFABUILDER_H_  /* Include guard */
 #define NFABUILDER_H_
 
+#include <vector>
 #include "../STRUCTURES/Machine.h"
 #include "../Rule_Extractor/Rule.h"
 #include "NFA_OPERATORS/AndOperator.h"

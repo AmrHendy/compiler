@@ -7,7 +7,7 @@
 #include "Alpha.h"
 
 
-set<char> Alpha::alpha = {};
+set<char> Alpha::alpha = {'\0'};
 
 Alpha::Alpha() {
 	// TODO Auto-generated constructor stub
