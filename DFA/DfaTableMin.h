@@ -14,7 +14,7 @@
 class Dfa_table_min {
 public:
 	Dfa_table_min(TransitionTable , Partition_Rapper);
-	TransitionTable get_min_table();
+	TransitionTable* get_min_table();
 private:
 	TransitionTable dfa_table ;
 	Partition_Rapper p_rapper ;

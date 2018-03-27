@@ -122,7 +122,14 @@ TransitionTable::get_non_acceptance_states(){
 
 void
 TransitionTable::print(string s) {
-	Logger::print_string(s + "\n" , Files::tables_file) ;
+	Logger::print_string(s + "\n\t" , Files::tables_file) ;
+	char dcare = '~' ;
+	for(char c : Alpha::alpha)
+		if(c!='\0')
+			Logger::print_string(patch::to_string(c) + "\t" , Files::tables_file) ;
+		else
+			Logger::print_string(patch::to_string(dcare) + "\t" , Files::tables_file) ;
+	Logger::print_string("\n" , Files::tables_file) ;
 	for(Row* r : rows){
 		r->print() ;
 	}

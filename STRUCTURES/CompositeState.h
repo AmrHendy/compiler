@@ -46,7 +46,6 @@ public:
 
 	bool operator == (CompositeState c) ;
 	bool operator != (CompositeState c) ;
-
 	void print();
 
 private:

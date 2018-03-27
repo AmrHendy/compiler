@@ -23,7 +23,7 @@ Partition::get_state(int index){
 
 CompositeState*
 Partition::get_essential(){
-	bool start ;
+	bool start;
 	for(int i=0 ; i< (int) states.size() ; i++){
 		vector<Rule> rules ;
 		if(states[i]->is_start())

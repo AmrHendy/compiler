@@ -21,3 +21,10 @@ int main() {
 	}
 	return 0;
 }
+
+
+//
+//int main(){
+////	Machine m1 = new
+//}
+

@@ -62,17 +62,20 @@ CompositeState::get_transition(char input) {
 
 CompositeState*
 CompositeState::find_equivalent_states(CompositeState start) {
+
+	CompositeState* ret = new CompositeState() ;
+
 	CompositeState* result = start.get_transition('\0') ;
 
 	if(result->get_size() == 0 ){
-		result->add_states(start) ;
-		return result ;
+		ret->add_states(start) ;
+		return ret ;
 	}
 
 	CompositeState* epis_reach = find_equivalent_states(*result) ;
 	epis_reach->add_states(start) ;
 
-	return  epis_reach;
+	return  epis_reach ;
 }
 
 
@@ -97,6 +100,8 @@ CompositeState::set_start(){
 bool
 CompositeState::is_acceptance()
 {
+	if(!rules.empty())
+		return true ;
 	for(State s : states){
 		if(s.is_acceptance()){
 			return true;

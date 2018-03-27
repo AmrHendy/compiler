@@ -25,38 +25,119 @@ DFATableBuilder::~DFATableBuilder(void)
 TransitionTable
 DFATableBuilder::generate_dfa_table(void)
 {
-  queue<CompositeState*> q;
-  TransitionTable dfa_table = TransitionTable();
-  CompositeState* start_state = new CompositeState();
-  /* get table first entry */
-  start_state->add_state(*nfa_machine.get_start());
-  start_state = start_state->find_equivalent_states(*start_state);
-  q.push(start_state);
+//  queue<CompositeState*> q;
+//  TransitionTable dfa_table = TransitionTable();
+//  CompositeState* start_state = new CompositeState();
+//
+//  NumberGenerator::setCurrentInt(0);
+//
+//  /* get table first entry */
+//  start_state->add_state(*nfa_machine.get_start());
+//  start_state = start_state->find_equivalent_states(*start_state);
+//  start_state->set_id(NumberGenerator::getNextUniqueInt());
+//  q.push(start_state);
+//
+//
+//  while(!q.empty())
+//  {
+//    CompositeState* curr = q.front();
+//    q.pop();
+//    if(!dfa_table.row_found(*curr))
+//    {
+//      curr->set_id(NumberGenerator::getNextUniqueInt());
+//      /* add new row */
+//      dfa_table.insert_new_row(curr);
+//      /* get transitions of this new entry */
+//      for (char i : Alpha::getAlphabet()){
+//        /* get states reachable by this state(s) when applying char i */
+//        CompositeState* to_state = curr->get_transition(i) ;
+//        if(to_state->get_size() != 0)
+//        {
+//          to_state = to_state->find_equivalent_states(*to_state);
+//          q.push(to_state) ;
+//          dfa_table.add_transition(*curr, i, to_state);
+//        }
+//      }
+//    }
+//  }
 
-  NumberGenerator::setCurrentInt(0);
+//  queue<CompositeState*> q;
+//  TransitionTable dfa_table = TransitionTable();
+//  /* get table first entry */
+//  CompositeState* start_state = new CompositeState();
+//
+//  start_state->add_state(*nfa_machine.get_start());
+//  start_state = start_state->find_equivalent_states(*start_state);
+//
+//  NumberGenerator::setCurrentInt(0) ;
+//
+//  q.push(start_state);
+//
+//  while(!q.empty())
+//  {
+//	CompositeState* curr = q.front();
+//	q.pop();
+//	if(!dfa_table.row_found(*curr))
+//	{
+//	  curr->set_id(NumberGenerator::getNextUniqueInt());
+//	  /* add new row */
+//	  dfa_table.insert_new_row(curr);
+//	  /* get transitions of this new entry */
+//	  for (char i : Alpha::getAlphabet()){
+//		/* get states reachable by this state(s) when applying char i */
+//		CompositeState* to_state = curr->get_transition(i) ;
+//		if(!to_state->get_size() == 0)
+//		{
+//		  to_state = to_state->find_equivalent_states(*to_state);
+//		  q.push(to_state) ;
+//		  dfa_table.add_transition(*curr, i, to_state);
+//		}
+//	  }
+//	}
+//  }
 
-  while(!q.empty())
-  {
-    CompositeState* curr = q.front();
-    q.pop();
-    if(!dfa_table.row_found(*curr))
-    {
-      curr->set_id(NumberGenerator::getNextUniqueInt());
-      /* add new row */
-      dfa_table.insert_new_row(curr);
-      /* get transitions of this new entry */
-      for (char i : Alpha::getAlphabet()){
-        /* get states reachable by this state(s) when applying char i */
-        CompositeState* to_state = curr->get_transition(i) ;
-        if(to_state->get_size() != 0)
-        {
-          to_state = to_state->find_equivalent_states(*to_state);
-          q.push(to_state) ;
-          dfa_table.add_transition(*curr, i, to_state);
-        }
-      }
-    }
-  }
+
+	  queue<CompositeState*> q;
+	  TransitionTable dfa_table = TransitionTable();
+	  /* get table first entry */
+	  CompositeState* start_state = new CompositeState();
+	  vector<CompositeState> states_id ;
+
+	  start_state->add_state(*nfa_machine.get_start());
+	  start_state = start_state->find_equivalent_states(*start_state);
+	  start_state->set_id(0) ;
+
+	  q.push(start_state);
+	  states_id.push_back(*start_state);
+
+	  while(!q.empty())
+	  {
+	    CompositeState* curr = q.front();
+	    q.pop();
+	    if(!dfa_table.row_found(*curr))
+	    {
+	      /* add new row */
+	      dfa_table.insert_new_row(curr);
+	      /* get transitions of this new entry */
+	      for (char i : Alpha::getAlphabet()){
+	        /* get states reachable by this state(s) when applying char i */
+	        CompositeState* to_state = curr->get_transition(i) ;
+	        if(!to_state->get_size() == 0)
+	        {
+	          to_state = to_state->find_equivalent_states(*to_state);
+	          if(find(states_id.begin() , states_id.end() , *to_state) == states_id.end()){
+	              to_state->set_id(states_id.size());
+	              states_id.push_back(*to_state);
+	          }else{
+	              to_state->set_id(find(states_id.begin() , states_id.end() , *to_state) - states_id.begin());
+	          }
+	          q.push(to_state) ;
+	          dfa_table.add_transition(*curr, i, to_state);
+	        }
+	      }
+	    }
+	  }
+
 
   dfa_table.print("dfa table : ");
 
@@ -83,9 +164,9 @@ DFATableBuilder::minimize_dfa_table(TransitionTable dfa_table)
 
     /* REMOVE EQUAVILENT STATES AND MODIFY TABLE  */
     Dfa_table_min table_min(dfa_table,p_rapper) ;
-    TransitionTable dfa_min = table_min.get_min_table() ;
+    TransitionTable* dfa_min = table_min.get_min_table() ;
 
-    dfa_min.print("dfa_min : ");
+    dfa_min->print("dfa_min : ");
 
-    return dfa_min;
+    return *dfa_min;
 }
