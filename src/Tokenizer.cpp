@@ -32,6 +32,9 @@ Tokenizer::~Tokenizer() {
 Token
 Tokenizer::next_token()
 {
+	/* ignore that chars of errors. */
+	set<char> line_breaks = {' ', '\t', '\n'};
+
 	/* initialize helpers */
 	CompositeState* current_state = minimized_dfa_table.get_start_state();
 	CompositeState* last_acceptance_state;
@@ -58,7 +61,9 @@ Tokenizer::next_token()
 			else{
 				current_index = start_index + 1;
 				start_index++;
-				cout << "'" << user_program[start_index - 1] << "'" << "\tError don not match any rules"<<  endl;
+				if(line_breaks.count(user_program[start_index - 1]) == 0){
+					cout << "'" << user_program[start_index - 1] << "'" << "\tError don not match any rules"<<  endl;
+				}
 				continue;
 			}
 		}
@@ -85,7 +90,6 @@ Tokenizer::next_token()
 	}
 	else{
 		current_index = start_index + 1;
-		//cout << "'" << user_program[start_index - 1] << "'" << "\tError don not match any rules" <<  endl;
 		return next_token();
 	}
 }
@@ -96,11 +100,12 @@ Token
 Tokenizer::get_correct_token(vector<Rule> conflicting_rules, string lexeme)
 {
 	Token result = Token("", "", "");
-	int max_priority = 0;
+	/* the rule with the min priority will be the matched rule. */
+	int min_priority = 1000000;
 	for(Rule rule : conflicting_rules)
 	{
-		if(rule.getPriority() > max_priority){
-			max_priority = rule.getPriority();
+		if(rule.getPriority() < min_priority){
+			min_priority = rule.getPriority();
 			result = Token(rule.getRuleName(), rule.getRulePattern(), lexeme);
 		}
 	}

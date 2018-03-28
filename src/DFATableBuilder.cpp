@@ -16,12 +16,6 @@ DFATableBuilder::~DFATableBuilder(void)
   /* nothing */
 }
 
-/* INTERFACE METHODS */
-/*********************************************/
-
-/****************************************
-** generate dfa table from nfa machine **
-****************************************/
 TransitionTable
 DFATableBuilder::generate_dfa_table(void)
 {
@@ -41,19 +35,12 @@ DFATableBuilder::generate_dfa_table(void)
       /* add new row */
       dfa_table.insert_new_row(curr);
       /* get transitions of this new entry */
-      for (char i : Alpha::getAlphabet()){
+      for (char i : Alpha::getAlphabet()) {
         /* get states reachable by this state(s) when applying char i */
         CompositeState* to_state = curr->get_transition(i) ;
         if(!to_state->isNull())
         {
           to_state = to_state->find_equivalent_states(to_state);
-          /*
-          cout << "id = ";
-          for(State* s : to_state->get_states()){
-        	  cout << s->get_id() << " , ";
-          }
-          cout << endl;
-          */
           q.push(to_state) ;
           dfa_table.add_row_transition(curr, i, *to_state);
         }

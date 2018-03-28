@@ -1,58 +1,23 @@
 int	T_int
-' '	Error don not match any rules
-'s'	Error don not match any rules
-'u'	Error don not match any rules
-'m'	Error don not match any rules
-' '	Error don not match any rules
+sum	id
 ,	T_,
-' '	Error don not match any rules
-c	id
-'o'	Error don not match any rules
-'u'	Error don not match any rules
-'n'	Error don not match any rules
-'t'	Error don not match any rules
-' '	Error don not match any rules
+count	id
 ,	T_,
-' '	Error don not match any rules
-'p'	Error don not match any rules
-a	id
-'s'	Error don not match any rules
-'s'	Error don not match any rules
-' '	Error don not match any rules
+pass	id
 ,	T_,
-'m'	Error don not match any rules
-'n'	Error don not match any rules
-'t'	Error don not match any rules
+mnt	id
 ;	T_;
-' '	Error don not match any rules
 while	T_while
-' '	Error don not match any rules
 (	T_(
-'p'	Error don not match any rules
-a	id
-'s'	Error don not match any rules
-'s'	Error don not match any rules
-' '	Error don not match any rules
+pass	id
 !=	relop
-' '	Error don not match any rules
 10	num
 )	T_)
 {	T_{
-'p'	Error don not match any rules
-a	id
-'s'	Error don not match any rules
-'s'	Error don not match any rules
-' '	Error don not match any rules
+pass	id
 =	assign
-' '	Error don not match any rules
-'p'	Error don not match any rules
-a	id
-'s'	Error don not match any rules
-'s'	Error don not match any rules
-' '	Error don not match any rules
+pass	id
 +	addop
-' '	Error don not match any rules
 1	num
-' '	Error don not match any rules
 ;	T_;
 }	T_}

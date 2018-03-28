@@ -23,27 +23,27 @@ Machine* NFA::generate_nfa_machine() {
 
 	cout << "Finishing all single NFAS" << endl;
 
-
-	/*
-	OrOperator or_operator;
-	nfa_result = machines[0];
-	for( int i = 1 ; i < machines.size() ; i++ )
-	{
-		nfa_result = or_operator.apply(nfa_result, machines[i]);
-	}
-	cout << "Finishing overall NFA" << endl;
-	*/
-
 	/* combine all rules into single machine */
 	Machine* nfa_result = machines[0];
 	State* start = new State(NumberGenerator::getNextUniqueInt());
+	State* end = new State(NumberGenerator::getNextUniqueInt());
 	start->add_transition('\0', nfa_result->get_start());
 	nfa_result->set_start(start);
+	nfa_result->get_end()->add_transition('\0', end);
+	nfa_result->set_end(end);
 
 	for( int i = 1 ; i < machines.size() ; i++ )
 	{
+		machines[i]->get_end()->add_transition('\0', nfa_result->get_end());
 		nfa_result->get_start()->add_transition('\0', machines[i]->get_start());
 	}
 	cout << "Finishing overall NFA" << endl;
+
+	/*	this will be total number of char in all rules * 2 + 2
+	  *	as for each char we make new machine = 2 states
+	  * for any operation we don't need new states
+	  * at last we compine using two new states.
+	  */
+	cout << "Total Number of states in NFA Machine = " << NumberGenerator::getNextUniqueInt() - 1 << endl;
 	return nfa_result;
 }

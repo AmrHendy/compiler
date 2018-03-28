@@ -95,7 +95,6 @@ vector<RuleElement> PostfixExpressionHandler::toPostfix(string expression){
 		operators.pop();
 	}
 
-	cout << currentExpression << endl;
 	vector<RuleElement> ruleElements = convertToRule(currentExpression, operatorsPosition);
 	return ruleElements;
 }
