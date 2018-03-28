@@ -14,7 +14,6 @@ NFABuilder::~NFABuilder() {
 
 Machine* NFABuilder::build_machine(Rule rule) {
 	/* convert rule to postfix. */
-	cout << "In NFA of  :   ";
 	vector<RuleElement> elements = rule.toPostfix();
 	/* build machine */
 	vector<Machine*> stack;

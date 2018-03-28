@@ -38,10 +38,12 @@ Machine* NFA::generate_nfa_machine() {
 		nfa_result->get_start()->add_transition('\0', machines[i]->get_start());
 	}
 	cout << "Finishing overall NFA" << endl;
-	// this will be total number of char in all rules * 2 + 2
-	// as for each char we make new machine = 2 states
-	// for any operation we don't need new states
-	// at last we compine using two new states
-	cout << "Total Number of states = " << NumberGenerator::getNextUniqueInt() - 1 << endl;
+
+	/*	this will be total number of char in all rules * 2 + 2
+	  *	as for each char we make new machine = 2 states
+	  * for any operation we don't need new states
+	  * at last we compine using two new states.
+	  */
+	cout << "Total Number of states in NFA Machine = " << NumberGenerator::getNextUniqueInt() - 1 << endl;
 	return nfa_result;
 }

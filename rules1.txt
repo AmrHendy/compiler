@@ -1,1 +1,2 @@
-id : abc | efg | aaa
+{int}
+id : int

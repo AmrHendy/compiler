@@ -4,9 +4,11 @@
 #include <vector>
 #include <set>
 #include <queue>
+#include <unordered_map>
 #include <algorithm>
 #include "State.h"
 #include "Rule.h"
+
 
 using namespace std;
 
@@ -22,15 +24,13 @@ public:
 	bool is_acceptance();
 	bool isNull();
 	bool operator ==(CompositeState c);
-
+	bool contain_state(State* s);
 
 	vector<Rule> get_matched_rules(void);
 
 private:
 	vector<State*> states;
-	CompositeState* vector_to_composite(vector<State*> states);
-
-	bool is_contain_state(vector<State*> vec, State* s);
+	unordered_map<int,int> states_ids;
 };
 
 #endif /* COMPOSITESTATE_H_ */
