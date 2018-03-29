@@ -18,23 +18,22 @@ Partition::~Partition(void){
 
 CompositeState*
 Partition::get_state(int index){
+	if(index<0)
+		return NULL ;
 	return this -> states[index] ;
 }
 
 CompositeState*
 Partition::get_essential(){
-	bool start;
+	bool start , accept ;
 	for(int i=0 ; i< (int) states.size() ; i++){
-		vector<Rule> rules ;
 		if(states[i]->is_start())
-			start = true ;
+			start = 1 ;
 		if(states[i]->is_acceptance())
-			rules = states[i]->get_matched_rules();
-		for(Rule r : rules )
-			states[0]->add_rule(r) ;
+			accept = 1 ;
 	}
 	if(start)
-		states[0]->set_start() ;
+		states[0]->set_start();
 	return states[0] ;
 }
 
@@ -48,7 +47,7 @@ bool
 Partition::belong(CompositeState s)
 {
     for(CompositeState* i : states)
-        if(s == *i)
+        if(s.get_id() == i->get_id())
             return true ;
     return false ;
 }
@@ -70,33 +69,53 @@ Partition::split()
 
    /* MAKE NEW PARTITIONS ACCORDING IDENTIFERS */
    vector<Partition> res ;
-   set<int> taken ;
-   for(vector<int> s : ids){
-        Partition n_partition(0) ;
-        for(int i=0 ; i< (int) states_id.size() ; i++)
-        {
-        	bool eq = true;
-        	if(states_id[i].size() != s.size() || taken.count(i) != 0){
-        		eq = false;
-        		continue;
-        	}
-			for(int index = 0; index < (int) states_id[i].size(); index++){
-				if(states_id[i][index] == 0 || s[index] == 0 )continue;
-				if(states_id[i][index] != s[index]){
-					eq = false;
-					break;
-				}
-			}
-            if(eq){
-            	n_partition.add_state(states[i]) ;
-            	taken.insert(i);
-            }
-        }
-        if(n_partition.size() != 0)
-        	res.push_back(n_partition) ;
+   vector<int> vis(states.size(),0) ;
+   int left = states.size() ;
+
+   while(left > 0){
+	   Partition* p = new Partition(0) ;
+	   for(int i=0 ; i<(int)states.size() ; i++){
+		   if(!vis[i]){
+			   p->add_state(states[i]) ;
+			   p->add_state_id(states_id[i]) ;
+			   res.push_back(*p) ;
+			   vis[i] = 1 ;
+			   left-- ;
+			   break;
+		   }
+	   }
+	   for(int j=0 ; j<(int)states.size() ; j++){
+		   if(!vis[j] && res.back().can_add(states_id[j])){
+			   res.back().add_state(states[j]);
+			   res.back().add_state_id(states_id[j]);
+			   vis[j] = 1 ;
+			   left-- ;
+		   }
+	   }
    }
 
-   return res ;
+   return  res;
+}
+
+
+bool
+Partition::can_add(vector<int> to_add_id){
+	for(vector<int> v : states_id){
+		if(!is_equal_id(v,to_add_id))
+			return false ;
+	}
+	return true ;
+}
+
+bool
+Partition::is_equal_id (vector<int> v1, vector<int> v2) {
+	if(v1.size() != v2.size())
+		return false ;
+	for(int i=0 ; i<v1.size() ; i++){
+		if(v1[i] != v2[i])
+			return false;
+	}
+	return true ;
 }
 
 int

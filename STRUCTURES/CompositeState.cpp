@@ -7,7 +7,7 @@ CompositeState::CompositeState() {
 	this -> id = -1 ;
 }
 
-CompositeState::CompositeState(vector<State> states) {
+CompositeState::CompositeState(set<State> states) {
 	for (State s : states)
 		add_state(s) ;
 }
@@ -62,20 +62,40 @@ CompositeState::get_transition(char input) {
 
 CompositeState*
 CompositeState::find_equivalent_states(CompositeState start) {
+//
+//	CompositeState* ret = new CompositeState() ;
+//
+//	CompositeState* result = start.get_transition('\0') ;
+//
+//	if(result->get_size() == 0 ){
+//		ret->add_states(start) ;
+//		return ret ;
+//	}
+//
+//	CompositeState* epis_reach = find_equivalent_states(*result) ;
+//	epis_reach->add_states(start) ;
+//
+//	return  epis_reach ;
 
-	CompositeState* ret = new CompositeState() ;
+	CompositeState* result = new CompositeState();
+		queue<State> q;
+		for(State s : start.get_states()){
+			q.push(s);
+		}
+		while(!q.empty()){
+			State curr = q.front();
+			q.pop();
+			result->add_state(curr);
+			vector<State*> epsilon_transitions = curr.get_transitions('\0');
+			for(State* child : epsilon_transitions){
+				if(!result->contains(*child)){
+					q.push(*child);
+				}
+			}
+		}
+		return result;
 
-	CompositeState* result = start.get_transition('\0') ;
 
-	if(result->get_size() == 0 ){
-		ret->add_states(start) ;
-		return ret ;
-	}
-
-	CompositeState* epis_reach = find_equivalent_states(*result) ;
-	epis_reach->add_states(start) ;
-
-	return  epis_reach ;
 }
 
 
@@ -127,11 +147,6 @@ CompositeState::add_rule(Rule r){
 
 vector<Rule>
 CompositeState::get_rules(){
-	if(rules.empty()){
-		for(State s : states)
-			if(s.is_acceptance() )
-				rules.push_back(s.get_matched_rule());
-	}
 	return this -> rules ;
 }
 
@@ -167,7 +182,6 @@ CompositeState::operator !=(CompositeState c){
 	 }
 	 return false ;
 }
-
 
 void CompositeState::print(){
 	Logger::logger.print_string("\t\tcomp_state{ \n" , Files::log_file) ;

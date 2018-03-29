@@ -9,8 +9,8 @@
 #include <iostream>
 
 LexicalAnalyzer::LexicalAnalyzer(string language_rules_directory, string user_prog_directory){
+//	Logger::print_string("Starting lexical analyzing \n ------------------ ") ;
 	TransitionTable minimized_dfa_table = LexcialAnalyzerGenerator::generate_minimal_dfa(language_rules_directory);
-	cout << "Finsihing Lexical Generator\n";
 	LexicalAnalyzer::tokenizer = Tokenizer(minimized_dfa_table, user_prog_directory);
 }
 

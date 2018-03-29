@@ -77,19 +77,6 @@ Partition_Rapper::is_finished(){
 void
 Partition_Rapper::generate_partion_ids(int index){
 	vector<string> ids ;
-
-//	int n1 = partitions[index].size() ;
-//	int n2 = Alpha::getAlphabet().size() ;
-
-//	Logger::print_string("size of partition "
-//			+ patch::to_string(index)
-//			+ "is "
-//			+ patch::to_string(n1)
-//			+ " alpabet size is "
-//			+ patch::to_string(n2)
-//			+ "\n" ) ;
-
-	Logger::print_string(" genrating ids for partition " + patch::to_string(index) +  ": \n" , Files::log_file);
 	for(int i=0 ; i < partitions[index].size() ; i++ ){
 		/* NEW IDENTIFIER FOR STATE i IN PARTITION */
 		vector<int> id ;
@@ -97,29 +84,24 @@ Partition_Rapper::generate_partion_ids(int index){
 		set<char> alpha = Alpha::getAlphabet();
 		/* APPEND TO STATE ID PARTITION ID */
 		for (char c : alpha ){
-			CompositeState* to = partitions[index].get_state(i)->get_transition(c) ;
-			if(to == nullptr)
+			CompositeState* to = dfa_table.get_transition(*partitions[index].get_state(i),c) ;
+
+			if(to->get_size() != 0)
 				id.push_back(get_state_partition_id(*to)) ;
 			else
-				id.push_back(0);
+				id.push_back(-1);
 		}
-
-		Logger::print_string(" id for state " + patch::to_string(i) +" : " , Files::log_file);
-		for(int i : id){
-			Logger::print_string(patch::to_string(i)+" " , Files::log_file);
-		}
-		Logger::print_string("\n" , Files::log_file);
-
-		partitions[index].add_state_id(id) ;
+			partitions[index].add_state_id(id) ;
 	}
 }
 
 int
 Partition_Rapper::get_state_partition_id(CompositeState c){
 	for(Partition p : partitions)
-		if(p.belong(c))
-			return p.get_identifier();
-	return 0 ;
+		for(int i=0 ; i<p.size() ; i++)
+			if(*p.get_state(i) == c)
+				return p.get_identifier();
+	return -1 ;
 }
 
 void

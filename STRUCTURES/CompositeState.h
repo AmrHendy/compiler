@@ -16,7 +16,7 @@ public:
 
 	/* CONSTRUCTORS AND DESTRUCTORS */
 	CompositeState() ;
-	CompositeState(vector<State> states) ;
+	CompositeState(set<State> states) ;
 	virtual ~CompositeState() ;
 
 	int   get_size    () ;
@@ -46,6 +46,8 @@ public:
 
 	bool operator == (CompositeState c) ;
 	bool operator != (CompositeState c) ;
+	bool operator < (CompositeState c) ;
+	bool operator > (CompositeState c) ;
 	void print();
 
 private:

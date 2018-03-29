@@ -35,6 +35,11 @@ class Partition
 
         void print() ;
 
+    private:
+        bool is_equal_id (vector<int> v1, vector<int> v2);
+        bool can_add(vector<int> to_add_id);
+
+
     /* attributes */
     private:
         vector<CompositeState*> states ;

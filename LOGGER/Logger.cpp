@@ -13,7 +13,7 @@ ofstream Logger::out3 = ofstream("tables.tb",ofstream::out) ;
 
 Logger::Logger() {
 	// TODO Auto-generated ructor stub
-	}
+}
 
 Logger::~Logger() {
 	// TODO Auto-generated destructor stub
@@ -28,3 +28,4 @@ Logger::print_string( string s , Files file_name){
 	else if(file_name == Files::tables_file)
 		out3 << s ;
 }
+

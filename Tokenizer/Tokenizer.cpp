@@ -77,7 +77,7 @@ Tokenizer::next_token()
 		string lexeme;
 		lexeme = user_program.substr(start_index, last_acceptance_index - start_index + 1);
 		current_index = last_acceptance_index + 1;
-		vector<Rule> conflicting_rules = last_acceptance_state->get_matched_rules();
+		vector<Rule> conflicting_rules = last_acceptance_state->get_rules();
 		last_acceptance_index = -1;
 		return get_correct_token(conflicting_rules, lexeme);
 	}
