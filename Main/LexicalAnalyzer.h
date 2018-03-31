@@ -13,10 +13,11 @@
 
 using namespace std;
 
-class LexicalAnalyzer {
+class LexicalAnalyzer
+{
 public:
-	LexicalAnalyzer(string language_rules_directory, string user_prog_directory);
-	virtual ~LexicalAnalyzer();
+    LexicalAnalyzer(string language_rules_directory, string user_prog_directory);
+    virtual ~LexicalAnalyzer();
 
     Token next_token();
 

@@ -17,20 +17,25 @@
 
 using namespace std;
 
-class RuleExtractor {
+class RuleExtractor
+{
 public:
-	RuleExtractor();
-	virtual ~RuleExtractor();
-	void extractRule(string rule);
-	vector<Rule> getAllRules();
+    RuleExtractor();
 
+    virtual ~RuleExtractor();
+
+    void extractRule(string rule);
+
+    vector<Rule> getAllRules();
 
 private:
-	KeyWordRule keyWordRule;
-	PunctuationRule punctuationRule;
-	RegularRule regularRule;
+    KeyWordRule     keyWordRule;
+    PunctuationRule punctuationRule;
+    RegularRule     regularRule;
 
-	string removeSpaces(string str);
+    string removeSpaces(string str);
 };
-
 #endif /* RULEEXTRACTOR_H_ */
+
+
+//~ Formatted by Jindent --- http://www.jindent.com

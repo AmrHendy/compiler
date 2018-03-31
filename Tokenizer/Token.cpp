@@ -6,25 +6,34 @@
 
 #include "Token.h"
 
-Token::Token(string type, string pattern, string lexeme){
-	Token::type = type;
-	Token::pattern = pattern;
-	Token::lexeme = lexeme;
+Token::Token(string type,
+             string pattern,
+             string lexeme)
+{
+    Token::type    = type;
+    Token::pattern = pattern;
+    Token::lexeme  = lexeme;
 }
 
-Token::~Token() {
-	// TODO Auto-generated destructor stub
+Token::~Token()
+{
+    // TODO Auto-generated destructor stub
+}
+
+string Token::getType(void)
+{
+    return type;
+}
+
+string Token::getLexeme(void)
+{
+    return lexeme;
+}
+
+string Token::getPattern(void)
+{
+    return pattern;
 }
 
 
-string Token::getType(void){
-	return type;
-}
-
-string Token::getLexeme(void){
-	return lexeme;
-
-}
-string Token::getPattern(void){
-	return pattern;
-}
+//~ Formatted by Jindent --- http://www.jindent.com

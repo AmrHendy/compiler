@@ -15,24 +15,28 @@
 
 using namespace std;
 
-class RegularRule {
+class RegularRule
+{
 public:
-	RegularRule();
-	virtual ~RegularRule();
+    RegularRule();
 
+    virtual ~RegularRule();
 
-	void parseRegularExpression(string rule);
-	void parseRegularDefinition(string rule);
+    void parseRegularExpression(string rule);
 
+    void parseRegularDefinition(string rule);
 
-	map<string, string> regularDefinitions;
-	vector<pair<pair<string, string>, int> > regularExpressions;
-
+    map<string, string>                      regularDefinitions;
+    vector<pair<pair<string, string>, int> > regularExpressions;
 
 private:
-	vector<string> split(string str);
-	string substituteDefinition(string defName);
-	string removeSpaces(string str);
-};
+    vector<string> split(string str);
 
+    string substituteDefinition(string defName);
+
+    string removeSpaces(string str);
+};
 #endif /* REGULARRULE_H_ */
+
+
+//~ Formatted by Jindent --- http://www.jindent.com

@@ -7,14 +7,15 @@
 #ifndef NUMBERGENERATOR_H_
 #define NUMBERGENERATOR_H_
 
-class NumberGenerator {
+class NumberGenerator
+{
 public:
-	NumberGenerator();
-	virtual ~NumberGenerator();
-	static int getNextUniqueInt();
-	static void setCurrentInt(int number);
+    NumberGenerator();
+    virtual ~NumberGenerator();
+    static int getNextUniqueInt();
+    static void setCurrentInt(int number);
 
-	static int number;
+    static int number;
 };
 
 #endif /* NUMBERGENERATOR_H_ */

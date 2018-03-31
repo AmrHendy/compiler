@@ -11,16 +11,17 @@
 
 using namespace std;
 
-class Alpha {
+class Alpha
+{
 public:
-	Alpha();
-	virtual ~Alpha();
-	static set<char> getAlphabet();
-	static void setAlphabet(set<char> alphaa);
-	static void insertAlphabet(char ch);
+    Alpha();
+    virtual ~Alpha();
+    static set<char> getAlphabet();
+    static void setAlphabet(set<char> alphaa);
+    static void insertAlphabet(char ch);
 
-	static set<char> alpha;
-	static int num;
+    static set<char> alpha;
+    static int num;
 };
 
 #endif /* ALPHABET_H_ */

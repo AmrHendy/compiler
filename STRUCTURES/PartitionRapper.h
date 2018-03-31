@@ -12,31 +12,38 @@
 #include "CompositeState.h"
 #include "TransitionTable.h"
 
-class Partition_Rapper {
-	public:
-	Partition_Rapper();
-	Partition_Rapper(TransitionTable dfa_table);
-	virtual ~Partition_Rapper();
+class Partition_Rapper
+{
+public:
+    Partition_Rapper();
 
-	CompositeState* get_essential(CompositeState* c);
+    Partition_Rapper(TransitionTable dfa_table);
 
-	void add_partition(Partition) ;
+    virtual ~Partition_Rapper();
 
-	void re_partition() ;
-	bool is_finished() ;
+    CompositeState * get_essential(CompositeState * c);
 
-	private:
-	void generate_partion_ids(int index) ;
-	int get_state_partition_id(CompositeState) ;
-	void set_partition_id(int index , int id);
+    void add_partition(Partition);
 
-	void print() ;
+    void re_partition();
 
+    bool is_finished();
 
-	private:
-	TransitionTable dfa_table ;
-	vector<Partition> partitions ;
-	bool finished = false ;
+private:
+    void generate_partion_ids(int index);
+
+    int get_state_partition_id(CompositeState);
+
+    void set_partition_id(int index,
+                          int id);
+
+    void print();
+
+private:
+    TransitionTable   dfa_table;
+    vector<Partition> partitions;
+    map<int, int>     state_partition_index;
+    bool              finished = false;
 };
-
 #endif /* STRUCTURES_PARTITIONRAPPER_H_ */
+

@@ -17,10 +17,11 @@
 
 using namespace std;
 
-class LexcialAnalyzerGenerator {
+class LexcialAnalyzerGenerator
+{
 public:
-	LexcialAnalyzerGenerator();
-	virtual ~LexcialAnalyzerGenerator();
+    LexcialAnalyzerGenerator();
+    virtual ~LexcialAnalyzerGenerator();
 
     static TransitionTable generate_minimal_dfa(string language_rules_directory);
 };

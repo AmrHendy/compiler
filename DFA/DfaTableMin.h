@@ -11,13 +11,14 @@
 #include "../STRUCTURES/PartitionRapper.h"
 #include "../STRUCTURES/TransitionTable.h"
 
-class Dfa_table_min {
+class Dfa_table_min
+{
 public:
-	Dfa_table_min(TransitionTable , Partition_Rapper);
-	TransitionTable* get_min_table();
+    Dfa_table_min(TransitionTable, Partition_Rapper);
+    TransitionTable* get_min_table();
 private:
-	TransitionTable dfa_table ;
-	Partition_Rapper p_rapper ;
+    TransitionTable dfa_table ;
+    Partition_Rapper p_rapper ;
 };
 
 #endif /* DFA_DFATABLEMIN_H_ */

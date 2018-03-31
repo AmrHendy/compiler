@@ -14,13 +14,14 @@
 
 using namespace std;
 
-class KeyWordRule {
+class KeyWordRule
+{
 public:
-	KeyWordRule();
-	virtual ~KeyWordRule();
-	void appendkeyWords(string rule);
+    KeyWordRule();
+    virtual ~KeyWordRule();
+    void appendkeyWords(string rule);
 
-	vector<pair<string, int> > keyWords;
+    vector<pair<string, int> > keyWords;
 };
 
 #endif /* KEYWORDRULE_H_ */

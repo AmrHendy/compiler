@@ -11,20 +11,24 @@
 
 using namespace std;
 
-PatternProcessor::PatternProcessor(string fileName) {
-	file_lines = FileHandler::readLanguageRules(fileName);
+PatternProcessor::PatternProcessor(string fileName)
+{
+    file_lines = FileHandler::readLanguageRules(fileName);
 }
 
-PatternProcessor::~PatternProcessor() {
-	// TODO Auto-generated destructor stub
+PatternProcessor::~PatternProcessor()
+{
+    // TODO Auto-generated destructor stub
 }
 
-vector<Rule> PatternProcessor::getRules(){
-	NumberGenerator::setCurrentInt(3);
-	RuleExtractor ruleExtractor;
-	vector<Rule> all_rules;
-	for(string str : file_lines){
-		ruleExtractor.extractRule(str);
-	}
-	return ruleExtractor.getAllRules();
+vector<Rule> PatternProcessor::getRules()
+{
+    NumberGenerator::setCurrentInt(3);
+    RuleExtractor ruleExtractor;
+    vector<Rule> all_rules;
+    for(string str : file_lines)
+    {
+        ruleExtractor.extractRule(str);
+    }
+    return ruleExtractor.getAllRules();
 }

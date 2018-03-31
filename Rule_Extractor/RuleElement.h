@@ -6,23 +6,29 @@
 
 #ifndef RULEELEMENT_H_
 #define RULEELEMENT_H_
+enum Type { alpha, operation };
 
-enum Type {alpha, operation};
-
-
-class RuleElement {
+class RuleElement
+{
 public:
-	/* special element is epsilon = lambda , we will use char = # with it. */
-	RuleElement(char ch, Type type);
-	virtual ~RuleElement();
 
-	char getContent();
-	bool isOperation();
-	bool isAlpha();
+    /* special element is epsilon = lambda , we will use char = # with it. */
+    RuleElement(char ch,
+                Type type);
+
+    virtual ~RuleElement();
+
+    char getContent();
+
+    bool isOperation();
+
+    bool isAlpha();
 
 private:
-	char content;
-	Type type;
+    char content;
+    Type type;
 };
-
 #endif /* RULEELEMENT_H_ */
+
+
+//~ Formatted by Jindent --- http://www.jindent.com

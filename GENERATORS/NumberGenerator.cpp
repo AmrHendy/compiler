@@ -8,20 +8,24 @@
 
 int NumberGenerator::number = 3;
 
-NumberGenerator::NumberGenerator() {
-	// TODO Auto-generated constructor stub
+NumberGenerator::NumberGenerator()
+{
+    // TODO Auto-generated constructor stub
 
 }
 
-NumberGenerator::~NumberGenerator() {
-	// TODO Auto-generated destructor stub
+NumberGenerator::~NumberGenerator()
+{
+    // TODO Auto-generated destructor stub
 }
 
-int NumberGenerator::getNextUniqueInt(){
-	return NumberGenerator::number++;
+int NumberGenerator::getNextUniqueInt()
+{
+    return NumberGenerator::number++;
 }
 
 //this is called first by pattern processor to set the first priority value.
-void NumberGenerator::setCurrentInt(int number){
-	NumberGenerator::number = number;
+void NumberGenerator::setCurrentInt(int number)
+{
+    NumberGenerator::number = number;
 }

@@ -11,14 +11,14 @@
 /*********************************************/
 class DFAMachine
 {
-	private:
-	/* attributes */
-	Machine nfa_machine;
-	TransitionTable minimized_dfa_table; // not used till now
-	bool table_calculated_flag;
+private:
+    /* attributes */
+    Machine nfa_machine;
+    TransitionTable minimized_dfa_table; // not used till now
+    bool table_calculated_flag;
 
-	public:
-	/* constructor */
+public:
+    /* constructor */
     DFAMachine(Machine nfa_machine);
     virtual ~DFAMachine(void);
 

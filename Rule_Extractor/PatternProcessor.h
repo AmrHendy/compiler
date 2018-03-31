@@ -13,14 +13,15 @@
 
 using namespace std;
 
-class PatternProcessor {
+class PatternProcessor
+{
 public:
-	PatternProcessor(string fileName);
-	virtual ~PatternProcessor();
-	vector<Rule> getRules();
+    PatternProcessor(string fileName);
+    virtual ~PatternProcessor();
+    vector<Rule> getRules();
 
 private:
-	vector<string> file_lines;
+    vector<string> file_lines;
 };
 
 

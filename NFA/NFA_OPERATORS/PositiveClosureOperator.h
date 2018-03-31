@@ -6,10 +6,11 @@
 #include "../../GENERATORS/NumberGenerator.h"
 
 
-class PositiveClosureOperator {
+class PositiveClosureOperator
+{
 public:
-	PositiveClosureOperator();
-	virtual ~PositiveClosureOperator();
+    PositiveClosureOperator();
+    virtual ~PositiveClosureOperator();
 
     static Machine* apply(Machine* m);
 

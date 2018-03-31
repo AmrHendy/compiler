@@ -9,7 +9,8 @@
 #include "NFA_OPERATORS/KleeneClosureOperator.h"
 #include "NFA_OPERATORS/PositiveClosureOperator.h"
 
-class NFABuilder{
+class NFABuilder
+{
 public:
     NFABuilder();
     virtual ~NFABuilder();

@@ -19,20 +19,21 @@
 
 using namespace std;
 
-class PostfixExpressionHandler {
+class PostfixExpressionHandler
+{
 public:
-	PostfixExpressionHandler(vector<pair<char,int> > operationWeights);
-	virtual ~PostfixExpressionHandler();
+    PostfixExpressionHandler(vector<pair<char,int> > operationWeights);
+    virtual ~PostfixExpressionHandler();
 
-	vector<RuleElement> toPostfix(string expression);
+    vector<RuleElement> toPostfix(string expression);
 
 
 private:
-	bool isOperation(char ch);
-	bool isHigherOrder(char ch1, char ch2);
-	vector<RuleElement> convertToRule(string postfixStr , vector<int> operatorsPosition);
-	map<char,int> weights;
-	set<char> operations;
+    bool isOperation(char ch);
+    bool isHigherOrder(char ch1, char ch2);
+    vector<RuleElement> convertToRule(string postfixStr, vector<int> operatorsPosition);
+    map<char,int> weights;
+    set<char> operations;
 };
 
 #endif /* POSTFIXEXPRESSIONHANDLER_H_ */

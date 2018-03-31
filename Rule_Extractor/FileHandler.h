@@ -13,12 +13,13 @@
 
 using namespace std;
 
-class FileHandler {
+class FileHandler
+{
 public:
-	FileHandler();
-	virtual ~FileHandler();
-	static vector<string> readLanguageRules(string file_name);
-	static string readUserProgram(string file_name);
+    FileHandler();
+    virtual ~FileHandler();
+    static vector<string> readLanguageRules(string file_name);
+    static string readUserProgram(string file_name);
 };
 
 #endif /* FILEHANDLER_H_ */

@@ -6,6 +6,7 @@
 
 #ifndef PUNCTUATIONRULE_H_
 #define PUNCTUATIONRULE_H_
+
 #include <string>
 #include <vector>
 #include "Rule.h"
@@ -13,14 +14,18 @@
 
 using namespace std;
 
-class PunctuationRule {
+class PunctuationRule
+{
 public:
-	PunctuationRule();
-	virtual ~PunctuationRule();
-	void appendPunctuations(string rule);
+    PunctuationRule();
 
-	vector<pair<string, int> > punctuations;
+    virtual ~PunctuationRule();
 
+    void appendPunctuations(string rule);
+
+    vector<pair<string, int> > punctuations;
 };
-
 #endif /* PUNCTUATIONRULE_H_ */
+
+
+//~ Formatted by Jindent --- http://www.jindent.com

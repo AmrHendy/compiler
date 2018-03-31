@@ -5,10 +5,11 @@
 #include "../../STRUCTURES/Machine.h"
 #include "../../GENERATORS/NumberGenerator.h"
 
-class KleeneClosureOperator{
+class KleeneClosureOperator
+{
 public:
-	KleeneClosureOperator();
-	virtual ~KleeneClosureOperator();
+    KleeneClosureOperator();
+    virtual ~KleeneClosureOperator();
 
     static Machine* apply(Machine* m);
 };

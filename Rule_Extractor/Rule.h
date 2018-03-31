@@ -15,18 +15,28 @@
 
 using namespace std;
 
-class Rule {
+class Rule
+{
 public:
-	Rule(string ruleName, string rulePattern, int priority);
-	virtual ~Rule();
-	vector<RuleElement> toPostfix();
-	string getRuleName();
-	string getRulePattern();
-	int getPriority();
+    Rule(string ruleName,
+         string rulePattern,
+         int    priority);
+
+    virtual ~Rule();
+
+    vector<RuleElement> toPostfix();
+
+    string getRuleName();
+
+    string getRulePattern();
+
+    int getPriority();
 
 private:
-	string ruleName, rulePattern;
-	int priority;
+    string ruleName, rulePattern;
+    int    priority;
 };
-
 #endif /* RULE_H_ */
+
+
+//~ Formatted by Jindent --- http://www.jindent.com

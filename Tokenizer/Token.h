@@ -11,17 +11,25 @@
 
 using namespace std;
 
-class Token {
+class Token
+{
 public:
-	Token(string type, string pattern, string lexeme);
-	virtual ~Token();
+    Token(string type,
+          string pattern,
+          string lexeme);
 
-	string getType(void);
-	string getLexeme(void);
-	string getPattern(void);
+    virtual ~Token();
+
+    string getType(void);
+
+    string getLexeme(void);
+
+    string getPattern(void);
 
 private:
-	string type, pattern, lexeme;
+    string type, pattern, lexeme;
 };
-
 #endif /* TOKEN_H_ */
+
+
+//~ Formatted by Jindent --- http://www.jindent.com
