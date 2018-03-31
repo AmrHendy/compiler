@@ -5,6 +5,7 @@
 #include <set>
 #include <queue>
 #include <algorithm>
+#include <unordered_map>
 #include "State.h"
 #include "../Rule_Extractor/Rule.h"
 #include "../LOGGER/Logger.h"
@@ -41,7 +42,7 @@ public:
 	bool is_start() ;
 	bool is_empty() ;
 
-	void add_rule(Rule r);
+	void set_rules(vector<Rule> r);
 	vector<Rule> get_rules();
 
 	bool operator == (CompositeState c) ;
@@ -53,6 +54,9 @@ public:
 private:
 	set<State> states ;
 	vector<Rule> rules ;
+	unordered_map<int,int> states_ids;
+	bool start ;
+	bool accept ;
 	int id ;
 };
 

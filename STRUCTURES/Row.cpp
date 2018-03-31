@@ -9,6 +9,12 @@ Row::Row(CompositeState* id_state)
 	Row::id_state = id_state ;
 }
 
+Row::Row(void)
+{
+	/* nothing */
+}
+
+
 Row::~Row(void)
 {
 	/* nothing */

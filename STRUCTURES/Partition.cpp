@@ -3,12 +3,18 @@
 Partition::Partition(int identifier)
 {
 	this->identifier = identifier ;
+	this-> start = 0 ;
 }
 
 Partition::Partition(int identifier , vector<CompositeState*>states)
 {
 	this->identifier = identifier ;
     this -> states = states ;
+    for(CompositeState* s : this -> states){
+		if(s->is_start())
+			start = 1 ;
+    }
+
 }
 
 Partition::~Partition(void){
@@ -25,13 +31,6 @@ Partition::get_state(int index){
 
 CompositeState*
 Partition::get_essential(){
-	bool start , accept ;
-	for(int i=0 ; i< (int) states.size() ; i++){
-		if(states[i]->is_start())
-			start = 1 ;
-		if(states[i]->is_acceptance())
-			accept = 1 ;
-	}
 	if(start)
 		states[0]->set_start();
 	return states[0] ;
@@ -40,6 +39,8 @@ Partition::get_essential(){
 void
 Partition::add_state(CompositeState* s)
 {
+	if(s->is_start())
+			start = 1 ;
     this -> states.push_back(s) ;
 }
 
@@ -111,7 +112,7 @@ bool
 Partition::is_equal_id (vector<int> v1, vector<int> v2) {
 	if(v1.size() != v2.size())
 		return false ;
-	for(int i=0 ; i<v1.size() ; i++){
+	for(int i=0 ; i< (int)v1.size() ; i++){
 		if(v1[i] != v2[i])
 			return false;
 	}

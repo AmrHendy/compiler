@@ -26,24 +26,21 @@ TransitionTable::size(){
 void
 TransitionTable::insert_new_row (Row* r)
 {
-	if(!row_found(*r->get_id_state()))
-	{
-	  rows.push_back(r);
-	}
+	row_c[r->get_id_state()] = r ;
+	rows.push_back(r);
 }
 
 void
 TransitionTable::insert_new_row (CompositeState* id_state)
 {
-	rows.push_back(new Row(id_state));
+	Row* to_add = new Row(id_state) ;
+	row_c[id_state] = to_add ;
+	rows.push_back(to_add);
 }
 
 bool
-TransitionTable::row_found(CompositeState id){
-	for (Row* r : rows)
-		if(*r->get_id_state() == id)
-			return true ;
-	return false ;
+TransitionTable::row_found(CompositeState* id){
+	return row_c.find(id) != row_c.end();
 }
 
 Row*
@@ -52,30 +49,40 @@ TransitionTable::get_row(int index){
 }
 
 void
-TransitionTable::add_transition (CompositeState id_state, char input_char, CompositeState* to_state)
+TransitionTable::add_transition (CompositeState* id_state, char input_char, CompositeState* to_state)
 {
-	if(id_state.get_size() == 0 || to_state == nullptr || to_state->get_size() == 0)
+	if(!row_found(id_state) || id_state->get_size() == 0 || to_state == nullptr || to_state->get_size() == 0)
 		return ;
-
-	for (Row* r : this->rows)
+	Row* r = row_c[id_state] ;
+	if(*r->get_id_state() == *id_state)
 	{
-	  if(*r->get_id_state() == id_state)
-	  {
-		  r->insert_transition(input_char, to_state);
-	      break;
-	  }
+	  r->insert_transition(input_char, to_state);
 	}
 }
 
 CompositeState*
-TransitionTable::get_transition(CompositeState from_state, char input)
+TransitionTable::toke_get_transition(CompositeState* from_state, char input)
 {
-	for(Row* r : rows)
-	{
-		if( *r->get_id_state() == from_state )
+	for(Row* r : rows){
+		if( *r->get_id_state() == *from_state )
 		{
 			return r->get_transition(input);
 		}
+	}
+	return new CompositeState() ;
+}
+
+
+CompositeState*
+TransitionTable::get_transition(CompositeState* from_state, char input)
+{
+	if(!row_found(from_state)){
+		return new CompositeState() ;
+	}
+	Row* r = row_c[from_state] ;
+	if( *r->get_id_state() == *from_state )
+	{
+		return r->get_transition(input);
 	}
 	return new CompositeState() ;
 }

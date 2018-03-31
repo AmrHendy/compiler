@@ -5,11 +5,14 @@
 
 CompositeState::CompositeState() {
 	this -> id = -1 ;
+	this -> start = 0 ;
+	this -> accept = 0 ;
 }
 
 CompositeState::CompositeState(set<State> states) {
-	for (State s : states)
+	for (State s : states){
 		add_state(s) ;
+	}
 }
 
 CompositeState::~CompositeState() {
@@ -23,12 +26,21 @@ CompositeState::get_size(){
 
 bool
 CompositeState::contains (State to_find) {
-	return this -> states.count(to_find) ;
+	return states_ids[to_find.get_id()] ;
 }
 
 void
 CompositeState::add_state(State new_state) {
-	states.insert(new_state);
+	if(new_state.is_acceptance()){
+		rules.push_back(new_state.get_matched_rule()) ;
+		accept = 1 ;
+	}
+	if(new_state.is_start())
+		start = 1  ;
+	if(states_ids[new_state.get_id()] == 0){
+		states_ids[new_state.get_id()] = 1;
+		states.insert(new_state);
+	}
 }
 
 void
@@ -62,87 +74,49 @@ CompositeState::get_transition(char input) {
 
 CompositeState*
 CompositeState::find_equivalent_states(CompositeState start) {
-//
-//	CompositeState* ret = new CompositeState() ;
-//
-//	CompositeState* result = start.get_transition('\0') ;
-//
-//	if(result->get_size() == 0 ){
-//		ret->add_states(start) ;
-//		return ret ;
-//	}
-//
-//	CompositeState* epis_reach = find_equivalent_states(*result) ;
-//	epis_reach->add_states(start) ;
-//
-//	return  epis_reach ;
-
 	CompositeState* result = new CompositeState();
-		queue<State> q;
-		for(State s : start.get_states()){
-			q.push(s);
-		}
-		while(!q.empty()){
-			State curr = q.front();
-			q.pop();
-			result->add_state(curr);
-			vector<State*> epsilon_transitions = curr.get_transitions('\0');
-			for(State* child : epsilon_transitions){
-				if(!result->contains(*child)){
-					q.push(*child);
-				}
+	queue<State> q;
+	for(State s : start.get_states()){
+		q.push(s);
+	}
+	while(!q.empty()){
+		State curr = q.front();
+		q.pop();
+		result->add_state(curr);
+		vector<State*> epsilon_transitions = curr.get_transitions('\0');
+		for(State* child : epsilon_transitions){
+			if(!result->contains(*child)){
+				q.push(*child);
 			}
 		}
-		return result;
-
-
+	}
+	return result;
 }
 
 
 vector<Rule>
 CompositeState::get_matched_rules(){
-	vector<Rule> rules ;
-	for(State s : states) {
-		if(s.is_acceptance())
-			rules.push_back(s.get_matched_rule()) ;
-	}
 	return rules ;
 }
 
 void
 CompositeState::set_start(){
-	for(State s : states){
-		s.set_start();
-		return ;
-	}
+	start = 1;
 }
 
 bool
-CompositeState::is_acceptance()
-{
-	if(!rules.empty())
-		return true ;
-	for(State s : states){
-		if(s.is_acceptance()){
-			return true;
-		}
-	}
-	return false;
+CompositeState::is_acceptance(){
+	return accept ;
 }
 
 bool
 CompositeState::is_start(){
-	for(State s : states){
-		if(s.is_start()){
-			return true;
-		}
-	}
-	return false;
+	return start ;
 }
 
 void
-CompositeState::add_rule(Rule r){
-	this->rules.push_back(r) ;
+CompositeState::set_rules(vector<Rule> r){
+	this->rules = r ;
 }
 
 vector<Rule>
@@ -167,8 +141,8 @@ CompositeState::get_id(){
 
 bool
 CompositeState::operator ==(CompositeState c){
-	 for(State s : this -> states){
-		 if(!c.contains(s))
+	 for(State s : c.get_states()){
+		 if(states_ids[s.get_id()] == 0)
 			 return false ;
 	 }
 	 return true ;
@@ -176,11 +150,11 @@ CompositeState::operator ==(CompositeState c){
 
 bool
 CompositeState::operator !=(CompositeState c){
-	 for(State s : this -> states){
-		 if(!c.contains(s))
-			 return true ;
-	 }
-	 return false ;
+	for(State s : c.get_states()){
+		if(states_ids[s.get_id()] == 0)
+			return true ;
+	}
+	return false ;
 }
 
 void CompositeState::print(){

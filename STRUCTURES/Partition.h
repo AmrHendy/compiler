@@ -47,6 +47,7 @@ class Partition
         vector<vector<int>> states_id ;
 
         int identifier ;
+        bool start ;
 
 
 };

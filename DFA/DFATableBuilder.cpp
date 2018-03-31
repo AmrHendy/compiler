@@ -42,8 +42,8 @@ DFATableBuilder::generate_dfa_table(void)
 	  {
 	    CompositeState* curr = q.front();
 	    q.pop();
-	    if(!dfa_table.row_found(*curr))
-	    {
+//	    if(!dfa_table.row_found(*curr))
+//	    {
 	      /* add new row */
 	      dfa_table.insert_new_row(curr);
 	      /* get transitions of this new entry */
@@ -53,18 +53,22 @@ DFATableBuilder::generate_dfa_table(void)
 	        if(!to_state->get_size() == 0)
 	        {
 	          to_state = to_state->find_equivalent_states(*to_state);
+
 	          if(find(states_id.begin() , states_id.end() , *to_state) == states_id.end()){
 	              to_state->set_id(states_id.size());
 	              states_id.push_back(*to_state);
+	              q.push(to_state) ;
 	          }else{
 	              to_state->set_id(find(states_id.begin() , states_id.end() , *to_state) - states_id.begin());
 	          }
-	          q.push(to_state) ;
-	          dfa_table.add_transition(*curr, i, to_state);
+
+	          dfa_table.add_transition(curr, i, to_state);
+
+
 	        }
 	      }
 	    }
-	  }
+//	  }
 
 
   dfa_table.print("dfa table : ");

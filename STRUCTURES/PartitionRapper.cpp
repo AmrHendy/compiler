@@ -84,7 +84,7 @@ Partition_Rapper::generate_partion_ids(int index){
 		set<char> alpha = Alpha::getAlphabet();
 		/* APPEND TO STATE ID PARTITION ID */
 		for (char c : alpha ){
-			CompositeState* to = dfa_table.get_transition(*partitions[index].get_state(i),c) ;
+			CompositeState* to = dfa_table.get_transition(partitions[index].get_state(i),c) ;
 
 			if(to->get_size() != 0)
 				id.push_back(get_state_partition_id(*to)) ;

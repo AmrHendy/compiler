@@ -14,6 +14,7 @@ class Row
 	public:
 		/* constructor */
 		Row(CompositeState* id_state);
+		Row();
 		virtual ~Row(void);
 
 		/* interface functions */

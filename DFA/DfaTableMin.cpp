@@ -51,9 +51,15 @@ Dfa_table_min::get_min_table(){
 			CompositeState* to_add = new CompositeState();
 			to_add->set_id(to_ess->get_id()) ;
 			to_add->add_states(to_ess->get_states());
+
+			vector<Rule> col_rules ;
+
 			for(vector<Rule> v : transition_rules)
 				for(Rule r : v)
-					to_add->add_rule(r);
+					col_rules.push_back(r) ;
+
+			to_add->set_rules(col_rules);
+
 
 			n_r->set_transition(c,to_add);
 		}

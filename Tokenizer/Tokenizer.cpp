@@ -44,7 +44,7 @@ Tokenizer::next_token()
 		char current_char = user_program.at(current_index);
 
 		/* transition in table according to input char */
-		current_state = minimized_dfa_table.get_transition(*current_state, current_char);
+		current_state = minimized_dfa_table.toke_get_transition(current_state, current_char);
 		/* check current state */
 
 		if(current_state->get_size() == 0)
