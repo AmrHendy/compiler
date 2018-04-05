@@ -8,7 +8,15 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include src/subdir.mk
+-include Tokenizer/subdir.mk
+-include STRUCTURES/subdir.mk
+-include Rule_Extractor/subdir.mk
+-include NFA/NFA_OPERATORS/subdir.mk
+-include NFA/subdir.mk
+-include Main/subdir.mk
+-include LOGGER/subdir.mk
+-include GENERATORS/subdir.mk
+-include DFA/subdir.mk
 -include subdir.mk
 -include objects.mk
 
