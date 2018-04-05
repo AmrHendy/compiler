@@ -23,5 +23,13 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
-src \
+Tokenizer \
+STRUCTURES \
+Rule_Extractor \
+NFA/NFA_OPERATORS \
+NFA \
+Main \
+LOGGER \
+GENERATORS \
+DFA \
 
