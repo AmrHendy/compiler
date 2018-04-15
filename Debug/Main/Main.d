@@ -37,7 +37,10 @@ Main/Main.d: ../Main/Main.cpp ../Main/LexcialAnalyzerGenerator.h \
  ../Main/../Tokenizer/../Rule_Extractor/FileHandler.h \
  ../Main/../Tokenizer/../STRUCTURES/TransitionTable.h \
  ../Main/../Tokenizer/../STRUCTURES/CompositeState.h \
- ../Main/../Tokenizer/Token.h
+ ../Main/../Tokenizer/Token.h ../Main/../Tester.h \
+ ../Main/../GrammerParser.h ../Main/../Production.h \
+ ../Main/../ProductionElement.h ../Main/../Node.h \
+ ../Main/../Rule_Extractor/FileHandler.h ../Main/../FileWriter.h
 
 ../Main/LexcialAnalyzerGenerator.h:
 
@@ -130,3 +133,17 @@ Main/Main.d: ../Main/Main.cpp ../Main/LexcialAnalyzerGenerator.h \
 ../Main/../Tokenizer/../STRUCTURES/CompositeState.h:
 
 ../Main/../Tokenizer/Token.h:
+
+../Main/../Tester.h:
+
+../Main/../GrammerParser.h:
+
+../Main/../Production.h:
+
+../Main/../ProductionElement.h:
+
+../Main/../Node.h:
+
+../Main/../Rule_Extractor/FileHandler.h:
+
+../Main/../FileWriter.h:

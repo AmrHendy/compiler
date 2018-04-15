@@ -8,12 +8,14 @@
 #include <ctime>
 #include "LexcialAnalyzerGenerator.h"
 #include "LexicalAnalyzer.h"
+#include "../Tester.h"
 
 using namespace std;
 
 int main()
 {
-	cout << "hello";
+	/*
+
 	LexicalAnalyzer lexicalAnalyzer = LexicalAnalyzer("rules.txt", "prog.txt");
 
     clock_t begin = clock() ;
@@ -34,5 +36,9 @@ int main()
 
     cout << "tokenizer took " << double(end-begin) / CLOCKS_PER_SEC<< " secs\n" ;
 
+	*/
+
+    // to test parser utilities
+    Tester::test("CFG.txt");
     return 0;
 }

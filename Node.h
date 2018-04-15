@@ -14,9 +14,11 @@ using namespace std;
 
 class Node {
 public:
-	Node();
+	Node(string name, NodeType type);
 	virtual ~Node();
 
+	string get_name();
+	NodeType get_type();
 private:
 	string name;
 	NodeType type;

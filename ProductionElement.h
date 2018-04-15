@@ -16,9 +16,11 @@ class ProductionElement {
 public:
 	ProductionElement();
 	virtual ~ProductionElement();
+	void add_node(Node* node);
+	vector<Node*> get_nodes();
 
 private:
-	vector<Node> nodes;
+	vector<Node*> nodes;
 };
 
 #endif /* PRODUCTIONELEMENT_H_ */

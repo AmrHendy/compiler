@@ -15,12 +15,17 @@ using namespace std;
 
 class Production {
 public:
-	Production();
+	Production(string LHSName);
 	virtual ~Production();
+	void add_element(ProductionElement *elem);
+	void add_element(vector<ProductionElement*> elems);
+
+	string get_LHS_name();
+	vector<ProductionElement*> get_RHS_elements();
 
 private:
 	string LHSNode;
-	vector<ProductionElement> RHSNodes;
+	vector<ProductionElement*> RHS;
 };
 
 #endif /* PRODUCTION_H_ */

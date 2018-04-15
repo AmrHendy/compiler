@@ -6,12 +6,19 @@
 
 #include "Node.h"
 
-Node::Node() {
-	// TODO Auto-generated constructor stub
-
+Node::Node(string name, NodeType type) {
+	Node::name = name;
+	Node::type = type;
 }
 
 Node::~Node() {
 	// TODO Auto-generated destructor stub
 }
 
+string Node::get_name(){
+	return name;
+}
+
+NodeType Node::get_type(){
+	return type;
+}
