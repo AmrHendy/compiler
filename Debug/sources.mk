@@ -26,6 +26,7 @@ SUBDIRS := \
 Tokenizer \
 STRUCTURES \
 Rule_Extractor \
+. \
 NFA/NFA_OPERATORS \
 NFA \
 Main \
