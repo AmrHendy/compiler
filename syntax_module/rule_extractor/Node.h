@@ -15,10 +15,17 @@ using namespace std;
 class Node {
 public:
 	Node(string name, NodeType type);
+	Node();
 	virtual ~Node();
 
 	string get_name();
 	NodeType get_type();
+	bool is_epsilon();
+
+	bool operator == (const Node n)const;
+	bool operator < (const Node n)const;
+	bool operator > (const Node n)const;
+
 private:
 	string name;
 	NodeType type;

@@ -4,7 +4,11 @@
 
 
 #include "../rule_extractor/Production.h"
+#include "../rule_extractor/Node.h"
 #include "Derivation_Table.h"
+#include "FirstFollow.h"
+#include <map>
+#include <set>
 
 using namespace std;
 
@@ -14,6 +18,7 @@ public:
 	Syntax_Analyzer_Generator() ;
 	virtual ~Syntax_Analyzer_Generator() ;
 	static Derivation_Table generate_derivation_table(vector<Production*> rules);
+
 
 };
 

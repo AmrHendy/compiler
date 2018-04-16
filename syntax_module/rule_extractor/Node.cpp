@@ -22,3 +22,24 @@ string Node::get_name(){
 NodeType Node::get_type(){
 	return type;
 }
+
+bool
+Node::is_epsilon(){
+	return name == "'\L'" ;
+}
+
+bool
+Node::operator ==(const Node n)const{
+	return name == n.name;
+}
+
+bool
+Node::operator <(const Node n)const{
+	return name < n.name;
+}
+
+
+bool
+Node::operator >(const Node n)const{
+	return name > n.name;
+}
