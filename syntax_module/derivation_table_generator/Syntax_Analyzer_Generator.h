@@ -13,7 +13,7 @@ class Syntax_Analyzer_Generator{
 public:
 	Syntax_Analyzer_Generator() ;
 	virtual ~Syntax_Analyzer_Generator() ;
-	static Derivation_Table generate_derivation_table(vector<Production> rules);
+	static Derivation_Table generate_derivation_table(vector<Production*> rules);
 
 };
 

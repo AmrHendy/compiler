@@ -11,6 +11,7 @@
 #include "../lexical_module/Lexical_Analyzer/Token.h"
 #include "syntax_analyzer/Syntax_Analyzer.h"
 #include "derivation_table_generator/Syntax_Analyzer_Generator.h"
+#include "rule_extractor/GrammerParser.h"
 #include <vector>
 
 using namespace std;
@@ -27,7 +28,7 @@ public:
     void analyze_syntax(); 
 
 private:
-    vector<Production> cfg_rules;
+    vector<Production*> cfg_rules;
     vector<Token> prog_tokens;
     Syntax_Analyzer syntax_analyzer;
     Derivation_Table derivation_table;

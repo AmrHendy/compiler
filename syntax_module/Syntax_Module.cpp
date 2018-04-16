@@ -10,7 +10,8 @@
 Syntax_Module::Syntax_Module(string cfg_rules)
 {
 //	Logger::print_string("Starting lexical analyzing \n ------------------ ") ;
-    this->cfg_rules = cfg_rules;
+    GrammerParser grammer_parser = GrammerParser() ;
+	this->cfg_rules = grammer_parser.parse_grammer(cfg_rules) ;
 }
 
 Syntax_Module::~Syntax_Module()

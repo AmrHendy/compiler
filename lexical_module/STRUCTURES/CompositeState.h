@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include "State.h"
 #include "../Rule_Extractor/Rule.h"
-#include "../LOGGER/Logger.h"
+#include "../../LOGGER/Logger.h"
 
 using namespace std;
 

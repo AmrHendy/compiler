@@ -3,7 +3,7 @@
 
 #include "../GENERATORS/NumberGenerator.h"
 #include "State.h"
-#include "../LOGGER/Logger.h"
+#include "../../LOGGER/Logger.h"
 
 class Machine
 {

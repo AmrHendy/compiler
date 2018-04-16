@@ -1,4 +1,3 @@
-
 #ifndef DERIVATION_TABLE_H_
 #define DERIVATION_TABLE_H_
 
@@ -8,7 +7,8 @@
 
 using namespace std;
 
-class Derivation_Table {
+class Derivation_Table{
+
 public:
 	Derivation_Table();
 	virtual ~Derivation_Table();
