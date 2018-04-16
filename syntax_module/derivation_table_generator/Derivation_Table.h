@@ -2,7 +2,9 @@
 #ifndef DERIVATION_TABLE_H_
 #define DERIVATION_TABLE_H_
 
-
+#include <map>
+#include "../rule_extractor/Node.h"
+#include "../rule_extractor/ProductionElement.h"
 
 using namespace std;
 

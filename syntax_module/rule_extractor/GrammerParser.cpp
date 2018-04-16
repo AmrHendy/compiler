@@ -6,6 +6,8 @@
 
 #include "GrammerParser.h"
 
+using namespace std;
+
 GrammerParser::GrammerParser() {
 	// TODO Auto-generated constructor stub
 }

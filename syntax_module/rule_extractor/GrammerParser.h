@@ -12,7 +12,8 @@
 #include <set>
 #include <map>
 #include "Production.h"
-#include "Rule_Extractor/FileHandler.h"
+#include "Node.h"
+#include "../../lexical_module/Rule_Extractor/FileHandler.h"
 
 using namespace std;
 
