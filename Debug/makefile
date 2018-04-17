@@ -8,15 +8,21 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
--include Tokenizer/subdir.mk
--include STRUCTURES/subdir.mk
--include Rule_Extractor/subdir.mk
--include NFA/NFA_OPERATORS/subdir.mk
--include NFA/subdir.mk
--include Main/subdir.mk
--include LOGGER/subdir.mk
--include GENERATORS/subdir.mk
--include DFA/subdir.mk
+-include src/Tester/subdir.mk
+-include src/SyntaxAnalyzer/ParserTable/subdir.mk
+-include src/SyntaxAnalyzer/GrammerExtractor/subdir.mk
+-include src/SyntaxAnalyzer/subdir.mk
+-include src/Logger/subdir.mk
+-include src/LexcialAnalyzer/Tokenizer/subdir.mk
+-include src/LexcialAnalyzer/RuleExtractor/subdir.mk
+-include src/LexcialAnalyzer/NFA/NFAOperators/subdir.mk
+-include src/LexcialAnalyzer/NFA/subdir.mk
+-include src/LexcialAnalyzer/MachineStructure/subdir.mk
+-include src/LexcialAnalyzer/Helper/subdir.mk
+-include src/LexcialAnalyzer/DFA/subdir.mk
+-include src/LexcialAnalyzer/subdir.mk
+-include src/FileHandler/subdir.mk
+-include src/subdir.mk
 -include subdir.mk
 -include objects.mk
 

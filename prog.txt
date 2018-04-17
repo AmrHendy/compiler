@@ -1,5 +1,0 @@
-abc , acb , aaa ,
-caa; while (aba != 10)
-{
-aab = aaa + 1 ;
-}
