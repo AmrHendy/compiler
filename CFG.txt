@@ -1,5 +1,5 @@
-bexpr ::= bterm bexpr1
-bexpr1 ::= 'or' bterm bexpr1 | '\L'
-bterm ::= bfactor bterm1
-bterm1 ::= 'and' bfactor bterm1 | '\L'
-bfactor ::= 'not' bfactor | '(' bexpr ')' | 't' | 'f'
+E ::= T E’
+E’ ::= '+' T E’ | '\L'
+T ::= F T’
+T’ ::= '*' F T’ | '\L'
+F ::= '(' E ')' | 'id'
