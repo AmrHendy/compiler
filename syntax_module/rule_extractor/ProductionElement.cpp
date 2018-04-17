@@ -5,6 +5,7 @@
  */
 
 #include "ProductionElement.h"
+#include <iostream>
 
 ProductionElement::ProductionElement() {
 	// TODO Auto-generated constructor stub
@@ -21,4 +22,11 @@ void ProductionElement::add_node(Node* node){
 
 vector<Node*> ProductionElement::get_nodes(){
 	return nodes;
+}
+
+void
+ProductionElement::print(){
+	for(Node* n : nodes){
+		cout << n->get_name() ;
+	}
 }

@@ -29,6 +29,11 @@ Node::is_epsilon(){
 }
 
 bool
+Node::is_dollar(){
+	return name == "$" ;
+}
+
+bool
 Node::operator ==(const Node n)const{
 	return name == n.name;
 }

@@ -21,6 +21,7 @@ public:
 	string get_name();
 	NodeType get_type();
 	bool is_epsilon();
+	bool is_dollar();
 
 	bool operator == (const Node n)const;
 	bool operator < (const Node n)const;

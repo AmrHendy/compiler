@@ -14,11 +14,12 @@ public:
 	virtual ~Derivation_Table();
 
 public:
-	void add_transition (Node non_terminal , Node terminal , ProductionElement rule) ;
-	ProductionElement get_transition (Node non_terminal , Node terminal) ;
+	bool add_transition (string non_terminal , string terminal , ProductionElement* rule) ;
+	ProductionElement* get_transition (string non_terminal , string terminal) ;
+	void print() ;
 
 private:
-	map<pair<Node,Node>,ProductionElement> Table ;
+	map<pair<string,string>,ProductionElement*> Table ;
 
 };
 

@@ -39,10 +39,12 @@ First_Follow::~First_Follow() {
 	// TODO Auto-generated destructor stub
 }
 
-map<string,set<Node>>
-First_Follow::get_first() {
-	return this->first_set ;
+
+map<ProductionElement*,set<Node>>
+First_Follow::get_first_elem() {
+	return this->first_elem_set ;
 }
+
 
 map<string,set<Node>>
 First_Follow::get_follow() {
@@ -157,8 +159,10 @@ First_Follow::first(ProductionElement* prod_elem){
 		if((int)ret.size() > 1 || ((int)ret.size() == 1 && ! tmp.is_epsilon() ) )
 			break ;
 	}
-	return ret ;
+	return first_elem_set[prod_elem] = ret ;
 }
+
+/* Tests
 
 int main(){
 	GrammerParser gp = GrammerParser() ;
@@ -190,6 +194,6 @@ int main(){
 	}
 }
 
-
+*/
 
 

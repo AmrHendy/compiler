@@ -17,14 +17,14 @@ class First_Follow {
 public:
 	First_Follow(vector<Production*> rules);
 	virtual ~First_Follow();
-	map<string,set<Node>> get_first() ;
+	map<ProductionElement*,set<Node>> get_first_elem() ;
 	map<string,set<Node>> get_follow() ;
 
 private:
 	void generate_rules_index() ;
 	void generate_after_index() ;
-	set<Node> follow(string node) ;
 	bool has_epsilon (set<Node> first) ;
+	set<Node> follow(string node) ;
 	set<Node> first(Node* node) ;
 	set<Node> first(Production* prod) ;
 	set<Node> first(ProductionElement* prod_elem) ;
@@ -32,6 +32,7 @@ private:
 private:
 	vector<Production*> rules ;
 	map<string,set<Node>> first_set,follow_set ;
+	map<ProductionElement*,set<Node>> first_elem_set ;
 	map<string , Production*> rules_index ;
 	map<string , vector<pair<Node* ,Production*> > > after_index;
 };

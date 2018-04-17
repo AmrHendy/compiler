@@ -19,7 +19,9 @@ public:
 	virtual ~Syntax_Analyzer_Generator() ;
 	static Derivation_Table generate_derivation_table(vector<Production*> rules);
 
-
+private:
+	static bool has_epsilon(set<Node>);
+	static bool has_dollar(set<Node>);
 };
 
 #endif /* DERIVATION_TABLE_H_ */

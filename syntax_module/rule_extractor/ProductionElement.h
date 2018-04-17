@@ -18,6 +18,7 @@ public:
 	virtual ~ProductionElement();
 	void add_node(Node* node);
 	vector<Node*> get_nodes();
+	void print() ;
 
 private:
 	vector<Node*> nodes;
