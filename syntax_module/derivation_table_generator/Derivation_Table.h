@@ -1,25 +1,39 @@
+/* INCLUDE GUARD */
+/****************************************/
 #ifndef DERIVATION_TABLE_H_
 #define DERIVATION_TABLE_H_
 
-#include <map>
+/* INCLUDE LIBRARIES */
+/****************************************/
 #include "../rule_extractor/Node.h"
 #include "../rule_extractor/ProductionElement.h"
+#include <iostream>
+#include <map>
+#include <string>
 
 using namespace std;
 
+/* CLASS DEFINITION */
+/****************************************/
 class Derivation_Table{
 
-public:
-	Derivation_Table();
-	virtual ~Derivation_Table();
+private:
+	/* CLASS ATTRIBUTES */
+	map<pair<string,string>,ProductionElement*> Table ;
 
 public:
+	/* CONSTRUCTOR AND DESTRUCTOR */
+	Derivation_Table(void);
+	virtual ~Derivation_Table(void);
+
+public:
+	/* INTERFACE METHODS */
 	bool add_transition (string non_terminal , string terminal , ProductionElement* rule) ;
 	ProductionElement* get_transition (string non_terminal , string terminal) ;
-	void print() ;
+	string get_non_terminal_start();
+	void print(void) ;
 
-private:
-	map<pair<string,string>,ProductionElement*> Table ;
+
 
 };
 

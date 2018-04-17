@@ -192,11 +192,11 @@ CompositeState::operator !=(CompositeState c)
 
 void CompositeState::print()
 {
-    Logger::logger.print_string("\t\tcomp_state{ \n", Files::log_file) ;
+    //Logger::logger.print_string("\t\tcomp_state{ \n", Files::log_file) ;
     for(State s : states )
     {
         s.print() ;
     }
-    Logger::logger.print_string("\n\t\t}", Files::log_file);
+    //Logger::logger.print_string("\n\t\t}", Files::log_file);
 }
 

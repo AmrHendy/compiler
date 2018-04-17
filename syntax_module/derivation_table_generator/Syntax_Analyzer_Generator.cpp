@@ -1,7 +1,9 @@
+/* INCLUDE HEADER */
+/****************************************/
 #include "Syntax_Analyzer_Generator.h"
-#include "../rule_extractor/GrammerParser.h"
 
-
+/* IMPLEMENT CONSTRUCTOR */
+/****************************************/
 Syntax_Analyzer_Generator::Syntax_Analyzer_Generator()
 {
 
@@ -12,7 +14,8 @@ Syntax_Analyzer_Generator::~Syntax_Analyzer_Generator()
 
 }
 
-
+/* IMPLEMENT INTERFACE METHODS */
+/****************************************/
 Derivation_Table
 Syntax_Analyzer_Generator::generate_derivation_table(vector<Production*> rules)
 {
@@ -52,6 +55,8 @@ Syntax_Analyzer_Generator::generate_derivation_table(vector<Production*> rules)
 	return table ;
 }
 
+/* UTILITY METHODS */
+/****************************************/
 bool
 Syntax_Analyzer_Generator::has_epsilon(set<Node> nodes){
 	for(Node n : nodes)
@@ -68,11 +73,12 @@ Syntax_Analyzer_Generator::has_dollar(set<Node> nodes){
 	return false ;
 }
 
-
-int main(){
+/* LOCAL TEST */
+/****************************************/
+/*int main(){
 	GrammerParser gp = GrammerParser() ;
 	vector<Production*> rules = gp.parse_grammer("CFG.txt");
 	Derivation_Table table = Syntax_Analyzer_Generator::generate_derivation_table(rules) ;
 	table.print();
-}
+}*/
 

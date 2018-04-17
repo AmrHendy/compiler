@@ -1,12 +1,9 @@
-/*
- * LexicalAnalyzer.cpp
- * Created on: Mar 23, 2018
- * Author: Amr Hendy
- */
-
-
+/* INCLUDE HEADER */
+/****************************************/
 #include "Syntax_Module.h"
 
+/* IMPLEMENT CONSTRUCTOR */
+/****************************************/
 Syntax_Module::Syntax_Module(string cfg_rules)
 {
 //	Logger::print_string("Starting lexical analyzing \n ------------------ ") ;
@@ -19,6 +16,8 @@ Syntax_Module::~Syntax_Module()
     // TODO Auto-generated destructor stub
 }
 
+/* IMPLEMENT INTERFACE METHODS */
+/****************************************/
 void
 Syntax_Module::generate_derivation_table(void)
 {

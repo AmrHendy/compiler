@@ -4,7 +4,7 @@
 #include <map>
 #include <vector>
 #include "../Rule_Extractor/Rule.h"
-#include "../../LOGGER/Logger.h"
+//#include "../../LOGGER/Logger.h"
 
 using namespace std;
 

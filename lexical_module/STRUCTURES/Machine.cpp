@@ -49,7 +49,7 @@ Machine::print()
     set<State> vis ;
     vector<State> traverse ;
 
-    Logger::logger.print_string("digraph Machine {\n", Files::graph_file);
+    //Logger::logger.print_string("digraph Machine {\n", Files::graph_file);
 
     traverse.push_back(*this->get_start());
     vis.insert(*this->get_start());
@@ -83,7 +83,7 @@ Machine::print()
         }
     }
 
-    Logger::print_string(str, Files::graph_file);
-    Logger::print_string("}\n", Files::graph_file);
+    //Logger::print_string(str, Files::graph_file);
+    //Logger::print_string("}\n", Files::graph_file);
 }
 

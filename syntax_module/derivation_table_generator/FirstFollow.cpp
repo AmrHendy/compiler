@@ -1,14 +1,9 @@
-/*
- * FirstFollow.cpp
- *
- *  Created on: Apr 16, 2018
- *      Author: abdelrhman
- */
-
-#include <iostream>
+/* INCLUDE HEADER */
+/****************************************/
 #include "FirstFollow.h"
-#include "../rule_extractor/GrammerParser.h"
 
+/* IMPLEMENT CONSTRUCTOR */
+/****************************************/
 First_Follow::First_Follow(vector<Production*> rules) {
 	// TODO Auto-generated constructor stub
 	this->rules = rules ;
@@ -39,7 +34,8 @@ First_Follow::~First_Follow() {
 	// TODO Auto-generated destructor stub
 }
 
-
+/* IMPLEMENT INTERFACE METHODS */
+/****************************************/
 map<ProductionElement*,set<Node>>
 First_Follow::get_first_elem() {
 	return this->first_elem_set ;
@@ -51,6 +47,8 @@ First_Follow::get_follow() {
 	return this->follow_set ;
 }
 
+/* IMPLEMENT UTILITY METHODS */
+/****************************************/
 void
 First_Follow::generate_rules_index(){
 	for(Production* p : rules){

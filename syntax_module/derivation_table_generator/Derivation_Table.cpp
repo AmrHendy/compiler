@@ -1,14 +1,20 @@
+/* INCLUDE HEADER */
+/****************************************/
 #include "Derivation_Table.h"
-#include <iostream>
 
-Derivation_Table::Derivation_Table(){
 
-}
-
-Derivation_Table::~Derivation_Table(){
+/* IMPLEMENT CONSTRUCTOR */
+/****************************************/
+Derivation_Table::Derivation_Table(void){
 
 }
 
+Derivation_Table::~Derivation_Table(void){
+
+}
+
+/* IMPLEMENT INTERFACE METHODS */
+/****************************************/
 bool
 Derivation_Table::add_transition (string non_terminal , string terminal , ProductionElement* rule) {
 	if(Table.find({non_terminal,terminal}) == Table.end()){
@@ -27,7 +33,7 @@ ProductionElement* Derivation_Table::get_transition (string non_terminal , strin
 }
 
 void
-Derivation_Table::print(){
+Derivation_Table::print(void){
 	for(pair<pair<string,string>,ProductionElement*> p : Table){
 		cout << p.first.first << " >>  " << p.first.second << " (" ;
 		p.second->print() ;
