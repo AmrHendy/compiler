@@ -107,6 +107,10 @@ Partition::split()
     return  res;
 }
 
+void
+Partition::clear_states_ids(){
+	states_id.clear();
+}
 
 bool
 Partition::can_add(vector<int> to_add_id)

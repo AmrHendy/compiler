@@ -49,7 +49,7 @@ public:
 
     CompositeState * get_start_state(void);
 
-    vector<CompositeState *> get_acceptance_states();
+    vector<vector<CompositeState *>> get_acceptance_states();
 
     vector<CompositeState *> get_non_acceptance_states();
 

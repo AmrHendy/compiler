@@ -68,6 +68,7 @@ Syntax_Analyzer_Generator::has_dollar(set<Node> nodes){
 	return false ;
 }
 
+/* Tests
 
 int main(){
 	GrammerParser gp = GrammerParser() ;
@@ -76,3 +77,4 @@ int main(){
 	table.print();
 }
 
+*/

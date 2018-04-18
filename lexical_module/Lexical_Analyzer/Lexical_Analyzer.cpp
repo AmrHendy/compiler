@@ -102,10 +102,10 @@ Token
 Lexical_Analyzer::get_correct_token(vector<Rule> conflicting_rules, string lexeme)
 {
     Token result = Token("", "", "");
-    int max_priority = 0;
+    int max_priority = 999 ;
     for(Rule rule : conflicting_rules)
     {
-        if(rule.getPriority() > max_priority)
+        if(rule.getPriority() < max_priority)
         {
             max_priority = rule.getPriority();
             result = Token(rule.getRuleName(), rule.getRulePattern(), lexeme);

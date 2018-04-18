@@ -40,6 +40,8 @@ public:
 
     void add_state_id(vector<int>);
 
+    void clear_states_ids();
+
     void print();
 
 private:

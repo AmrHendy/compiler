@@ -59,6 +59,7 @@ Partition_Rapper::re_partition()
 
     for (int i = 0 ; i < (int)partitions.size() ; i++)
     {
+    	partitions[i].clear_states_ids();
         /* GENERATE IDENTIFIERS FOR PARTITION STATES */
         generate_partion_ids(i) ;
         /* SPLIT PARTITION TO NEW PARTITIONS ACCORDING TO NEW IDENTIFIERS */
@@ -71,8 +72,9 @@ Partition_Rapper::re_partition()
     finished = (n_partitions.size() == partitions.size()) ;
     partitions.clear();
 
-    for(Partition p : n_partitions)
+    for(Partition p : n_partitions){
         add_partition(p);
+    }
 }
 
 bool
@@ -96,7 +98,7 @@ Partition_Rapper::generate_partion_ids(int index)
         {
             CompositeState* to = dfa_table.get_transition(partitions[index].get_state(i),c) ;
 
-            if(to->get_size() != 0)
+            if(to->get_id() != -1)
                 id.push_back(get_state_partition_id(*to)) ;
             else
                 id.push_back(-1);
@@ -132,4 +134,7 @@ Partition_Rapper::print()
     }
     Logger::logger.print_string("\n}", Files::log_file);
 }
+
+
+
 

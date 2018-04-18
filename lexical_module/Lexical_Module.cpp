@@ -53,3 +53,10 @@ Token Lexical_Module::next_token()
     return prog_tokens ;
 
  }
+
+ int main(){
+	 Lexical_Module lex = Lexical_Module("lexical_rules.txt");
+	 lex.generate_minimized_dfa_table();
+	 lex.select_prog("user_prog.txt");
+	 vector<Token> tokens = lex.get_all_tokens();
+ }

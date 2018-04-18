@@ -49,5 +49,10 @@ int Rule::getPriority()
     return priority;
 }
 
+bool
+Rule::operator == (const Rule r)const{
+	return r.ruleName == ruleName && r.priority == priority && r.rulePattern == rulePattern ;
+}
+
 
 //~ Formatted by Jindent --- http://www.jindent.com

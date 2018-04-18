@@ -84,7 +84,9 @@ TransitionTable::get_transition(CompositeState* from_state, char input)
     {
         return new CompositeState() ;
     }
+
     Row* r = row_c[from_state] ;
+
     if( *r->get_id_state() == *from_state )
     {
         return r->get_transition(input);
@@ -103,16 +105,19 @@ TransitionTable::get_start_state(void)
     return new CompositeState() ;
 }
 
-vector<CompositeState*>
+vector<vector<CompositeState*>>
 TransitionTable::get_acceptance_states()
 {
-    vector<CompositeState*> res ;
+
+    vector<vector<CompositeState*>> res ;
     for (Row* r : rows)
     {
+    	vector<CompositeState*> tmp ;
         CompositeState* id = r->get_id_state() ;
         if(id->is_acceptance())
         {
-            res.push_back(id) ;
+            tmp.push_back(id) ;
+            res.push_back(tmp) ;
         }
     }
     return res ;
@@ -149,7 +154,7 @@ TransitionTable::print(string s)
     {
         r->print() ;
     }
-    Logger::print_string("\n -------------------------- \n", Files::tables_file) ;
+    Logger::print_string("\n -------------------------- \n\n", Files::tables_file) ;
 }
 
 

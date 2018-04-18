@@ -7,7 +7,7 @@
 #include "Alpha.h"
 
 
-set<char> Alpha::alpha = {'\0'};
+set<char> Alpha::alpha = {};
 
 Alpha::Alpha()
 {

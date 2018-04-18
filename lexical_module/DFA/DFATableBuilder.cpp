@@ -84,11 +84,14 @@ DFATableBuilder::minimize_dfa_table(TransitionTable dfa_table)
 
     /* SPLIT START STATES FROM END STATES */
     Partition start_states(0, dfa_table.get_non_acceptance_states()) ;
-    Partition end_states(1, dfa_table.get_acceptance_states()) ;
+    vector<vector<CompositeState*>> all_way = dfa_table.get_acceptance_states() ;
+    for(vector<CompositeState*> vec : all_way){
+    	Partition end_states(0,vec) ;
+    	p_rapper.add_partition(end_states) ;
+    }
 
     /* BUILD ALL PARTITIONS */
-    p_rapper.add_partition(start_states) ;
-    p_rapper.add_partition(end_states) ;
+    if(!dfa_table.get_non_acceptance_states().empty())p_rapper.add_partition(start_states) ;
 
     cout << "begin repartitioning :- \n" ;
 

@@ -30,6 +30,8 @@ public:
 
     string getRulePattern();
 
+    bool operator == (const Rule r) const ;
+
     int getPriority();
 
 private:
