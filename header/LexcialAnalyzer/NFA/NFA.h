@@ -7,18 +7,16 @@
 #include "NFABuilder.h"
 #include <vector>
 
-class NFA
-{
+class NFA {
 public:
-    NFA(vector<Rule> processed_rules);
-    virtual ~NFA();
+	NFA(vector<Rule> processed_rules);
+	virtual ~NFA();
 
-    Machine* generate_nfa_machine();
-    //Transition_Table generate_nfa_table(void);
+	Machine* generate_nfa_machine();
+	//Transition_Table generate_nfa_table(void);
 
 private:
-    vector<Rule> processed_rules;
-
+	vector<Rule> processed_rules;
 };
 
 #endif /* NFA_H_ */

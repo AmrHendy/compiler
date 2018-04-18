@@ -8,8 +8,8 @@ src/LexcialAnalyzer/LexcialAnalyzerGenerator.d: \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/MachineStructure/../RuleExtractor/RuleElement.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/MachineStructure/../RuleExtractor/PostfixExpressionHandler.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/MachineStructure/../RuleExtractor/../Helper/Alpha.h \
- ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/MachineStructure/../../Logger/Logger.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/MachineStructure/Row.h \
+ ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/MachineStructure/Partition.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/MachineStructure/../Helper/Alpha.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/RuleExtractor/PatternProcessor.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/RuleExtractor/Rule.h \
@@ -19,7 +19,6 @@ src/LexcialAnalyzer/LexcialAnalyzerGenerator.d: \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/Machine.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/../Helper/NumberGenerator.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/State.h \
- ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/../../Logger/Logger.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/NFA/NFAOperators/../../Helper/NumberGenerator.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/NFA/../RuleExtractor/Rule.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/NFA/../MachineStructure/Machine.h \
@@ -33,13 +32,7 @@ src/LexcialAnalyzer/LexcialAnalyzerGenerator.d: \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/DFATableBuilder.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/CompositeState.h \
  ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/Partition.h \
- ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/CompositeState.h \
- ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/../../Logger/Logger.h \
- ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../Helper/Alpha.h \
- ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/DfaTableMin.h \
- ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/PartitionRapper.h \
- ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/Partition.h \
- ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/TransitionTable.h
+ ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../Helper/Alpha.h
 
 ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/LexcialAnalyzerGenerator.h:
 
@@ -57,9 +50,9 @@ src/LexcialAnalyzer/LexcialAnalyzerGenerator.d: \
 
 ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/MachineStructure/../RuleExtractor/../Helper/Alpha.h:
 
-../src/LexcialAnalyzer/../../header/LexcialAnalyzer/MachineStructure/../../Logger/Logger.h:
-
 ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/MachineStructure/Row.h:
+
+../src/LexcialAnalyzer/../../header/LexcialAnalyzer/MachineStructure/Partition.h:
 
 ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/MachineStructure/../Helper/Alpha.h:
 
@@ -78,8 +71,6 @@ src/LexcialAnalyzer/LexcialAnalyzerGenerator.d: \
 ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/../Helper/NumberGenerator.h:
 
 ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/State.h:
-
-../src/LexcialAnalyzer/../../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/../../Logger/Logger.h:
 
 ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/NFA/NFAOperators/../../Helper/NumberGenerator.h:
 
@@ -107,16 +98,4 @@ src/LexcialAnalyzer/LexcialAnalyzerGenerator.d: \
 
 ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/Partition.h:
 
-../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/CompositeState.h:
-
-../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/../../Logger/Logger.h:
-
 ../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../Helper/Alpha.h:
-
-../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/DfaTableMin.h:
-
-../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/PartitionRapper.h:
-
-../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/Partition.h:
-
-../src/LexcialAnalyzer/../../header/LexcialAnalyzer/DFA/../MachineStructure/TransitionTable.h:

@@ -9,6 +9,8 @@
 
 #include <string>
 #include <fstream>
+#include <stdio.h>
+#include <iostream>
 
 using namespace std;
 
@@ -17,7 +19,8 @@ public:
 	FileWriter();
 	virtual ~FileWriter();
 
-	static void write(string file_name, string message);
+	static void append(string file_name, string message);
+	static void openNewFile(string file_name);
 };
 
 #endif /* FILEWRITER_H_ */

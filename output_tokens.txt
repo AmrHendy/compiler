@@ -1,13 +1,13 @@
 int	T_int
 sum	id
 ,	T_,
-count	T_int
+count	id
 ,	T_,
 pass	id
 ,	T_,
-mnt	T_int
+mnt	id
 ;	T_;
-while	T_else
+while	T_while
 (	T_\(
 pass	id
 !=	relop
@@ -21,4 +21,3 @@ pass	id
 1	num
 ;	T_;
 }	T_}
-int	T_int

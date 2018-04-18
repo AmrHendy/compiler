@@ -9,39 +9,27 @@
 #include <map>
 
 /* CLASS DEFINITIONS */
-
-/** ****************************************** */
+/*********************************************/
 class Row
 {
-public:
+	private:
+	/* attributes */
+	CompositeState* id_state;
+  	map<char,CompositeState> transitions;
 
-    /* constructor */
-    Row(CompositeState * id_state);
-
-    Row();
-
+	public:
+	/* constructor */
+    Row(CompositeState* id_state);
     virtual ~Row(void);
 
     /* interface functions */
-    CompositeState * get_transition(char input);
+    map<char,CompositeState> get_transitions(void);
+    CompositeState* get_id_state(void);
 
-    void set_transition(char input,
-                        CompositeState *);
+    void insert_transition(char input_char, CompositeState s);
 
-    CompositeState * get_id_state(void);
+    CompositeState* get_destination_state(char ch);
 
-    void insert_transition(char             input_char,
-                           CompositeState * s);
-
-    void print();
-
-private:
-
-    /* attributes */
-    CompositeState *            id_state;
-    map<char, CompositeState *> transitions;
 };
+
 #endif
-
-
-//~ Formatted by Jindent --- http://www.jindent.com

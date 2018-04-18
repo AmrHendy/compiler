@@ -12,7 +12,6 @@ RM := rm -rf
 -include src/SyntaxAnalyzer/ParserTable/subdir.mk
 -include src/SyntaxAnalyzer/GrammerExtractor/subdir.mk
 -include src/SyntaxAnalyzer/subdir.mk
--include src/Logger/subdir.mk
 -include src/LexcialAnalyzer/Tokenizer/subdir.mk
 -include src/LexcialAnalyzer/RuleExtractor/subdir.mk
 -include src/LexcialAnalyzer/NFA/NFAOperators/subdir.mk
@@ -39,11 +38,11 @@ endif
 ifneq ($(strip $(CXX_DEPS)),)
 -include $(CXX_DEPS)
 endif
-ifneq ($(strip $(CPP_DEPS)),)
--include $(CPP_DEPS)
-endif
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
+endif
+ifneq ($(strip $(CPP_DEPS)),)
+-include $(CPP_DEPS)
 endif
 endif
 
@@ -57,14 +56,14 @@ all: compiler
 # Tool invocations
 compiler: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
-	@echo 'Invoking: GCC C++ Linker'
+	@echo 'Invoking: Cross G++ Linker'
 	g++  -o "compiler" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(C_UPPER_DEPS)$(CXX_DEPS)$(OBJS)$(CPP_DEPS)$(C_DEPS) compiler
+	-$(RM) $(CC_DEPS)$(C++_DEPS)$(EXECUTABLES)$(OBJS)$(C_UPPER_DEPS)$(CXX_DEPS)$(C_DEPS)$(CPP_DEPS) compiler
 	-@echo ' '
 
 .PHONY: all clean dependents

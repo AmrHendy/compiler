@@ -17,7 +17,7 @@ Tester::~Tester() {
 
 void Tester::test(string file_name){
 	vector<Production*> prods = GrammerParser::parse_grammer(file_name);
-	string parsed_grammer_output_file = "grammer.txt";
+	string parsed_grammer_output_file = "ParsedGrammerTest.txt";
 	string line = "";
 	for(Production* prod : prods){
 		line += "LHSNode = " + prod->get_LHS_name() + "\n";
@@ -34,7 +34,7 @@ void Tester::test(string file_name){
 		line += "==========================================================================\n";
 	}
 
-	FileWriter::write(parsed_grammer_output_file, line);
-	//cout << endl << line;
+	FileWriter::openNewFile(parsed_grammer_output_file);
+	FileWriter::append(parsed_grammer_output_file, line);
 }
 

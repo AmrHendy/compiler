@@ -19,14 +19,15 @@ LexcialAnalyzerGenerator::~LexcialAnalyzerGenerator()
     // TODO Auto-generated destructor stub
 }
 
-TransitionTable LexcialAnalyzerGenerator::generate_minimal_dfa(string language_rules_directory)
-{
-    PatternProcessor pattern_processor = PatternProcessor(language_rules_directory);
-    vector<Rule> processed_rules = pattern_processor.getRules();
-    NFA nfa_generator = NFA(processed_rules);
-    Machine* nfa_machine = nfa_generator.generate_nfa_machine();
+TransitionTable LexcialAnalyzerGenerator::generate_minimal_dfa(string language_rules_directory){
+	PatternProcessor pattern_processor = PatternProcessor(language_rules_directory);
+	vector<Rule> processed_rules = pattern_processor.getRules();
 
-    DFAMachine dfa_machine = DFAMachine(*nfa_machine);
-    TransitionTable minimized_dfa_table = dfa_machine.get_minimized_dfa_table();
-    return minimized_dfa_table;
+	NFA nfa_generator = NFA(processed_rules);
+	Machine* nfa_machine = nfa_generator.generate_nfa_machine();
+
+	DFAMachine dfa_machine = DFAMachine(nfa_machine);
+	TransitionTable minimized_dfa_table = dfa_machine.get_minimized_dfa_table();
+
+	return minimized_dfa_table;
 }

@@ -10,8 +10,8 @@ src/Main.d: ../src/Main.cpp \
  ../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/../RuleExtractor/RuleElement.h \
  ../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/../RuleExtractor/PostfixExpressionHandler.h \
  ../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/../RuleExtractor/../Helper/Alpha.h \
- ../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/../../Logger/Logger.h \
  ../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/Row.h \
+ ../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/Partition.h \
  ../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/../Helper/Alpha.h \
  ../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/CompositeState.h \
  ../src/../header/LexcialAnalyzer/Tokenizer/Token.h \
@@ -25,7 +25,6 @@ src/Main.d: ../src/Main.cpp \
  ../src/../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/Machine.h \
  ../src/../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/../Helper/NumberGenerator.h \
  ../src/../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/State.h \
- ../src/../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/../../Logger/Logger.h \
  ../src/../header/LexcialAnalyzer/NFA/NFAOperators/../../Helper/NumberGenerator.h \
  ../src/../header/LexcialAnalyzer/NFA/../RuleExtractor/Rule.h \
  ../src/../header/LexcialAnalyzer/NFA/../MachineStructure/Machine.h \
@@ -39,13 +38,7 @@ src/Main.d: ../src/Main.cpp \
  ../src/../header/LexcialAnalyzer/DFA/DFATableBuilder.h \
  ../src/../header/LexcialAnalyzer/DFA/../MachineStructure/CompositeState.h \
  ../src/../header/LexcialAnalyzer/DFA/../MachineStructure/Partition.h \
- ../src/../header/LexcialAnalyzer/DFA/../MachineStructure/CompositeState.h \
- ../src/../header/LexcialAnalyzer/DFA/../MachineStructure/../../Logger/Logger.h \
  ../src/../header/LexcialAnalyzer/DFA/../Helper/Alpha.h \
- ../src/../header/LexcialAnalyzer/DFA/DfaTableMin.h \
- ../src/../header/LexcialAnalyzer/DFA/../MachineStructure/PartitionRapper.h \
- ../src/../header/LexcialAnalyzer/DFA/../MachineStructure/Partition.h \
- ../src/../header/LexcialAnalyzer/DFA/../MachineStructure/TransitionTable.h \
  ../src/../header/SyntaxAnalyzer/SyntaxModule.h \
  ../src/../header/SyntaxAnalyzer/ParserTable/DerivationTable.h \
  ../src/../header/SyntaxAnalyzer/ParserTable/../GrammerExtractor/Node.h \
@@ -90,9 +83,9 @@ src/Main.d: ../src/Main.cpp \
 
 ../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/../RuleExtractor/../Helper/Alpha.h:
 
-../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/../../Logger/Logger.h:
-
 ../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/Row.h:
+
+../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/Partition.h:
 
 ../src/../header/LexcialAnalyzer/Tokenizer/../MachineStructure/../Helper/Alpha.h:
 
@@ -120,8 +113,6 @@ src/Main.d: ../src/Main.cpp \
 
 ../src/../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/State.h:
 
-../src/../header/LexcialAnalyzer/NFA/NFAOperators/../../MachineStructure/../../Logger/Logger.h:
-
 ../src/../header/LexcialAnalyzer/NFA/NFAOperators/../../Helper/NumberGenerator.h:
 
 ../src/../header/LexcialAnalyzer/NFA/../RuleExtractor/Rule.h:
@@ -148,19 +139,7 @@ src/Main.d: ../src/Main.cpp \
 
 ../src/../header/LexcialAnalyzer/DFA/../MachineStructure/Partition.h:
 
-../src/../header/LexcialAnalyzer/DFA/../MachineStructure/CompositeState.h:
-
-../src/../header/LexcialAnalyzer/DFA/../MachineStructure/../../Logger/Logger.h:
-
 ../src/../header/LexcialAnalyzer/DFA/../Helper/Alpha.h:
-
-../src/../header/LexcialAnalyzer/DFA/DfaTableMin.h:
-
-../src/../header/LexcialAnalyzer/DFA/../MachineStructure/PartitionRapper.h:
-
-../src/../header/LexcialAnalyzer/DFA/../MachineStructure/Partition.h:
-
-../src/../header/LexcialAnalyzer/DFA/../MachineStructure/TransitionTable.h:
 
 ../src/../header/SyntaxAnalyzer/SyntaxModule.h:
 

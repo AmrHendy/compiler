@@ -7,8 +7,8 @@ src/LexcialAnalyzer/MachineStructure/TransitionTable.d: \
  ../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/../RuleExtractor/RuleElement.h \
  ../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/../RuleExtractor/PostfixExpressionHandler.h \
  ../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/../RuleExtractor/../Helper/Alpha.h \
- ../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/../../Logger/Logger.h \
  ../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/Row.h \
+ ../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/Partition.h \
  ../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/../Helper/Alpha.h
 
 ../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/TransitionTable.h:
@@ -25,8 +25,8 @@ src/LexcialAnalyzer/MachineStructure/TransitionTable.d: \
 
 ../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/../RuleExtractor/../Helper/Alpha.h:
 
-../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/../../Logger/Logger.h:
-
 ../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/Row.h:
+
+../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/Partition.h:
 
 ../src/LexcialAnalyzer/MachineStructure/../../../header/LexcialAnalyzer/MachineStructure/../Helper/Alpha.h:
