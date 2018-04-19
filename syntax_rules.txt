@@ -1,4 +1,4 @@
-STMT ::= STMT | STMT STMT_A
+STMT ::= STMT_A | S
 S ::= 'b' 
 | 'e'
 | '\L'

@@ -26,8 +26,6 @@ FirstFollow::FirstFollow(vector<Production*> rules) {
 	for(Production* prod : rules){
 		follow_set[prod->get_LHS_name()] = follow(prod->get_LHS_name()) ;
 	}
-
-
 }
 
 FirstFollow::~FirstFollow() {

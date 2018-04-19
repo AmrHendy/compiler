@@ -15,7 +15,6 @@ GrammerParser::~GrammerParser() {
 }
 
 vector<Production*> GrammerParser::parse_grammer(string grammer_file_name){
-
 	vector<string> lines = FileReader::readLanguageRules(grammer_file_name);
 
 	// construct the rules on multiple lines
@@ -36,10 +35,8 @@ vector<Production*> GrammerParser::parse_grammer(string grammer_file_name){
 	}
 
 	vector<Production*> productions;
-
 	// split the string into Elements then split the Element into Nodes.
 	// now we have the production of the format we want.
-
 	for(string rule_str : rules){
 		// create static instance to be able to call the non static parse_rule function.
 		GrammerParser static_instance;
@@ -51,6 +48,8 @@ vector<Production*> GrammerParser::parse_grammer(string grammer_file_name){
 	// A ::= B
 	// A ::= C
 	// we can merge them into one A ::= B | C
+
+	vector<Production*> unique;
 	map<string, Production*> unique_productions;
 	for(Production* production : productions){
 		if(unique_productions.find(production->get_LHS_name()) != unique_productions.end()){
@@ -58,13 +57,8 @@ vector<Production*> GrammerParser::parse_grammer(string grammer_file_name){
 		}
 		else{
 			unique_productions[production->get_LHS_name()] = production;
+			unique.push_back(production);
 		}
-	}
-
-	vector<Production*> unique;
-	map<string, Production*>::iterator it;
-	for(it = unique_productions.begin(); it != unique_productions.end(); it++){
-		unique.push_back(it->second);
 	}
 	return unique;
 }
