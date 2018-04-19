@@ -26,7 +26,7 @@ SyntaxAnalyzerGenerator::generate_derivation_table(vector<Production*> rules)
 	map<ProductionElement*,set<Node>> first_elem ;
 	map<string,set<Node>> follow ;
 
-	FirstFollow f_f = FirstFollow(rules) ;
+	FirstFollow f_f = FirstFollow(rules);
 	follow = f_f.get_follow();
 	first_elem = f_f.get_first_elem();
 
@@ -70,13 +70,3 @@ SyntaxAnalyzerGenerator::has_dollar(set<Node> nodes){
 			return true ;
 	return false ;
 }
-
-/* LOCAL TEST */
-/****************************************/
-/*int main(){
-	GrammerParser gp = GrammerParser() ;
-	vector<Production*> rules = gp.parse_grammer("CFG.txt");
-	Derivation_Table table = Syntax_Analyzer_Generator::generate_derivation_table(rules) ;
-	table.print();
-}*/
-

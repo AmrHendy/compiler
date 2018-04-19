@@ -33,6 +33,7 @@ public:
 	/* INTERFACE METHODS */
 	map<ProductionElement*,set<Node>> get_first_elem() ;
 	map<string,set<Node>> get_follow() ;
+	map<string,set<Node>> get_first();
 
 private:
 	/* UTILITY METHODS */

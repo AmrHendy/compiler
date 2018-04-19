@@ -29,10 +29,13 @@ int main()
 
 
     SyntaxModule syntax_module = SyntaxModule(syntax_rules_dir);
-    Tester::test(syntax_rules_dir);
+    Tester::testGrammerParser(syntax_rules_dir);
     cout << "Finished Parsing Grammer\n";
 
-    //syntax_module.generate_syntax_analyzer();
+    syntax_module.generate_syntax_analyzer();
+    Tester::testFirstFollow(syntax_rules_dir);
+    cout << "Finished Building Parser Table\n";
+
 
     //syntax_module.select_prog(prog_tokens);
     //syntax_module.analyze_syntax();

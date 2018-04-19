@@ -15,9 +15,8 @@ Tester::~Tester() {
 	// TODO Auto-generated destructor stub
 }
 
-void Tester::test(string file_name){
+void Tester::testGrammerParser(string file_name){
 	vector<Production*> prods = GrammerParser::parse_grammer(file_name);
-	string parsed_grammer_output_file = "ParsedGrammerTest.txt";
 	string line = "";
 	for(Production* prod : prods){
 		line += "LHSNode = " + prod->get_LHS_name() + "\n";
@@ -34,7 +33,45 @@ void Tester::test(string file_name){
 		line += "==========================================================================\n";
 	}
 
-	FileWriter::openNewFile(parsed_grammer_output_file);
-	FileWriter::append(parsed_grammer_output_file, line);
+	FileWriter::openNewFile("ParsedGrammerTest.txt");
+	FileWriter::append("ParsedGrammerTest.txt", line);
 }
 
+
+void Tester::testFirstFollow(string file_name){
+	string output_file = "FirstFollow.txt";
+	FileWriter::openNewFile(output_file);
+	GrammerParser gp = GrammerParser() ;
+	vector<Production*> rules = gp.parse_grammer(file_name);
+	FirstFollow f_f = FirstFollow(rules) ;
+	map<string,set<Node>> first = f_f.get_first();
+	map<string,set<Node>> follow = f_f.get_follow() ;
+
+	FileWriter::append(output_file, "\t\tFirst");
+	for(pair<string,set<Node>> p : first){
+		string str = p.first + " = { ";
+		int k = 0 ;
+		for(Node n : p.second){
+			str += n.get_name() ;
+			if(k != p.second.size() - 1)
+				str += " , ";
+			k++ ;
+		}
+		str += " }" ;
+		FileWriter::append(output_file, str);
+	}
+	FileWriter::append(output_file, "========================================================================");
+	FileWriter::append(output_file, "\t\tFollow");
+	for(pair<string,set<Node>> p : follow){
+		string str = p.first + " = { ";
+		int k = 0 ;
+		for(Node n : p.second){
+			str += n.get_name() ;
+			if(k != p.second.size() - 1)
+				str += " , ";
+			k++ ;
+		}
+		str += " }" ;
+		FileWriter::append(output_file, str);
+	}
+}

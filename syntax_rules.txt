@@ -1,4 +1,5 @@
 STMT ::= STMT | STMT STMT_A
-S ::= A 'b' 
+S ::= 'b' 
 | 'e'
 | '\L'
+STMT_A ::= 'c'

@@ -13,7 +13,9 @@
 #include <sstream>
 #include <iostream>
 #include "../SyntaxAnalyzer/GrammerExtractor/GrammerParser.h"
+#include "../SyntaxAnalyzer/ParserTable/FirstFollow.h"
 #include "../FileHandler/FileWriter.h"
+
 
 using namespace std;
 
@@ -22,7 +24,9 @@ public:
 	Tester();
 	virtual ~Tester();
 
-	static void test(string file_name);
+	static void testGrammerParser(string file_name);
+	static void testFirstFollow(string file_name);
+
 };
 
 #endif /* TESTER_H_ */

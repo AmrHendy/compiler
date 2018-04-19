@@ -15,7 +15,7 @@ FirstFollow::FirstFollow(vector<Production*> rules) {
 	for(Production* prod : rules){
 		for(ProductionElement* elem : prod->get_RHS_elements())
 			for(Node* node : elem->get_nodes())
-				if(node->get_type() == Terminal || node->is_epsilon() )
+				if(node->get_type() == Terminal || node->is_epsilon())
 					first_set[node->get_name()].insert(*node) ;
 		first_set[prod->get_LHS_name()] = first(prod) ;
 	}
@@ -45,6 +45,10 @@ FirstFollow::get_first_elem() {
 map<string,set<Node>>
 FirstFollow::get_follow() {
 	return this->follow_set ;
+}
+
+map<string,set<Node>> FirstFollow::get_first(){
+	return first_set;
 }
 
 /* IMPLEMENT UTILITY METHODS */
@@ -159,37 +163,3 @@ FirstFollow::first(ProductionElement* prod_elem){
 	}
 	return first_elem_set[prod_elem] = ret ;
 }
-
-
-/* Tests
-int main(){
-	GrammerParser gp = GrammerParser() ;
-	vector<Production*> rules = gp.parse_grammer("CFG.txt");
-	First_Follow f_f = First_Follow(rules) ;
-	map<string,set<Node>> first = f_f.get_first() , follow = f_f.get_follow() ;
-	for(pair<string,set<Node>> p : first){
-		cout << p.first << " : first { " ;
-		int k = 0 ;
-		for(Node n : p.second){
-			cout << n.get_name() ;
-			if(k < (int)p.second.size()-1 )
-				cout << " , " ;
-			k++ ;
-		}
-		cout << " }\n" ;
-	}
-	cout << endl ;
-	for(pair<string,set<Node>> p : follow){
-		cout << p.first << " : follow { " ;
-		int k = 0 ;
-		for(Node n : p.second){
-			cout << n.get_name() ;
-			if(k < (int)p.second.size()-1 )
-				cout << " , " ;
-			k++ ;
-		}
-		cout << " }\n" ;
-	}
-}
-
-*/
