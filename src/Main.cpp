@@ -14,7 +14,7 @@ int main()
 {
 
     string lexical_rules_dir = "lexical_rules.txt";
-    string syntax_rules_dir = "syntax_rules4.2.txt";
+    string syntax_rules_dir = "syntax_rules3.4.txt";
     string user_prog_dir = "user_prog.txt";
 
     /* generate compiler for specified language */

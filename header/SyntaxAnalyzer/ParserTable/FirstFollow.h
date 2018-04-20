@@ -22,7 +22,7 @@ private:
 	map<string,set<Node>> first_set,follow_set ;
 	map<ProductionElement*,set<Node>> first_elem_set ;
 	map<string , Production*> rules_index ;
-	map<string , vector<pair<Node* ,Production*> > > after_index;
+	map<string , vector< pair< Production* , pair<ProductionElement*,int> > > > after_index;
 
 public:
 	/* CONSTRUCTOR AND DESTRUCTOR */

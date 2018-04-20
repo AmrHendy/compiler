@@ -66,9 +66,9 @@ FirstFollow::generate_after_index() {
 			vector<Node*> vec = elem->get_nodes() ;
 			for(int i=0 ; i < (int)vec.size() ; i++){
 				if(i+1 < (int)vec.size()){
-					after_index[vec[i]->get_name()].push_back({vec[i+1],prod}) ;
+					after_index[vec[i]->get_name()].push_back({prod , {elem,i} }) ;
 				}else if(vec[i]->get_name() != prod->get_LHS_name()){
-					after_index[vec[i]->get_name()].push_back({NULL,prod}) ;
+					after_index[vec[i]->get_name()].push_back({prod , {elem,i} }) ;
 				}
 			}
 		}
@@ -87,20 +87,34 @@ set<Node>
 FirstFollow::follow(string node) {
 	Node end = Node("$",Terminal) ;
 	set<Node> ret ;
-	vector<pair<Node* ,Production*>> after = after_index[node] ;
+	vector<pair <  Production* , pair<ProductionElement* , int> > > after = after_index[node] ;
 
 	/* MEMORIZING NODE */
 	if(follow_set.find(node) != follow_set.end())
 		return follow_set[node] ;
 
 	for(int i=0 ; i < (int)after.size() ; i++){
-		if(after[i].first == NULL){
-			ret = follow(after[i].second->get_LHS_name()) ;
-			return ret ;
+
+		vector<Node*> elem = after[i].second.first->get_nodes();
+		int j = after[i].second.second;
+
+		if(j+1 == (int)elem.size()){
+			ret = follow(after[i].first->get_LHS_name()) ;
+			break;
 		}
-		ret = first_set[after[i].first->get_name()] ;
-		if(has_epsilon(ret)){
-			set<Node> res = follow(after[i].second->get_LHS_name()) ;
+
+		j++ ;
+		while(j < (int)elem.size()){
+			set<Node> tmp ;
+			tmp = first_set[elem[j]->get_name()] ;
+			for(Node n : tmp)ret.insert(n) ;
+			if(!has_epsilon(tmp))
+				j = elem.size() ;
+			j++ ;
+		}
+
+		if(j != (int)elem.size() + 1){
+			set<Node> res = follow(after[i].first->get_LHS_name()) ;
 			for(Node n : res)ret.insert(n) ;
 		}
 	}
@@ -156,7 +170,7 @@ FirstFollow::first(ProductionElement* prod_elem){
 		for(Node n : res )ret.insert(n) ;
 		/* FOUND FIRST IN PRODUCTION ELEM elem Stop*/
 		Node tmp = (*ret.begin()) ;
-		if((int)ret.size() > 1 || ((int)ret.size() == 1 && ! tmp.is_epsilon() ) )
+		if(!has_epsilon(res))
 			break ;
 	}
 	return first_elem_set[prod_elem] = ret ;
