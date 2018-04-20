@@ -77,7 +77,7 @@ Production* GrammerParser::parse_rule(string rule_str){
 		for(string node_str : nodes){
 			Node* node;
 			node_str = removeSpaces(node_str);
-			if(node_str.find("'") != string::npos){
+			if(node_str[0] == '\'' && node_str[node_str.length() - 1] == '\''){
 				node = new Node(node_str, NodeType::Terminal);
 			}
 			else{
