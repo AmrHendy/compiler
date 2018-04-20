@@ -18,6 +18,7 @@ FirstFollow::FirstFollow(vector<Production*> rules) {
 				if(node->get_type() == Terminal || node->is_epsilon())
 					first_set[node->get_name()].insert(*node) ;
 		first_set[prod->get_LHS_name()] = first(prod) ;
+		first_vis.clear();
 	}
 
 	/*  GENERATE AFTER INDEX TO GET AFTER EACH NODE IN EACH PRODUCTION */
@@ -25,7 +26,11 @@ FirstFollow::FirstFollow(vector<Production*> rules) {
 
 	for(Production* prod : rules){
 		follow_set[prod->get_LHS_name()] = follow(prod->get_LHS_name()) ;
+		follow_vis.clear();
 	}
+
+
+	kosrajo();
 }
 
 FirstFollow::~FirstFollow() {
@@ -89,9 +94,16 @@ FirstFollow::follow(string node) {
 	set<Node> ret ;
 	vector<pair <  Production* , pair<ProductionElement* , int> > > after = after_index[node] ;
 
-	/* MEMORIZING NODE */
-	if(follow_set.find(node) != follow_set.end())
-		return follow_set[node] ;
+
+	if(follow_vis.count(node) != 0){
+		/* MEMORIZING NODE */
+		if(follow_set.find(node) != follow_set.end())
+			return follow_set[node] ;
+		else
+			return set<Node>() ;
+	}else{
+		follow_vis.insert(node);
+	}
 
 	for(int i=0 ; i < (int)after.size() ; i++){
 
@@ -99,8 +111,13 @@ FirstFollow::follow(string node) {
 		int j = after[i].second.second;
 
 		if(j+1 == (int)elem.size()){
-			ret = follow(after[i].first->get_LHS_name()) ;
-			break;
+			set<Node> res = follow(after[i].first->get_LHS_name()) ;
+			for(Node n : res)ret.insert(n);
+			// -------------------------------------------------
+			lis[node].push_back(after[i].first->get_LHS_name());
+			rlis[after[i].first->get_LHS_name()].push_back(node);
+			// -------------------------------------------------
+			continue;
 		}
 
 		j++ ;
@@ -115,6 +132,10 @@ FirstFollow::follow(string node) {
 
 		if(j != (int)elem.size() + 1){
 			set<Node> res = follow(after[i].first->get_LHS_name()) ;
+			// -------------------------------------------------
+			lis[node].push_back(after[i].first->get_LHS_name());
+			rlis[after[i].first->get_LHS_name()].push_back(node);
+			// -------------------------------------------------
 			for(Node n : res)ret.insert(n) ;
 		}
 	}
@@ -132,16 +153,21 @@ FirstFollow::follow(string node) {
 
 	/* MEMORIZING NODE */
 	return follow_set[node] = ret_without_ep;
-
 }
 
 set<Node>
 FirstFollow::first(Node* node){
 	set<Node> ret ;
 
-	/* MEMORIZING NODE */
-	if(first_set.find(node->get_name()) != first_set.end())
-		return first_set[node->get_name()] ;
+	if(first_vis.count(node->get_name()) != 0){
+		/* MEMORIZING NODE */
+		if(first_set.find(node->get_name()) != first_set.end())
+			return first_set[node->get_name()] ;
+		else
+			return set<Node>() ;
+	}else{
+		first_vis.insert(node->get_name()) ;
+	}
 
 	if(node->get_type() == Terminal)
 		ret.insert(*node) ;
@@ -175,3 +201,78 @@ FirstFollow::first(ProductionElement* prod_elem){
 	}
 	return first_elem_set[prod_elem] = ret ;
 }
+
+
+
+void
+FirstFollow::dfs(string num){
+	visted.insert(num);
+	for(int i=0 ; i<(int)lis[num].size() ; i++){
+		if(visted.count(lis[num][i]) == 0)dfs(lis[num][i]);
+	}
+	sta.push_back(num);
+}
+
+void
+FirstFollow::rdfs(string num){
+	visted.insert(num);
+	now.push_back(num);
+	for(int i=0 ; i<(int)rlis[num].size() ; i++){
+		if(visted.count(rlis[num][i]) == 0){
+			rdfs(rlis[num][i]);
+		}
+	}
+}
+
+
+void
+FirstFollow::print_comps(){
+    for( vector<string> v : comps ){
+        set<Node> over_all ;
+    	for(string i : v){
+    		set<Node> tmp = follow_set[i] ;
+    		for(Node n : tmp)over_all.insert(n);
+    		cout << i << " " ;
+    	}
+    	for(string i : v){
+			for(Node n : over_all)follow_set[i].insert(n);
+		}
+        cout << endl ;
+    }
+}
+
+void
+FirstFollow::generate_comps_index(){
+    for( vector<string> v : comps ){
+        for(string i : v) {
+                component_index[i] = v[0] ;
+                component_numbers.insert(v[0]) ;
+        }
+    }
+}
+
+void
+FirstFollow::kosrajo(){
+
+	//generate straight forward path
+	for(pair<string,vector<string>> n : lis){
+		if(!visted.count(n.first))dfs(n.first);
+	}
+	visted.clear();
+
+	//go backward and write sccs
+	while(!sta.empty()){
+		string ver = sta.back();sta.pop_back();
+		if(!visted.count(ver)){
+			now.clear();
+			rdfs(ver);
+			comps.push_back(now);
+		}
+	}
+	print_comps();
+	return ;
+}
+
+
+
+

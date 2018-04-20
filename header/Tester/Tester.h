@@ -15,6 +15,7 @@
 #include "../SyntaxAnalyzer/GrammerExtractor/GrammerParser.h"
 #include "../SyntaxAnalyzer/ParserTable/FirstFollow.h"
 #include "../FileHandler/FileWriter.h"
+#include "../SyntaxAnalyzer/SyntaxAnalyzerGenerator.h"
 
 
 using namespace std;

@@ -1,7 +1,3 @@
-E ::= T EE
-EE ::= '+' T EE | '\L'
-T ::= F TT
-TT ::= F TT | '\L'
-F ::= P FF
-FF ::= '*' P FF | '\L'
-P ::= '(' E ')' | 'a' | 'b' | 'Em'
+E ::= '-' E'
+E' ::= '+' A
+A ::= 'a' E

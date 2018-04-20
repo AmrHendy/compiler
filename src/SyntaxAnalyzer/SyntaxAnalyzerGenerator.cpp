@@ -50,6 +50,9 @@ SyntaxAnalyzerGenerator::generate_derivation_table(vector<Production*> rules)
 			}
 		}
 	}
+
+	table.print();
+
 	return table ;
 }
 

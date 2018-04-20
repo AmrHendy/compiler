@@ -24,6 +24,21 @@ private:
 	map<string , Production*> rules_index ;
 	map<string , vector< pair< Production* , pair<ProductionElement*,int> > > > after_index;
 
+	/* Kosrajo data */
+	map<string,vector<string>> lis ;
+	map<string,vector<string>> rlis ;
+	vector<string> sta;
+	// key = index belong to component = value
+	map<string,string> component_index ;
+	// all components indeces
+	set<string> component_numbers ;
+	//-------------------------------------
+	set<string> visted;
+	// all components
+	vector<vector<string>> comps ;
+	// current component
+	vector<string> now ;
+
 public:
 	/* CONSTRUCTOR AND DESTRUCTOR */
 	FirstFollow(vector<Production*> rules);
@@ -33,7 +48,8 @@ public:
 	/* INTERFACE METHODS */
 	map<ProductionElement*,set<Node>> get_first_elem() ;
 	map<string,set<Node>> get_follow() ;
-	map<string,set<Node>> get_first();
+	map<string,set<Node>> get_first() ;
+	set<string> follow_vis,first_vis ;
 
 private:
 	/* UTILITY METHODS */
@@ -44,6 +60,15 @@ private:
 	set<Node> first(Node* node) ;
 	set<Node> first(Production* prod) ;
 	set<Node> first(ProductionElement* prod_elem) ;
+
+	/* Kosrajo data */
+	void dfs(string num);
+	void rdfs(string num);
+	void print_comps();
+	void generate_comps_index();
+	void kosrajo();
+
+
 };
 
 #endif /* FIRSTFOLLOW_H_ */

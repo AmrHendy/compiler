@@ -46,6 +46,9 @@ void Tester::testFirstFollow(string file_name){
 	FirstFollow f_f = FirstFollow(rules) ;
 	map<string,set<Node>> first = f_f.get_first();
 	map<string,set<Node>> follow = f_f.get_follow() ;
+	DerivationTable table = DerivationTable();
+
+	SyntaxAnalyzerGenerator analyzer = SyntaxAnalyzerGenerator();
 
 	FileWriter::append(output_file, "\t\tFirst");
 	for(pair<string,set<Node>> p : first){
@@ -71,7 +74,9 @@ void Tester::testFirstFollow(string file_name){
 				str += " , ";
 			k++ ;
 		}
-		str += " }" ;
+		str += " }\n\n ========================= " ;
 		FileWriter::append(output_file, str);
 	}
+
+	analyzer.generate_derivation_table(rules) ;
 }
