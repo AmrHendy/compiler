@@ -46,7 +46,7 @@ public:
 
 public:
 	/* INTERFACE METHODS */
-	map<ProductionElement*,set<Node>> get_first_elem() ;
+	map<ProductionElement*,set<Node>> get_first_elem();
 	map<string,set<Node>> get_follow() ;
 	map<string,set<Node>> get_first() ;
 	set<string> follow_vis,first_vis ;
@@ -59,7 +59,8 @@ private:
 	set<Node> follow(string node) ;
 	set<Node> first(Node* node) ;
 	set<Node> first(Production* prod) ;
-	set<Node> first(ProductionElement* prod_elem) ;
+	set<Node> first(ProductionElement* prod_elem);
+	void first_nrec(ProductionElement* prod_elem);
 
 	/* Kosrajo data */
 	void dfs(string num);

@@ -13,10 +13,13 @@ FirstFollow::FirstFollow(vector<Production*> rules) {
 
 	/* GENERATE FIRST */
 	for(Production* prod : rules){
-		for(ProductionElement* elem : prod->get_RHS_elements())
-			for(Node* node : elem->get_nodes())
-				if(node->get_type() == Terminal || node->is_epsilon())
+		for(ProductionElement* elem : prod->get_RHS_elements()){
+			for(Node* node : elem->get_nodes()){
+				if(node->get_type() == Terminal || node->is_epsilon()){
 					first_set[node->get_name()].insert(*node) ;
+				}
+			}
+		}
 		first_set[prod->get_LHS_name()] = first(prod) ;
 		first_vis.clear();
 	}
@@ -185,24 +188,32 @@ FirstFollow::first(Production* prod){
 		set<Node> res = first(elem) ;
 		for(Node n : res )ret.insert(n) ;
 	}
-	return ret ;
+	return ret;
 }
 
 set<Node>
 FirstFollow::first(ProductionElement* prod_elem){
 	set<Node> ret ;
-	for(Node* node : prod_elem->get_nodes()){
-		set<Node> res = first(node) ;
-		for(Node n : res )ret.insert(n) ;
-		/* FOUND FIRST IN PRODUCTION ELEM elem Stop*/
-		Node tmp = (*ret.begin()) ;
-		if(!has_epsilon(res))
-			break ;
+	for(int index = 0; index < prod_elem->get_nodes().size(); index++){
+		set<Node> res = first(prod_elem->get_nodes()[index]) ;
+		bool epsilon = false;
+		for(Node n : res ){
+			if(n.is_epsilon()){
+				epsilon = true;
+				if(index == prod_elem->get_nodes().size() - 1){
+					ret.insert(n);
+				}
+			}
+			else{
+				ret.insert(n);
+			}
+		}
+		if(!epsilon){
+			break;
+		}
 	}
-	return first_elem_set[prod_elem] = ret ;
+	return first_elem_set[prod_elem] = ret;
 }
-
-
 
 void
 FirstFollow::dfs(string num){
@@ -272,4 +283,3 @@ FirstFollow::kosrajo(){
 	//print_comps();
 	return ;
 }
-
