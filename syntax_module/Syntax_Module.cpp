@@ -1,0 +1,37 @@
+/* INCLUDE HEADER */
+/****************************************/
+#include "Syntax_Module.h"
+
+/* IMPLEMENT CONSTRUCTOR */
+/****************************************/
+Syntax_Module::Syntax_Module(string cfg_rules)
+{
+//	Logger::print_string("Starting lexical analyzing \n ------------------ ") ;
+    GrammerParser grammer_parser = GrammerParser() ;
+	this->cfg_rules = grammer_parser.parse_grammer(cfg_rules) ;
+}
+
+Syntax_Module::~Syntax_Module()
+{
+    // TODO Auto-generated destructor stub
+}
+
+/* IMPLEMENT INTERFACE METHODS */
+/****************************************/
+void
+Syntax_Module::generate_derivation_table(void)
+{
+	derivation_table = Syntax_Analyzer_Generator::generate_derivation_table(cfg_rules);
+}
+
+
+void 
+Syntax_Module::select_prog(vector<Token> prog_tokens){
+	this->prog_tokens = prog_tokens;
+}
+
+void
+Syntax_Module::analyze_syntax(void)
+{
+	syntax_analyzer.analyze_prog(prog_tokens, derivation_table);
+}
