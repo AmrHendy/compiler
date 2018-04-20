@@ -44,6 +44,7 @@ src/Main.d: ../src/Main.cpp \
  ../src/../header/SyntaxAnalyzer/ParserTable/../GrammerExtractor/Node.h \
  ../src/../header/SyntaxAnalyzer/ParserTable/../GrammerExtractor/ProductionElement.h \
  ../src/../header/SyntaxAnalyzer/ParserTable/../GrammerExtractor/Node.h \
+ ../src/../header/SyntaxAnalyzer/ParserTable/../../FileHandler/FileWriter.h \
  ../src/../header/SyntaxAnalyzer/../LexcialAnalyzer/Tokenizer/Token.h \
  ../src/../header/SyntaxAnalyzer/SyntaxAnalyzerGenerator.h \
  ../src/../header/SyntaxAnalyzer/GrammerExtractor/Production.h \
@@ -152,6 +153,8 @@ src/Main.d: ../src/Main.cpp \
 ../src/../header/SyntaxAnalyzer/ParserTable/../GrammerExtractor/ProductionElement.h:
 
 ../src/../header/SyntaxAnalyzer/ParserTable/../GrammerExtractor/Node.h:
+
+../src/../header/SyntaxAnalyzer/ParserTable/../../FileHandler/FileWriter.h:
 
 ../src/../header/SyntaxAnalyzer/../LexcialAnalyzer/Tokenizer/Token.h:
 

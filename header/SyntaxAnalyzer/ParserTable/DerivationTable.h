@@ -7,9 +7,11 @@
 /****************************************/
 #include "../GrammerExtractor/Node.h"
 #include "../GrammerExtractor/ProductionElement.h"
+#include "../../FileHandler/FileWriter.h"
 #include <iostream>
 #include <map>
 #include <string>
+#include <set>
 
 using namespace std;
 
@@ -20,6 +22,7 @@ class DerivationTable{
 private:
 	/* CLASS ATTRIBUTES */
 	map<pair<string,string>,ProductionElement*> Table ;
+	set<string> terminals, non_terminals;
 
 public:
 	/* CONSTRUCTOR AND DESTRUCTOR */
@@ -31,7 +34,9 @@ public:
 	bool add_transition (string non_terminal , string terminal , ProductionElement* rule) ;
 	ProductionElement* get_transition (string non_terminal , string terminal) ;
 	string get_non_terminal_start();
-	void print(void) ;
+	void print(string file_name) ;
+	void set_terminals(set<string> terminal_names);
+	void set_non_terminals(set<string> terminal_names);
 };
 
 #endif /* DERIVATIONTABLE_H_ */

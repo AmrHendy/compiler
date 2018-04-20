@@ -12,10 +12,10 @@ using namespace std;
 
 int main()
 {
-
     string lexical_rules_dir = "lexical_rules.txt";
-    string syntax_rules_dir = "mixcycle3.txt";
+    string syntax_rules_dir = "syntax_rules4.2.txt";
     string user_prog_dir = "user_prog.txt";
+    string parser_table_dir = "ParserTable.txt";
 
     /* generate compiler for specified language */
     LexicalModule lexical_module = LexicalModule(lexical_rules_dir);
@@ -32,7 +32,7 @@ int main()
     Tester::testGrammerParser(syntax_rules_dir);
     cout << "Finished Parsing Grammer\n";
 
-    syntax_module.generate_syntax_analyzer();
+    syntax_module.generate_syntax_analyzer(parser_table_dir);
     Tester::testFirstFollow(syntax_rules_dir);
     cout << "Finished Building Parser Table\n";
 

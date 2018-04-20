@@ -77,6 +77,4 @@ void Tester::testFirstFollow(string file_name){
 		str += " }\n\n ========================= " ;
 		FileWriter::append(output_file, str);
 	}
-
-	analyzer.generate_derivation_table(rules) ;
 }

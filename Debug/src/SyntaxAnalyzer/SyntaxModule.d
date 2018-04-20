@@ -4,6 +4,7 @@ src/SyntaxAnalyzer/SyntaxModule.d: ../src/SyntaxAnalyzer/SyntaxModule.cpp \
  ../src/SyntaxAnalyzer/../../header/SyntaxAnalyzer/ParserTable/../GrammerExtractor/Node.h \
  ../src/SyntaxAnalyzer/../../header/SyntaxAnalyzer/ParserTable/../GrammerExtractor/ProductionElement.h \
  ../src/SyntaxAnalyzer/../../header/SyntaxAnalyzer/ParserTable/../GrammerExtractor/Node.h \
+ ../src/SyntaxAnalyzer/../../header/SyntaxAnalyzer/ParserTable/../../FileHandler/FileWriter.h \
  ../src/SyntaxAnalyzer/../../header/SyntaxAnalyzer/../LexcialAnalyzer/Tokenizer/Token.h \
  ../src/SyntaxAnalyzer/../../header/SyntaxAnalyzer/SyntaxAnalyzerGenerator.h \
  ../src/SyntaxAnalyzer/../../header/SyntaxAnalyzer/GrammerExtractor/Production.h \
@@ -27,6 +28,8 @@ src/SyntaxAnalyzer/SyntaxModule.d: ../src/SyntaxAnalyzer/SyntaxModule.cpp \
 ../src/SyntaxAnalyzer/../../header/SyntaxAnalyzer/ParserTable/../GrammerExtractor/ProductionElement.h:
 
 ../src/SyntaxAnalyzer/../../header/SyntaxAnalyzer/ParserTable/../GrammerExtractor/Node.h:
+
+../src/SyntaxAnalyzer/../../header/SyntaxAnalyzer/ParserTable/../../FileHandler/FileWriter.h:
 
 ../src/SyntaxAnalyzer/../../header/SyntaxAnalyzer/../LexcialAnalyzer/Tokenizer/Token.h:
 

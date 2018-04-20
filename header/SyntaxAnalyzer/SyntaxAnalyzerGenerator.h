@@ -26,7 +26,7 @@ public:
 
 public:
 	/* INTERFACE METHODS */
-	static DerivationTable generate_derivation_table(vector<Production*> rules);
+	static DerivationTable generate_derivation_table(vector<Production*> rules, string output_table_file);
 
 private:
 	/* HELPER METHODS */

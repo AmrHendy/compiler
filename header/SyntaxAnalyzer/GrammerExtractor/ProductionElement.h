@@ -15,13 +15,19 @@ using namespace std;
 class ProductionElement {
 public:
 	ProductionElement();
+	ProductionElement(string name);
 	virtual ~ProductionElement();
 	void add_node(Node* node);
 	vector<Node*> get_nodes();
 	void print() ;
+	bool is_synchronize();
+	bool is_empty();
+	string get_format();
+	string get_name();
 
 private:
 	vector<Node*> nodes;
+	string name;
 };
 
 #endif /* PRODUCTIONELEMENT_H_ */

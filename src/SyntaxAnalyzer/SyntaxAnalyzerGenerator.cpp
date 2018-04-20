@@ -17,9 +17,10 @@ SyntaxAnalyzerGenerator::~SyntaxAnalyzerGenerator()
 /* IMPLEMENT INTERFACE METHODS */
 /****************************************/
 DerivationTable
-SyntaxAnalyzerGenerator::generate_derivation_table(vector<Production*> rules)
+SyntaxAnalyzerGenerator::generate_derivation_table(vector<Production*> rules, string output_table_file)
 {
 	DerivationTable table = DerivationTable() ;
+
 	bool err = false ;
 
 	/* GENERATING FIRST & FOLLOW */
@@ -30,29 +31,51 @@ SyntaxAnalyzerGenerator::generate_derivation_table(vector<Production*> rules)
 	follow = f_f.get_follow();
 	first_elem = f_f.get_first_elem();
 
+	set<string> terminals, non_terminals;
+
 	/* GENERATE TABLE AFTER FIRST FOLLOW IS DONE */
 	for(Production* prod : rules){
+		non_terminals.insert(prod->get_LHS_name());
+		set<Node> follow_set = follow[prod->get_LHS_name()];
 		for(ProductionElement* elem : prod->get_RHS_elements()){
 			set<Node> first_set = first_elem[elem];
-			set<Node> follow_set = follow[prod->get_LHS_name()];
 			for(Node n : first_set){
-				if(!n.is_epsilon())
-					err = table.add_transition(prod->get_LHS_name() , n.get_name() , elem) ;
-				if(err)
+				if(!n.is_epsilon()){
+					err = table.add_transition(prod->get_LHS_name(), n.get_name() , elem) ;
+					terminals.insert(n.get_name());
+				}
+				if(err){
+					FileWriter::openNewFile(output_table_file);
 					return DerivationTable();
+				}
 			}
+
 			if(has_epsilon(first_set)){
 				for(Node n : follow_set){
-					err = table.add_transition(prod->get_LHS_name() , n.get_name() , elem) ;
-					if(err)
+					if(first_set.count(n) != 0) continue;
+					err = table.add_transition(prod->get_LHS_name(), n.get_name() , elem) ;
+					terminals.insert(n.get_name());
+					if(err){
+						FileWriter::openNewFile(output_table_file);
 						return DerivationTable();
+					}
 				}
 			}
 		}
+
+		// make synch
+		for(Node n : follow_set){
+			ProductionElement* prodd = table.get_transition(prod->get_LHS_name(), n.get_name());
+			if(prodd->is_empty()){
+				ProductionElement* element = new ProductionElement("SYNC");
+				table.add_transition(prod->get_LHS_name(), n.get_name(), element) ;
+			}
+		}
 	}
+	table.set_terminals(terminals);
+	table.set_non_terminals(non_terminals);
 
-	table.print();
-
+	table.print(output_table_file);
 	return table ;
 }
 

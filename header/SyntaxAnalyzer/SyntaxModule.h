@@ -31,7 +31,7 @@ public:
 
 public:
     /* INTERFACE METHODS */
-    void generate_syntax_analyzer(void);
+    void generate_syntax_analyzer(string output_table_file);
     void select_prog(vector<Token> prog_tokens);
     void analyze_syntax(void); 
 };

@@ -17,9 +17,9 @@ SyntaxModule::~SyntaxModule()
 /* IMPLEMENT INTERFACE METHODS */
 /****************************************/
 void
-SyntaxModule::generate_syntax_analyzer()
+SyntaxModule::generate_syntax_analyzer(string output_table_file)
 {
-	derivation_table = SyntaxAnalyzerGenerator::generate_derivation_table(cfg_rules);
+	derivation_table = SyntaxAnalyzerGenerator::generate_derivation_table(cfg_rules, output_table_file);
 }
 
 void 

@@ -90,7 +90,7 @@ FirstFollow::has_epsilon(set<Node> first) {
 
 set<Node>
 FirstFollow::follow(string node) {
-	Node end = Node("$",Terminal) ;
+	Node end = Node("$", Terminal) ;
 	set<Node> ret ;
 	vector<pair <  Production* , pair<ProductionElement* , int> > > after = after_index[node] ;
 
