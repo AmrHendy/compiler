@@ -109,12 +109,12 @@ DerivationTable::print(string file_name){
 	FileWriter::append(file_name, str);
 }
 
-// need to be implemented
-string DerivationTable::get_non_terminal_start(){
-	string str;
-	return str;
+void DerivationTable::set_non_terminal_start(string start_non_terminal){
+	DerivationTable::start_non_terminal = start_non_terminal;
 }
-
+string DerivationTable::get_non_terminal_start(){
+	return start_non_terminal;
+}
 
 void DerivationTable::set_terminals(set<string> terminal_names){
 	terminals = terminal_names;

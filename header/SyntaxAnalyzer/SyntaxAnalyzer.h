@@ -5,11 +5,11 @@
 
 /* INCLUDE LIBRARIES */
 /****************************************/
-#include <list>
 #include "../LexcialAnalyzer/Tokenizer/Token.h"
 #include "ParserTable/DerivationTable.h"
 #include "GrammerExtractor/ProductionElement.h"
 #include "GrammerExtractor/Node.h"
+#include <stack>
 
 using namespace std;
 

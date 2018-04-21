@@ -23,6 +23,7 @@ private:
 	/* CLASS ATTRIBUTES */
 	map<pair<string,string>,ProductionElement*> Table ;
 	set<string> terminals, non_terminals;
+	string start_non_terminal;
 
 public:
 	/* CONSTRUCTOR AND DESTRUCTOR */
@@ -33,6 +34,7 @@ public:
 	/* INTERFACE METHODS */
 	bool add_transition (string non_terminal , string terminal , ProductionElement* rule) ;
 	ProductionElement* get_transition (string non_terminal , string terminal) ;
+	void set_non_terminal_start(string start_non_terminal);
 	string get_non_terminal_start();
 	void print(string file_name) ;
 	void set_terminals(set<string> terminal_names);

@@ -72,8 +72,10 @@ SyntaxAnalyzerGenerator::generate_derivation_table(vector<Production*> rules, st
 			}
 		}
 	}
+
 	table.set_terminals(terminals);
 	table.set_non_terminals(non_terminals);
+	table.set_non_terminal_start(rules[0]->get_LHS_name());
 
 	table.print(output_table_file);
 	return table ;
