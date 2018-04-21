@@ -25,6 +25,8 @@ public:
 public:
 	/* INTERFACE METHODS */
 	static void analyze_prog(vector<Token> user_prog , DerivationTable derivation_table);
+	/* utility methods */
+	static string stack_to_string(stack<Node*> *stack);
 
 };
 

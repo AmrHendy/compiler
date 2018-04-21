@@ -19,8 +19,7 @@ SyntaxAnalyzer::~SyntaxAnalyzer(void)
 void
 SyntaxAnalyzer::analyze_prog(vector<Token> user_prog, DerivationTable derivation_table)
 {
-	string derivation_file = "derivation.txt";
-
+	vector<string> output_file;
 	/* construction stack */
 	stack<Node*> stack;
 	/* get first transition in table */
@@ -37,26 +36,36 @@ SyntaxAnalyzer::analyze_prog(vector<Token> user_prog, DerivationTable derivation
 
 		if(curr->get_type() == NodeType::Terminal){
 			if(curr->get_name() == current_symbol){
-				//match
+				/* current token matching first non-terminal */
+				output_file.push_back(stack_to_string(&stack));
+				stack.pop();
+				token_index++;
+				continue;
 			}
 			else{
-				//error
+				/* unidentified error type */
+				/* i believe this is also Error Transition, hence skip current token */
 				string error_message = "Error: missing " + curr->get_name().substr(1, curr->get_name().size() - 2)
-										+ " !! unmatched terminal is inserted";
-				FileWriter::append(derivation_file, error_message);
-				stack.pop();
+										+ " !! unmatched terminal is inserted";					
+				output_file.push_back(stack_to_string(&stack) + "\t" + error_message);
+				token_index++;
+				continue;
 			}
 		}
 		else{
 			ProductionElement* prod_elem = derivation_table.get_transition(curr->get_name(), current_symbol);
 			if(prod_elem->is_empty()){
-				//error
+				/* Error Transition, remove current token */
 				string error_message = "Error: discard " + user_prog[token_index].getType();
-				FileWriter::append(derivation_file, error_message);
+				output_file.push_back(stack_to_string(&stack) + "\t" + error_message);
 				token_index++;
+				continue;
 			}
 			else if(prod_elem->is_synchronize()){
+				/* sync transition, remove first non-terminal */
+				output_file.push_back(stack_to_string(&stack) + "\t" + "sync");
 				stack.pop();
+				continue;
 			}
 			else{
 				//make left most derivation
@@ -89,8 +98,42 @@ SyntaxAnalyzer::analyze_prog(vector<Token> user_prog, DerivationTable derivation
 				for(Node* node : current_derivation){
 					output_line += node->get_name() + " ";
 				}
-				FileWriter::append(derivation_file, output_line);
+				output_file.push_back(stack_to_string(&stack));
 			}
 		}
 	}
+
+	/* print output file */
+	char output_file_dir[] = "derivation.txt";
+	ofstream myfile;
+	myfile.open (output_file_dir, ios::out);
+	for(int i = 0; i < output_file.size(); i++)
+	{
+		myfile << output_file[i]+"\n";
+		//myfile << "Writing this to a file.\n";
+	}
+	
+	myfile.close();
+}
+
+
+string 
+SyntaxAnalyzer::stack_to_string(stack<Node*> *tmp)
+{
+	string result = "";
+	stack<Node*> stack;
+	while(!tmp->empty())
+	{
+		Node* node = tmp->top();
+		tmp->pop();
+		result.append(node->get_name());
+		stack.push(node);
+	}
+	while(!stack.empty())
+	{
+		Node* node = stack.top();
+		tmp->push(node);
+		stack.pop();
+	}
+	return result;
 }
