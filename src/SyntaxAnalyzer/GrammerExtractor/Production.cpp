@@ -32,3 +32,12 @@ string Production::get_LHS_name(){
 vector<ProductionElement*> Production::get_RHS_elements(){
 	return RHS;
 }
+
+
+void Production::set_LHS_name(string name){
+	LHSNode = name;
+}
+
+void Production::set_RHS_elements(vector<ProductionElement*> elems){
+	RHS = elems;
+}

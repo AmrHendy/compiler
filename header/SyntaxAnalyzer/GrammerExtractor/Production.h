@@ -23,6 +23,9 @@ public:
 	string get_LHS_name();
 	vector<ProductionElement*> get_RHS_elements();
 
+	void set_LHS_name(string name);
+	void set_RHS_elements(vector<ProductionElement*> elems);
+
 private:
 	string LHSNode;
 	vector<ProductionElement*> RHS;

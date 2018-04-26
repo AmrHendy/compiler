@@ -13,7 +13,7 @@ using namespace std;
 int main()
 {
     string lexical_rules_dir = "lexical_rules.txt";
-    string syntax_rules_dir = "syntax_rules4.2.txt";
+    string syntax_rules_dir = "cycle1.txt";
     string user_prog_dir = "user_prog.txt";
     string parser_table_dir = "ParserTable.txt";
 
