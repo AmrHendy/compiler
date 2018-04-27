@@ -3,3 +3,4 @@ while (pass != 10)
 {
 pass = pass + 1 ;
 }
+a == b

@@ -19,10 +19,14 @@ SyntaxAnalyzer::~SyntaxAnalyzer(void)
 void
 SyntaxAnalyzer::analyze_prog(vector<Token> user_prog, DerivationTable derivation_table)
 {
-	vector<string> output_file;
+	/* terminate the input program by dollar. */
+	user_prog.push_back(Token("$", "$", "$"));
 
+	vector<string> output_file;
 	/* construction stack */
 	stack<Node*> stack;
+	/* add dollar at first of stack. */
+	stack.push(new Node("$", NodeType::Terminal));
 	/* get first transition in table */
 	string start_nt_node = derivation_table.get_non_terminal_start();
 	stack.push(new Node(start_nt_node, NodeType::NonTerminal));
@@ -35,6 +39,10 @@ SyntaxAnalyzer::analyze_prog(vector<Token> user_prog, DerivationTable derivation
 
 		if(curr->get_type() == NodeType::Terminal){
 			if(curr->get_name() == current_symbol){
+				/* check if we finished the input. */
+				if(curr->get_name() == "$"){
+					break;
+				}
 				/* current token matching first non-terminal */
 				stack.pop();
 				token_index++;
@@ -63,7 +71,7 @@ SyntaxAnalyzer::analyze_prog(vector<Token> user_prog, DerivationTable derivation
 				//make left most derivation
 				vector<Node*> nodes = prod_elem->get_nodes();
 				stack.pop();
-				for(int index = nodes.size(); index >= 0; index--){
+				for(int index = nodes.size() - 1; index >= 0; index--){
 					if(!nodes[index]->is_epsilon()){
 						stack.push(nodes[index]);
 					}

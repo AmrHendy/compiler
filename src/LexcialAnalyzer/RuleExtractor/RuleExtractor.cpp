@@ -65,7 +65,7 @@ vector<Rule> RuleExtractor::getAllRules()
     for(pair<string, int> keyWord : keyWordRule.keyWords)
     {
         keyWord.first = removeSpaces(keyWord.first);
-        Rule rule("T_" + keyWord.first, keyWord.first, keyWord.second);
+        Rule rule(keyWord.first, keyWord.first, keyWord.second);
         all.push_back(rule);
         rule.toPostfix();
     }
@@ -73,7 +73,9 @@ vector<Rule> RuleExtractor::getAllRules()
     for(pair<string, int> punc : punctuationRule.punctuations)
     {
         punc.first = removeSpaces(punc.first);
-        Rule rule("T_" + punc.first, punc.first, punc.second);
+        string type = punc.first;
+        if(type[0] == '\\') type = type.substr(1, type.size() - 1);
+        Rule rule(type, punc.first, punc.second);
         all.push_back(rule);
         rule.toPostfix();
     }

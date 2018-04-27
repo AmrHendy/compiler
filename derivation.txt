@@ -1,0 +1,7 @@
+E
+typevar
+'int'var
+'id'T
+','var
+'id'T
+Error: discard $

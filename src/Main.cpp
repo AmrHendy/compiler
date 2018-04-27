@@ -13,8 +13,8 @@ using namespace std;
 int main()
 {
     string lexical_rules_dir = "lexical_rules.txt";
-    string syntax_rules_dir = "cycle1.txt";
-    string user_prog_dir = "user_prog.txt";
+    string syntax_rules_dir = "small_syntax_rules.txt";
+    string user_prog_dir = "small_user_prog.txt";
     string parser_table_dir = "ParserTable.txt";
 
     /* generate compiler for specified language */
@@ -37,7 +37,9 @@ int main()
     cout << "Finished Building Parser Table\n";
 
 
-    //syntax_module.select_prog(prog_tokens);
-    //syntax_module.analyze_syntax();
+    syntax_module.select_prog(prog_tokens);
+    syntax_module.analyze_syntax();
+    cout << "Finished Parsing the tokens\n";
+
     return 0;
 }
