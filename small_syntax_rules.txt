@@ -1,4 +1,0 @@
-E ::= type var
-type ::= 'int'
-var ::= 'id' T
-T ::= ',' var | '\L'

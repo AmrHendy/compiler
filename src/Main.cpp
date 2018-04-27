@@ -12,10 +12,10 @@ using namespace std;
 
 int main()
 {
-    string lexical_rules_dir = "lexical_rules.txt";
-    string syntax_rules_dir = "small_syntax_rules.txt";
-    string user_prog_dir = "small_user_prog.txt";
-    string parser_table_dir = "ParserTable.txt";
+    string lexical_rules_dir = "tests/lexical_rules.txt";
+    string syntax_rules_dir = "tests/small_syntax_rules.txt";
+    string user_prog_dir = "tests/small_user_prog.txt";
+    string parser_table_dir = "tests/ParserTable.txt";
 
     /* generate compiler for specified language */
     LexicalModule lexical_module = LexicalModule(lexical_rules_dir);
@@ -40,6 +40,5 @@ int main()
     syntax_module.select_prog(prog_tokens);
     syntax_module.analyze_syntax();
     cout << "Finished Parsing the tokens\n";
-
     return 0;
 }

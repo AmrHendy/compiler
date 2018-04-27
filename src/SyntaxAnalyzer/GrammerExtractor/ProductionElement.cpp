@@ -48,7 +48,11 @@ bool ProductionElement::is_empty(){
 string ProductionElement::get_format(){
 	string str = "";
 	for(Node* n : nodes){
-		str += n->get_name() + " ";
+		string curr_name = n->get_name();
+		if(curr_name == "'\\L'"){
+			curr_name = "EPSILON";
+		}
+		str += curr_name + " ";
 	}
 	return str.substr(0, str.size() - 1);
 }

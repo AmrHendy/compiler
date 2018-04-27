@@ -1,0 +1,12 @@
+==>	E	
+==>	type	var	
+==>	int	var	
+==>	int	id	T	
+==>	int	a	T	
+==>	int	a	,	var	
+==>	int	a	,	id	T	
+==>	int	a	,	b	T	
+==>	int	a	,	b	,	var	
+==>	int	a	,	b	,	id	T	
+==>	int	a	,	b	,	c	T	
+==>	int	a	,	b	,	c	

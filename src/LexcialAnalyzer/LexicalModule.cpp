@@ -35,7 +35,8 @@ Token LexicalModule::next_token()
 }
 
 vector<Token> LexicalModule::get_all_tokens() {
-	FileWriter::openNewFile("output_tokens.txt");
+	string output_file = "tests/output_tokens.txt";
+	FileWriter::openNewFile(output_file);
 	vector<Token> prog_tokens ;
  	while(true)
     {
@@ -46,7 +47,7 @@ vector<Token> LexicalModule::get_all_tokens() {
         }
         prog_tokens.push_back(token);
         string token_str = token.getLexeme() + "\t" + token.getType();
-		FileWriter::append("output_tokens.txt", token_str);
+		FileWriter::append(output_file, token_str);
     }
     return prog_tokens ;
 }

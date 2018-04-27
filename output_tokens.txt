@@ -1,6 +1,0 @@
-int	int
-a	id
-,	,
-b	id
-,	,
-c	id

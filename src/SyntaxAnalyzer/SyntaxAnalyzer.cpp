@@ -57,7 +57,6 @@ SyntaxAnalyzer::analyze_prog(vector<Token> user_prog, DerivationTable derivation
 				if(curr->get_name() == "$"){
 					break;
 				}
-				//prev_terminals += user_prog[token_index - 1].getType() + "\t";
 				prev_terminals += user_prog[token_index - 1].getLexeme() + "\t";
 
 				if(user_prog[token_index - 1].getLexeme() != user_prog[token_index - 1].getType()){
@@ -98,7 +97,7 @@ SyntaxAnalyzer::analyze_prog(vector<Token> user_prog, DerivationTable derivation
 		}
 	}
 
-	string derivation_file = "derivation.txt";
+	string derivation_file = "tests/derivation.txt";
 	FileWriter::openNewFile(derivation_file);
 	for(string line : output_file){
 		line = "==>\t" + line;

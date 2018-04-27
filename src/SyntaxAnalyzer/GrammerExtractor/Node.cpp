@@ -24,7 +24,7 @@ NodeType Node::get_type(){
 }
 
 bool Node::is_epsilon(){
-	return name == "'\\L'" ;
+	return name == "'\\L'";
 }
 
 bool Node::is_dollar(){

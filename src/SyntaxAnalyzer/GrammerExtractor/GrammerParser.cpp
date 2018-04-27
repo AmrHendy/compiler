@@ -21,12 +21,14 @@ vector<Production*> GrammerParser::parse_grammer(string grammer_file_name){
 	vector<string> rules;
 	string curr_rule = "";
 	for(string str_line : lines){
-		if(str_line.find("::=") == string::npos || curr_rule.empty()){
+		if(str_line.find("#") == string::npos){
 			curr_rule += str_line;
 		}
 		else{
-			rules.push_back(curr_rule);
-			curr_rule = str_line;
+			if(!curr_rule.empty()){
+				rules.push_back(curr_rule);
+			}
+			curr_rule = str_line.substr(str_line.find("#") + 1);
 		}
 	}
 
@@ -77,7 +79,19 @@ Production* GrammerParser::parse_rule(string rule_str){
 		for(string node_str : nodes){
 			Node* node;
 			node_str = removeSpaces(node_str);
+
+			/* check EPSILON whether it is '\L' or \L directly. */
+			if(node_str == "'\\L'" || node_str ==  "\\L"){
+				node = new Node("'\\L'", NodeType::Terminal);
+				production_elem->add_node(node);
+				continue;
+			}
+
 			if(node_str[0] == '\'' && node_str[node_str.length() - 1] == '\''){
+				/* check for the escape character and remove it. */
+				if(node_str[1] == '\\'){
+					node_str = "'" + node_str.substr(2);
+				}
 				node = new Node(node_str, NodeType::Terminal);
 			}
 			else{
@@ -121,6 +135,5 @@ vector<string> GrammerParser::split(string str, set<char> delim) {
     if(!removeSpaces(currentStr).empty()) {
         splittedStr.push_back(currentStr);
     }
-
     return splittedStr;
 }

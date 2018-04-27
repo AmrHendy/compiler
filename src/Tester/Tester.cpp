@@ -16,6 +16,7 @@ Tester::~Tester() {
 }
 
 void Tester::testGrammerParser(string file_name){
+	string output_file = "tests/ParsedGrammerTest.txt";
 	vector<Production*> prods = GrammerParser::parse_grammer(file_name);
 	string line = "";
 	for(Production* prod : prods){
@@ -33,13 +34,13 @@ void Tester::testGrammerParser(string file_name){
 		line += "==========================================================================\n";
 	}
 
-	FileWriter::openNewFile("ParsedGrammerTest.txt");
-	FileWriter::append("ParsedGrammerTest.txt", line);
+	FileWriter::openNewFile(output_file);
+	FileWriter::append(output_file, line);
 }
 
 
 void Tester::testFirstFollow(string file_name){
-	string output_file = "FirstFollow.txt";
+	string output_file = "tests/FirstFollow.txt";
 	FileWriter::openNewFile(output_file);
 	GrammerParser gp = GrammerParser() ;
 	vector<Production*> rules = gp.parse_grammer(file_name);
@@ -50,7 +51,7 @@ void Tester::testFirstFollow(string file_name){
 
 	SyntaxAnalyzerGenerator analyzer = SyntaxAnalyzerGenerator();
 
-	FileWriter::append(output_file, "\t\tFirst");
+	FileWriter::append(output_file, "=========\n| First |\n=========");
 	for(pair<string,set<Node>> p : first){
 		string str = p.first + " = { ";
 		int k = 0 ;
@@ -60,11 +61,10 @@ void Tester::testFirstFollow(string file_name){
 				str += " , ";
 			k++ ;
 		}
-		str += " }" ;
+		str += " }\n=========================" ;
 		FileWriter::append(output_file, str);
 	}
-	FileWriter::append(output_file, "========================================================================");
-	FileWriter::append(output_file, "\t\tFollow");
+	FileWriter::append(output_file, "==========\n| Follow |\n=========");
 	for(pair<string,set<Node>> p : follow){
 		string str = p.first + " = { ";
 		int k = 0 ;
@@ -74,7 +74,7 @@ void Tester::testFirstFollow(string file_name){
 				str += " , ";
 			k++ ;
 		}
-		str += " }\n\n ========================= " ;
+		str += " }\n========================= " ;
 		FileWriter::append(output_file, str);
 	}
 }
