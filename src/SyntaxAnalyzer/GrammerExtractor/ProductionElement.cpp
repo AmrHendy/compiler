@@ -60,3 +60,7 @@ string ProductionElement::get_format(){
 string ProductionElement::get_name(){
 	return name;
 }
+
+void ProductionElement::remove_first_node(){
+	nodes.erase(nodes.begin());
+}

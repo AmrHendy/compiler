@@ -11,6 +11,7 @@ RM := rm -rf
 -include src/Tester/subdir.mk
 -include src/SyntaxAnalyzer/ParserTable/subdir.mk
 -include src/SyntaxAnalyzer/GrammerExtractor/subdir.mk
+-include src/SyntaxAnalyzer/GrammerElimination/subdir.mk
 -include src/SyntaxAnalyzer/subdir.mk
 -include src/LexcialAnalyzer/Tokenizer/subdir.mk
 -include src/LexcialAnalyzer/RuleExtractor/subdir.mk

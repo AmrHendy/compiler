@@ -1,14 +1,65 @@
-LHSNode = E
-elem  =  { type , NT } $$ { var , NT } $$ 
+LHSNode = METHOD_BODY
+elem  =  { STATEMENT_LIST , NT } $$ 
 ==========================================================================
-LHSNode = type
-elem  =  { 'int' , T } $$ 
+LHSNode = STATEMENT_LIST
+elem  =  { STATEMENT , NT } $$ { STATEMENT_LIST& , NT } $$ 
 ==========================================================================
-LHSNode = var
-elem  =  { 'id' , T } $$ { T , NT } $$ 
-==========================================================================
-LHSNode = T
-elem  =  { ',' , T } $$ { var , NT } $$ 
+LHSNode = STATEMENT_LIST&
+elem  =  { STATEMENT , NT } $$ { STATEMENT_LIST& , NT } $$ 
 elem  =  { '\L' , T } $$ 
+==========================================================================
+LHSNode = STATEMENT
+elem  =  { DECLARATION , NT } $$ 
+elem  =  { IF , NT } $$ 
+elem  =  { WHILE , NT } $$ 
+elem  =  { ASSIGNMENT , NT } $$ 
+==========================================================================
+LHSNode = DECLARATION
+elem  =  { PRIMITIVE_TYPE , NT } $$ { 'id' , T } $$ { ';' , T } $$ 
+==========================================================================
+LHSNode = PRIMITIVE_TYPE
+elem  =  { 'int' , T } $$ 
+elem  =  { 'float' , T } $$ 
+==========================================================================
+LHSNode = IF
+elem  =  { 'if' , T } $$ { '(' , T } $$ { EXPRESSION , NT } $$ { ')' , T } $$ { '{' , T } $$ { STATEMENT , NT } $$ { '}' , T } $$ { 'else' , T } $$ { '{' , T } $$ { STATEMENT , NT } $$ { '}' , T } $$ 
+==========================================================================
+LHSNode = WHILE
+elem  =  { 'while' , T } $$ { '(' , T } $$ { EXPRESSION , NT } $$ { ')' , T } $$ { '{' , T } $$ { STATEMENT , NT } $$ { '}' , T } $$ 
+==========================================================================
+LHSNode = ASSIGNMENT
+elem  =  { 'id' , T } $$ { 'assign' , T } $$ { EXPRESSION , NT } $$ { ';' , T } $$ 
+==========================================================================
+LHSNode = EXPRESSION
+elem  =  { SIMPLE_EXPRESSION , NT } $$ { EXPRESSION& , NT } $$ 
+==========================================================================
+LHSNode = EXPRESSION&
+elem  =  { 'relop' , T } $$ { SIMPLE_EXPRESSION , NT } $$ 
+elem  =  { '\L' , T } $$ 
+==========================================================================
+LHSNode = SIMPLE_EXPRESSION
+elem  =  { TERM , NT } $$ { SIMPLE_EXPRESSION& , NT } $$ 
+elem  =  { SIGN , NT } $$ { TERM , NT } $$ { SIMPLE_EXPRESSION& , NT } $$ 
+==========================================================================
+LHSNode = SIMPLE_EXPRESSION&
+elem  =  { 'addop' , T } $$ { TERM , NT } $$ { SIMPLE_EXPRESSION& , NT } $$ 
+elem  =  { '\L' , T } $$ 
+==========================================================================
+LHSNode = TERM
+elem  =  { FACTOR , NT } $$ { TERM& , NT } $$ 
+==========================================================================
+LHSNode = TERM&
+elem  =  { 'mulop' , T } $$ 
+elem  =  { FACTOR , NT } $$ { TERM& , NT } $$ 
+elem  =  { '\L' , T } $$ 
+==========================================================================
+LHSNode = FACTOR
+elem  =  { 'id' , T } $$ 
+elem  =  { 'num' , T } $$ 
+elem  =  { '(' , T } $$ { EXPRESSION , NT } $$ { ')' , T } $$ 
+==========================================================================
+LHSNode = SIGN
+elem  =  { '+' , T } $$ 
+elem  =  { '-' , T } $$ 
 ==========================================================================
 

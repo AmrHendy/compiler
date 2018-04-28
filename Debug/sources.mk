@@ -27,6 +27,7 @@ src/Tester \
 src/SyntaxAnalyzer \
 src/SyntaxAnalyzer/ParserTable \
 src/SyntaxAnalyzer/GrammerExtractor \
+src/SyntaxAnalyzer/GrammerElimination \
 src \
 src/LexcialAnalyzer/Tokenizer \
 src/LexcialAnalyzer/RuleExtractor \

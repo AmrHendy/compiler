@@ -16,7 +16,8 @@
 #include "../SyntaxAnalyzer/ParserTable/FirstFollow.h"
 #include "../FileHandler/FileWriter.h"
 #include "../SyntaxAnalyzer/SyntaxAnalyzerGenerator.h"
-
+#include "../SyntaxAnalyzer/GrammerElimination/LeftFactoringElimination.h"
+#include "../SyntaxAnalyzer/GrammerElimination/LeftRecursionElimination.h"
 
 using namespace std;
 
@@ -27,7 +28,8 @@ public:
 
 	static void testGrammerParser(string file_name);
 	static void testFirstFollow(string file_name);
-
+	static void testElimination();
+	static void printGrammerFile(string file_name, vector<Production*> rules);
 };
 
 #endif /* TESTER_H_ */

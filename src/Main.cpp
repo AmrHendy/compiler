@@ -12,9 +12,9 @@ using namespace std;
 
 int main()
 {
-    string lexical_rules_dir = "tests/lexical_rules.txt";
-    string syntax_rules_dir = "tests/small_syntax_rules.txt";
-    string user_prog_dir = "tests/small_user_prog.txt";
+	string lexical_rules_dir = "tests/lexical_rules.txt";
+    string syntax_rules_dir = "tests/javaCFG.txt";
+    string user_prog_dir = "tests/user_prog2.txt";
     string parser_table_dir = "tests/ParserTable.txt";
 
     /* generate compiler for specified language */
@@ -35,7 +35,6 @@ int main()
     syntax_module.generate_syntax_analyzer(parser_table_dir);
     Tester::testFirstFollow(syntax_rules_dir);
     cout << "Finished Building Parser Table\n";
-
 
     syntax_module.select_prog(prog_tokens);
     syntax_module.analyze_syntax();

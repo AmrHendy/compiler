@@ -58,11 +58,16 @@ src/Main.d: ../src/Main.cpp \
  ../src/../header/SyntaxAnalyzer/ParserTable/../GrammerExtractor/GrammerParser.h \
  ../src/../header/SyntaxAnalyzer/SyntaxAnalyzer.h \
  ../src/../header/SyntaxAnalyzer/GrammerExtractor/ProductionElement.h \
+ ../src/../header/SyntaxAnalyzer/GrammerElimination/LeftFactoringElimination.h \
+ ../src/../header/SyntaxAnalyzer/GrammerElimination/../GrammerExtractor/Production.h \
+ ../src/../header/SyntaxAnalyzer/GrammerElimination/LeftRecursionElimination.h \
  ../src/../header/Tester/Tester.h \
  ../src/../header/Tester/../SyntaxAnalyzer/GrammerExtractor/GrammerParser.h \
  ../src/../header/Tester/../SyntaxAnalyzer/ParserTable/FirstFollow.h \
  ../src/../header/Tester/../FileHandler/FileWriter.h \
- ../src/../header/Tester/../SyntaxAnalyzer/SyntaxAnalyzerGenerator.h
+ ../src/../header/Tester/../SyntaxAnalyzer/SyntaxAnalyzerGenerator.h \
+ ../src/../header/Tester/../SyntaxAnalyzer/GrammerElimination/LeftFactoringElimination.h \
+ ../src/../header/Tester/../SyntaxAnalyzer/GrammerElimination/LeftRecursionElimination.h
 
 ../src/../header/LexcialAnalyzer/LexicalModule.h:
 
@@ -182,6 +187,12 @@ src/Main.d: ../src/Main.cpp \
 
 ../src/../header/SyntaxAnalyzer/GrammerExtractor/ProductionElement.h:
 
+../src/../header/SyntaxAnalyzer/GrammerElimination/LeftFactoringElimination.h:
+
+../src/../header/SyntaxAnalyzer/GrammerElimination/../GrammerExtractor/Production.h:
+
+../src/../header/SyntaxAnalyzer/GrammerElimination/LeftRecursionElimination.h:
+
 ../src/../header/Tester/Tester.h:
 
 ../src/../header/Tester/../SyntaxAnalyzer/GrammerExtractor/GrammerParser.h:
@@ -191,3 +202,7 @@ src/Main.d: ../src/Main.cpp \
 ../src/../header/Tester/../FileHandler/FileWriter.h:
 
 ../src/../header/Tester/../SyntaxAnalyzer/SyntaxAnalyzerGenerator.h:
+
+../src/../header/Tester/../SyntaxAnalyzer/GrammerElimination/LeftFactoringElimination.h:
+
+../src/../header/Tester/../SyntaxAnalyzer/GrammerElimination/LeftRecursionElimination.h:

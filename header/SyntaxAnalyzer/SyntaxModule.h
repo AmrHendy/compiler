@@ -10,6 +10,8 @@
 #include "SyntaxAnalyzerGenerator.h"
 #include "GrammerExtractor/GrammerParser.h"
 #include "SyntaxAnalyzer.h"
+#include "GrammerElimination/LeftFactoringElimination.h"
+#include "GrammerElimination/LeftRecursionElimination.h"
 #include <vector>
 
 using namespace std;

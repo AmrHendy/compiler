@@ -24,6 +24,7 @@ public:
 	bool is_empty();
 	string get_format();
 	string get_name();
+	void remove_first_node();
 
 private:
 	vector<Node*> nodes;

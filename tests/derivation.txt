@@ -1,12 +1,98 @@
-==>	E	
-==>	type	var	
-==>	int	var	
-==>	int	id	T	
-==>	int	a	T	
-==>	int	a	,	var	
-==>	int	a	,	id	T	
-==>	int	a	,	b	T	
-==>	int	a	,	b	,	var	
-==>	int	a	,	b	,	id	T	
-==>	int	a	,	b	,	c	T	
-==>	int	a	,	b	,	c	
+==>	METHOD_BODY	
+==>	STATEMENT_LIST	
+==>	STATEMENT	STATEMENT_LIST&	
+==>	DECLARATION	STATEMENT_LIST&	
+==>	PRIMITIVE_TYPE	id	;	STATEMENT_LIST&	
+==>	int	id	;	STATEMENT_LIST&	
+==>	int	count	;	STATEMENT_LIST&	
+==>	int	count	;	STATEMENT	STATEMENT_LIST&	
+==>	int	count	;	WHILE	STATEMENT_LIST&	
+==>	int	count	;	while	(	EXPRESSION	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	SIMPLE_EXPRESSION	EXPRESSION&	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	TERM	SIMPLE_EXPRESSION&	EXPRESSION&	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	FACTOR	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	id	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	SIMPLE_EXPRESSION&	EXPRESSION&	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	EXPRESSION&	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	relop	SIMPLE_EXPRESSION	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	SIMPLE_EXPRESSION	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	TERM	SIMPLE_EXPRESSION&	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	FACTOR	TERM&	SIMPLE_EXPRESSION&	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	num	TERM&	SIMPLE_EXPRESSION&	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	TERM&	SIMPLE_EXPRESSION&	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	SIMPLE_EXPRESSION&	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	ASSIGNMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	id	assign	EXPRESSION	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	assign	EXPRESSION	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	EXPRESSION	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	SIMPLE_EXPRESSION	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	TERM	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	FACTOR	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	id	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	addop	TERM	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	TERM	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	FACTOR	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	num	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	STATEMENT	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	IF	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	EXPRESSION	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	SIMPLE_EXPRESSION	EXPRESSION&	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	TERM	SIMPLE_EXPRESSION&	EXPRESSION&	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	FACTOR	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	id	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	SIMPLE_EXPRESSION&	EXPRESSION&	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	EXPRESSION&	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	relop	SIMPLE_EXPRESSION	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	SIMPLE_EXPRESSION	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	TERM	SIMPLE_EXPRESSION&	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	FACTOR	TERM&	SIMPLE_EXPRESSION&	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	num	TERM&	SIMPLE_EXPRESSION&	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	TERM&	SIMPLE_EXPRESSION&	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	SIMPLE_EXPRESSION&	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	STATEMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	ASSIGNMENT	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	id	assign	EXPRESSION	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	assign	EXPRESSION	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	EXPRESSION	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	SIMPLE_EXPRESSION	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	TERM	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	FACTOR	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	id	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	addop	TERM	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	TERM	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	FACTOR	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	num	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	EXPRESSION&	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	STATEMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	ASSIGNMENT	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	id	assign	EXPRESSION	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	assign	EXPRESSION	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	EXPRESSION	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	SIMPLE_EXPRESSION	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	TERM	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	FACTOR	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	id	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	sum	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	sum	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	sum	addop	TERM	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	sum	+	TERM	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	sum	+	FACTOR	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	sum	+	id	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	sum	+	mnt	TERM&	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	sum	+	mnt	SIMPLE_EXPRESSION&	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	sum	+	mnt	EXPRESSION&	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	sum	+	mnt	;	}	STATEMENT_LIST&	
+==>	int	count	;	while	(	pass	!=	10	)	{	pass	=	pass	+	1	;	}	if	(	mnt	<=	0	)	{	count	=	count	+	1.234	;	}	else	{	sum	=	sum	+	mnt	;	}	

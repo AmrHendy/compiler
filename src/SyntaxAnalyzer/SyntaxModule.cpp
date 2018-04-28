@@ -6,7 +6,10 @@
 /****************************************/
 SyntaxModule::SyntaxModule(string cfg_rules)
 {
-	SyntaxModule::cfg_rules = GrammerParser::parse_grammer(cfg_rules) ;
+	SyntaxModule::cfg_rules = GrammerParser::parse_grammer(cfg_rules);
+	LeftRecursionElimination left_recursion(SyntaxModule::cfg_rules);
+	LeftFactoringElimination left_factoring(left_recursion.get_eliminated_rules());
+	SyntaxModule::cfg_rules = left_factoring.get_left_factor_rules();
 }
 
 SyntaxModule::~SyntaxModule()
